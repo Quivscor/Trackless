@@ -93,7 +93,7 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] == (int)Tiles.basic)
                     {
-                        if (Random.Range(0, 100) > 95)
+                        if (Random.Range(0, 100) > 90)
                             map[i, j] = (int)Tiles.forest;
                     }
 
