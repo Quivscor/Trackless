@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 namespace TracklessGenerator
 {
@@ -27,23 +29,30 @@ namespace TracklessGenerator
         private GameObject player;
         private float tileSize;
 
+        public Action action;
+
         private void Start()
         {
-            tileSize = tiles[0].transform.localScale.x;
+            tileSize = tiles[1].transform.localScale.x;
             GenerateMap();
         }
 
         public void GenerateMap()
         {
+            // defining map
             PrepareMaps();
             BoxMethod();
-
             FindBorders();
+            GeneratingTerrain();
+
+            // spawning objects
             SpawnTiles();
             SpawnResources();
             SpawnPlayer();
+            action?.Invoke();
         }
 
+        
         private void PrepareMaps()
         {
             map = new int[mapSize, mapSize];
@@ -72,6 +81,10 @@ namespace TracklessGenerator
             }
 
         }
+        private void GeneratingTerrain()
+        {
+            
+        }
 
         private void SpawnTiles()
         {
@@ -81,6 +94,8 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] != (int)Tiles.none)
                     {
+                        Debug.Log(map[i, j]);
+
                         GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
                             tiles[0].transform.localScale.x * i,
                             0,
@@ -225,8 +240,9 @@ namespace TracklessGenerator
         public enum Tiles
         {
             none,
+            border,
             normal,
-            border
+            
         }
 
         public enum Resources
