@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PackOfCoal : IInteractive
+public class PackOfPassengers : IInteractive
 {
-    public int coalBonus = 10;
+    public int passengers = 1;
 
     public override void Interact(GameObject interactor)
     {
-        interactor?.GetComponent<Inventory>()?.AddCoal(coalBonus);
+        interactor?.GetComponent<Inventory>()?.AddPassengers(passengers);
         this.gameObject.SetActive(false);
     }
 }

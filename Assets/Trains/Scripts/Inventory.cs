@@ -8,6 +8,10 @@ public class Inventory : MonoBehaviour
     private int passengers = 0;
     private int coal = 0;
 
+    public int Steel { get => steel; }
+    public int Passengers { get => passengers; }
+    public int Coal { get => coal; }
+
     public void AddSteel(int value)
     {
         steel += value;
@@ -21,5 +25,13 @@ public class Inventory : MonoBehaviour
     public void AddCoal(int value)
     {
         coal += value;
+    }
+
+    public void SpendCoal(int value)
+    {
+        coal -= value;
+
+        if (coal < 0)
+            coal = 0;
     }
 }

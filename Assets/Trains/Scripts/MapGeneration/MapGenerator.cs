@@ -9,34 +9,52 @@ namespace TracklessGenerator
         [Header("Generator options")]
         public int mapSize;
         public int numberOfBoxes;
+        public int numberOfCoals;
+        public int numberOfSteel;
+        public int numberOfPassengers;
 
+        [Header("Prefabs")]
         [SerializeField]
         private GameObject[] tiles;
+        [SerializeField]
+        private GameObject[] resources;
+        [SerializeField]
+        private GameObject playerPrefab;
 
         private int[,] map;
+        private int[,] resourceMap;
+
+        private GameObject player;
+        private float tileSize;
 
         private void Start()
         {
+            tileSize = tiles[0].transform.localScale.x;
             GenerateMap();
         }
 
         public void GenerateMap()
         {
-            PrepareMap();
+            PrepareMaps();
             BoxMethod();
+
             FindBorders();
             SpawnTiles();
+            SpawnResources();
+            SpawnPlayer();
         }
 
-        private void PrepareMap()
+        private void PrepareMaps()
         {
             map = new int[mapSize, mapSize];
+            resourceMap = new int[mapSize, mapSize];
 
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
                 {
                     map[i, j] = (int)Tiles.none;
+                    resourceMap[i, j] = (int)Resources.none;
                 }
             }
         }
@@ -72,6 +90,43 @@ namespace TracklessGenerator
                     }
 
                 }
+            }
+        }
+
+        private void SpawnPlayer()
+        {
+            player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 1.5f, mapSize/2*tileSize), Quaternion.identity);
+        }
+
+        private void SpawnResources()
+        {
+
+            while(numberOfCoals > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+                }
+                while (resourceMap[x, y] != (int)Resources.none);
+
+                resourceMap[x, y] = (int)Resources.coal;
+                Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                numberOfCoals--;
+            }
+
+            while (numberOfSteel > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+                }
+                while (resourceMap[x, y] != (int)Resources.none);
+
+                resourceMap[x, y] = (int)Resources.steel;
+                Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                numberOfSteel--;
             }
         }
 
@@ -172,6 +227,13 @@ namespace TracklessGenerator
             none,
             normal,
             border
+        }
+
+        public enum Resources
+        {
+            none,
+            coal,
+            steel
         }
     }
 
