@@ -125,9 +125,25 @@ namespace TracklessGenerator
 
         private void SpawnPlayer()
         {
+            Vector3 angle = new Vector3(0,0,0);
+          
+            if(map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.none)
+            {
+                angle = new Vector3(0, -90f, 0);
+            }
+            if (map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.none)
+            {
+                angle = new Vector3(0, 90f, 0);
+            }
+            if (map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.border && map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.none)
+            {
+                angle = new Vector3(0, 180f, 0);
+            }
+
             //player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 3.5f, mapSize/2*tileSize), Quaternion.identity);
-            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize), Quaternion.identity);
-            player.transform.LookAt(new Vector3(mapSize / 2 * tileSize, 0, mapSize / 2 * tileSize));
+            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize),
+                Quaternion.Euler(angle));
+            //player.transform.LookAt(new Vector3(mapSize / 2 * tileSize, 0, mapSize / 2 * tileSize));
         }
 
         private void SpawnResources()
