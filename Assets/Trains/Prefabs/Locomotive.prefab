@@ -454,4 +454,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationForce: 20
-  torqueForce: 40
+  torqueForce: 30
