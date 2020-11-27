@@ -13,7 +13,7 @@ public class UIDataManager : MonoBehaviour
 
     private Cauldron cauldron;
 
-    void Start()
+    void Awake()
     {
         FindObjectOfType<TracklessGenerator.MapGenerator>().action += FindCauldron;
     }

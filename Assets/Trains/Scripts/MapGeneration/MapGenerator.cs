@@ -33,7 +33,7 @@ namespace TracklessGenerator
 
         private void Start()
         {
-            tileSize = tiles[1].transform.localScale.x;
+            tileSize = tiles[(int)Tiles.basic].transform.localScale.x;
             GenerateMap();
         }
 
@@ -70,7 +70,7 @@ namespace TracklessGenerator
 
         private void BoxMethod()
         {
-            SetTile(mapSize / 2, mapSize / 2, Tiles.normal);
+            SetTile(mapSize / 2, mapSize / 2, Tiles.basic);
             DrawBox5(mapSize / 2, mapSize / 2);
             while (numberOfBoxes > 0)
             {
@@ -83,7 +83,18 @@ namespace TracklessGenerator
         }
         private void GeneratingTerrain()
         {
-            
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j] == (int)Tiles.basic)
+                    {
+                        if (Random.Range(0, 100) > 95)
+                            map[i, j] = (int)Tiles.forest;
+                    }
+
+                }
+            }
         }
 
         private void SpawnTiles()
@@ -97,9 +108,9 @@ namespace TracklessGenerator
                         Debug.Log(map[i, j]);
 
                         GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
-                            tiles[0].transform.localScale.x * i,
+                            tiles[(int)Tiles.basic].transform.localScale.x * i,
                             0,
-                            tiles[0].transform.localScale.z * j),
+                            tiles[(int)Tiles.basic].transform.localScale.z * j),
                             Quaternion.identity);
                         tile.transform.SetParent(this.transform);
                     }
@@ -110,7 +121,7 @@ namespace TracklessGenerator
 
         private void SpawnPlayer()
         {
-            player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 1.5f, mapSize/2*tileSize), Quaternion.identity);
+            player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, playerPrefab.transform.position.y, mapSize/2*tileSize), Quaternion.identity);
         }
 
         private void SpawnResources()
@@ -149,47 +160,47 @@ namespace TracklessGenerator
         {
             // drawing box 3x3 in room boundaries
 
-            SetTile(x - 1, y, Tiles.normal);
-            SetTile(x + 1, y, Tiles.normal);
-            SetTile(x, y - 1, Tiles.normal);
-            SetTile(x, y + 1, Tiles.normal);
-            SetTile(x - 1, y - 1, Tiles.normal);
-            SetTile(x + 1, y + 1, Tiles.normal);
-            SetTile(x + 1, y - 1, Tiles.normal);
-            SetTile(x - 1, y + 1, Tiles.normal);
+            SetTile(x - 1, y, Tiles.basic);
+            SetTile(x + 1, y, Tiles.basic);
+            SetTile(x, y - 1, Tiles.basic);
+            SetTile(x, y + 1, Tiles.basic);
+            SetTile(x - 1, y - 1, Tiles.basic);
+            SetTile(x + 1, y + 1, Tiles.basic);
+            SetTile(x + 1, y - 1, Tiles.basic);
+            SetTile(x - 1, y + 1, Tiles.basic);
 
         }
         private void DrawBox5(int x, int y)
         {
             // drawing box 3x3 in room boundaries
 
-            SetTile(x - 1, y, Tiles.normal);
-            SetTile(x + 1, y, Tiles.normal);
-            SetTile(x, y - 1, Tiles.normal);
-            SetTile(x, y + 1, Tiles.normal);
-            SetTile(x - 1, y - 1, Tiles.normal);
-            SetTile(x + 1, y + 1, Tiles.normal);
-            SetTile(x + 1, y - 1, Tiles.normal);
-            SetTile(x - 1, y + 1, Tiles.normal);
+            SetTile(x - 1, y, Tiles.basic);
+            SetTile(x + 1, y, Tiles.basic);
+            SetTile(x, y - 1, Tiles.basic);
+            SetTile(x, y + 1, Tiles.basic);
+            SetTile(x - 1, y - 1, Tiles.basic);
+            SetTile(x + 1, y + 1, Tiles.basic);
+            SetTile(x + 1, y - 1, Tiles.basic);
+            SetTile(x - 1, y + 1, Tiles.basic);
 
-            SetTile(x - 2, y, Tiles.normal);
-            SetTile(x + 2, y, Tiles.normal);
-            SetTile(x, y - 2, Tiles.normal);
-            SetTile(x, y + 2, Tiles.normal);
-            SetTile(x - 2, y - 2, Tiles.normal);
-            SetTile(x + 2, y + 2, Tiles.normal);
-            SetTile(x + 2, y - 2, Tiles.normal);
-            SetTile(x - 2, y + 2, Tiles.normal);
+            SetTile(x - 2, y, Tiles.basic);
+            SetTile(x + 2, y, Tiles.basic);
+            SetTile(x, y - 2, Tiles.basic);
+            SetTile(x, y + 2, Tiles.basic);
+            SetTile(x - 2, y - 2, Tiles.basic);
+            SetTile(x + 2, y + 2, Tiles.basic);
+            SetTile(x + 2, y - 2, Tiles.basic);
+            SetTile(x - 2, y + 2, Tiles.basic);
 
-            SetTile(x - 2, y - 1, Tiles.normal);
-            SetTile(x - 2, y + 1, Tiles.normal);
-            SetTile(x + 2, y - 1, Tiles.normal);
-            SetTile(x + 2, y + 1, Tiles.normal);
+            SetTile(x - 2, y - 1, Tiles.basic);
+            SetTile(x - 2, y + 1, Tiles.basic);
+            SetTile(x + 2, y - 1, Tiles.basic);
+            SetTile(x + 2, y + 1, Tiles.basic);
 
-            SetTile(x - 1, y - 2, Tiles.normal);
-            SetTile(x + 1, y - 2, Tiles.normal);
-            SetTile(x - 1, y + 2, Tiles.normal);
-            SetTile(x + 1, y + 2, Tiles.normal);
+            SetTile(x - 1, y - 2, Tiles.basic);
+            SetTile(x + 1, y - 2, Tiles.basic);
+            SetTile(x - 1, y + 2, Tiles.basic);
+            SetTile(x + 1, y + 2, Tiles.basic);
 
         }
 
@@ -241,7 +252,8 @@ namespace TracklessGenerator
         {
             none,
             border,
-            normal,
+            basic,
+            forest
             
         }
 
