@@ -610,7 +610,7 @@ PrefabInstance:
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: numberOfBoxes
-      value: 2500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
@@ -622,7 +622,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerPrefab
       value: 
-      objectReference: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
+      objectReference: {fileID: 1041977695834725012, guid: 80764ef8d9d6e7a48b12e88c8d145918,
         type: 3}
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}

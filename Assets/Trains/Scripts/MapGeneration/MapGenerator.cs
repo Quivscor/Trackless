@@ -127,6 +127,7 @@ namespace TracklessGenerator
         {
             //player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 3.5f, mapSize/2*tileSize), Quaternion.identity);
             player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize), Quaternion.identity);
+            player.transform.LookAt(new Vector3(mapSize / 2 * tileSize, 0, mapSize / 2 * tileSize));
         }
 
         private void SpawnResources()
@@ -142,7 +143,7 @@ namespace TracklessGenerator
                 while (resourceMap[x, y] != (int)Resources.none);
 
                 resourceMap[x, y] = (int)Resources.coal;
-                Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
                 numberOfCoals--;
             }
 
@@ -163,18 +164,23 @@ namespace TracklessGenerator
 
         private void GenerateSpawndAndEnd()
         {
-            spawnPoint = borderPositions[Random.Range(0,borderPositions.Count)];
             float distance = 1000;
-            Vector2 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+
+            spawnPoint = borderPositions[Random.Range(0,borderPositions.Count)];
+            endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+
             int errorCounter = 0;
-            while (Vector2.Distance(spawnPoint, endPoint) < distance)
+
+            while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance)
             {
                 errorCounter++;
                 if (errorCounter > 10000) break;
+                //borderPositions.Remove(endPoint);
                 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
             }
             if (errorCounter > 10000)
                 Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+
             map[(int)spawnPoint.x, (int)spawnPoint.y] = (int)Tiles.spawn;
             map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
         }
