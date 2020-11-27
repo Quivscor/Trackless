@@ -507,7 +507,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &4479306630800238816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,8 +532,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301bcde08cf9d244a1d094930701a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 20
-  torqueForce: 30
+  accelerationForce: 10
+  torqueForce: 45
+  maxAngularVelocity: 3.5
+  maxVelocity: 5
 --- !u!114 &2047290880
 MonoBehaviour:
   m_ObjectHideFlags: 0
