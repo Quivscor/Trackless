@@ -827,7 +827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525480216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -52.4}
+  m_LocalPosition: {x: 0, y: 0, z: -49.44}
   m_LocalScale: {x: 100, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1950,6 +1950,7 @@ GameObject:
   - component: {fileID: 1685250765}
   - component: {fileID: 1685250764}
   - component: {fileID: 1685250771}
+  - component: {fileID: 1685250772}
   m_Layer: 0
   m_Name: Lokomotywa
   m_TagString: Untagged
@@ -2089,6 +2090,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4de1378ec23e34795997b7985947aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1685250772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685250763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf247588f4252a499dd4ea5b538d2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  burningSpeed: 1
+  burningBoostPerCoal: 20
+  cauldronMaxLevel: 150
 --- !u!1001 &1701082811
 PrefabInstance:
   m_ObjectHideFlags: 0

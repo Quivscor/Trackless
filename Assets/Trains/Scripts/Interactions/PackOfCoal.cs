@@ -8,7 +8,7 @@ public class PackOfCoal : IInteractive
 
     public override void Interact(GameObject interactor)
     {
-        interactor?.GetComponent<Inventory>()?.AddSteel(coalBonus);
+        interactor?.GetComponent<Inventory>()?.AddCoal(coalBonus);
         this.gameObject.SetActive(false);
     }
 }

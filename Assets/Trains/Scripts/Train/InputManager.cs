@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputData Data { get; private set; }
+
     void Awake()
     {
         Data = new InputData();
@@ -17,7 +18,7 @@ public class InputManager : MonoBehaviour
         Data.moveY = Input.GetAxis("Vertical");
 
         //actions
-        Data.isBrake = Input.GetKey(KeyCode.Space);
+        Data.cauldronBoost = Input.GetKeyDown(KeyCode.Space);
     }
 }
 
@@ -26,4 +27,5 @@ public class InputData
     public float moveX;
     public float moveY;
     public bool isBrake;
+    public bool cauldronBoost;
 }
