@@ -25,7 +25,10 @@ namespace TracklessGenerator
 
         private int[,] map;
         private int[,] resourceMap;
+        private List<Vector2> borderPositions;
 
+        private Vector2 spawnPoint;
+        private Vector2 endPoint;
         private GameObject player;
         private float tileSize;
 
@@ -43,6 +46,7 @@ namespace TracklessGenerator
             PrepareMaps();
             BoxMethod();
             FindBorders();
+            GenerateSpawndAndEnd();
             GeneratingTerrain();
 
             // spawning objects
@@ -105,7 +109,7 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] != (int)Tiles.none)
                     {
-                        Debug.Log(map[i, j]);
+                        //Debug.Log(map[i, j]);
 
                         GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
                             tiles[(int)Tiles.basic].transform.localScale.x * i,
@@ -121,7 +125,8 @@ namespace TracklessGenerator
 
         private void SpawnPlayer()
         {
-            player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, playerPrefab.transform.position.y, mapSize/2*tileSize), Quaternion.identity);
+            //player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 3.5f, mapSize/2*tileSize), Quaternion.identity);
+            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize), Quaternion.identity);
         }
 
         private void SpawnResources()
@@ -154,6 +159,24 @@ namespace TracklessGenerator
                 Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
                 numberOfSteel--;
             }
+        }
+
+        private void GenerateSpawndAndEnd()
+        {
+            spawnPoint = borderPositions[Random.Range(0,borderPositions.Count)];
+            float distance = 1000;
+            Vector2 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+            int errorCounter = 0;
+            while (Vector2.Distance(spawnPoint, endPoint) < distance)
+            {
+                errorCounter++;
+                if (errorCounter > 10000) break;
+                endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+            }
+            if (errorCounter > 10000)
+                Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+            map[(int)spawnPoint.x, (int)spawnPoint.y] = (int)Tiles.spawn;
+            map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
         }
 
         private void DrawBox(int x, int y)
@@ -228,6 +251,8 @@ namespace TracklessGenerator
 
         private void FindBorders()
         {
+            borderPositions = new List<Vector2>();
+
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
@@ -237,11 +262,13 @@ namespace TracklessGenerator
                         if(map[i-1,j] == (int)Tiles.none || map[i + 1, j] == (int)Tiles.none || map[i, j + 1] == (int)Tiles.none || map[i, j - 1] == (int)Tiles.none)
                         {
                             map[i, j] = (int)Tiles.border;
+                            borderPositions.Add(new Vector2(i, j));
                         }
                     }
                     else if(map[i, j] != (int)Tiles.none && (i == 0 || i == mapSize - 1 || j == 0 || j == mapSize - 1))
                     {
                         map[i, j] = (int)Tiles.border;
+                        borderPositions.Add(new Vector2(i, j));
                     }
 
                 }
@@ -253,7 +280,9 @@ namespace TracklessGenerator
             none,
             border,
             basic,
-            forest
+            forest,
+            spawn,
+            end
             
         }
 
