@@ -7,7 +7,7 @@ public class TrainManager : MonoBehaviour
 {
     private List<Wagon> wagons = new List<Wagon>();
 
-    private void Awake()
+    private void Start()
     {
         wagons.Add(GetComponent<Wagon>());
 
