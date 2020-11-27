@@ -128,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
+        type: 3}
+      propertyPath: iceMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
+        type: 3}
+      propertyPath: minVelocity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
       propertyPath: m_Name
@@ -391,7 +401,7 @@ GameObject:
   - component: {fileID: 1260279732}
   - component: {fileID: 1260279731}
   m_Layer: 9
-  m_Name: Plane (3)
+  m_Name: IcePlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
