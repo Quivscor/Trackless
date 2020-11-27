@@ -9,6 +9,8 @@ public class InteractDetector : MonoBehaviour
         IInteractive interactive = other.GetComponent<IInteractive>();
 
         if (interactive != null)
+        {
             interactive.Interact(this.transform.root.gameObject);
+        }
     }
 }
