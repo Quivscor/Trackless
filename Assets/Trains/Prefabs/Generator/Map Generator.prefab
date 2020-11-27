@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8586968044717216966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8586968044717216960}
+  - component: {fileID: 8586968044717216961}
+  m_Layer: 0
+  m_Name: Map Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8586968044717216960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586968044717216966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.907863, y: 13.627397, z: 4.457756}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8586968044717216961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586968044717216966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2270aae38b63ca429592ba17cc157fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapSize: 100
+  numberOfBoxes: 1000
+  numberOfCoals: 5
+  numberOfSteel: 5
+  numberOfPassengers: 0
+  tiles:
+  - {fileID: 1083165608010931641, guid: 6c8f88f349652fa488ad78d7cfc08e56, type: 3}
+  - {fileID: 1083165608010931641, guid: 6c8f88f349652fa488ad78d7cfc08e56, type: 3}
+  - {fileID: 1083165608010931641, guid: 987947c6757a06b4683921d48dcc5a1a, type: 3}
+  resources:
+  - {fileID: 0}
+  - {fileID: 4334270867701602475, guid: 1fb4bf488d68fd048ae383d83db285f6, type: 3}
+  - {fileID: 7460751405606886883, guid: c39fbd4af212f784c87b9fdd7fd49cfd, type: 3}
+  playerPrefab: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
+    type: 3}

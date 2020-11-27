@@ -17,6 +17,9 @@ public class Cauldron : MonoBehaviour
 
     private float currentCauldronLevel = 0.0f;
 
+    public float CauldronMaxLevel { get => cauldronMaxLevel; }
+    public float CurrentCauldronLevel { get => currentCauldronLevel; }
+
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
