@@ -25,6 +25,6 @@ public class Wagon : MonoBehaviour
 
     public void SetPercentageSpeed(float speedPercent)
     {
-        animator.speed = maxAnimationSpeed * speedPercent;
+        animator.speed = maxAnimationSpeed * speedPercent / 100.0f;
     }
 }
