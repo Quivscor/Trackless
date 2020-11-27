@@ -831,13 +831,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301bcde08cf9d244a1d094930701a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 30
+  maxVelocity: 30
   torqueForce: 45
   maxAngularVelocity: 3.5
-  maxVelocity: 5
-  forwardSmoothingTime: 0.05
-  angularSmoothingTime: 0.3
-  brakingSmoothingTime: 0.1
+  angularSmoothingTime: 0.15
+  minVelocityToRotate: 3
+  maxAccelerationTime: 3
 --- !u!114 &2047290880
 MonoBehaviour:
   m_ObjectHideFlags: 0
