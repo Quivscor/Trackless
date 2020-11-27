@@ -24,15 +24,14 @@ public class TrainController : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 velocity = InputManager.Data.moveY > 0 ? InputManager.Data.moveY * transform.forward : Vector3.zero;
-        Vector3 torque = Vector3.zero;
 
         if(velocity != Vector3.zero)
-            rb.AddRelativeForce(velocity * accelerationForce);
+            rb.AddForce(velocity * accelerationForce);
 
         if (rb.velocity != Vector3.zero)
         {
-            torque = InputManager.Data.moveX * transform.up;
-            rb.AddRelativeTorque(torque * torqueForce);
+            float torqueDirection = InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0;
+            rb.angularVelocity = new Vector3(0, torqueDirection * torqueForce * Time.fixedDeltaTime, 0);
         }
     }
 }
