@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         //movement
-        Data.moveX = Input.GetAxis("Horizontal");
+        Data.moveX = Input.GetAxisRaw("Horizontal");
         Data.moveY = Input.GetAxis("Vertical");
 
         //actions
