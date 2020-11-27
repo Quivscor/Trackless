@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TrainManager))]
 public class TrainController : MonoBehaviour
 {
     private TrainMovement trainMovement = TrainMovement.Stopped;
+    private TrainManager trainManager;
 
     public float maxVelocity;
     public float torqueForce;
@@ -26,6 +28,8 @@ public class TrainController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         rb.maxAngularVelocity = maxAngularVelocity;
+
+        trainManager = GetComponent<TrainManager>();
     }
 
     private void FixedUpdate()
@@ -45,12 +49,12 @@ public class TrainController : MonoBehaviour
 
     private void ForwardMovement()
     {
-        if(InputManager.Data.moveY > 0)
+        if (InputManager.Data.moveY > 0)
         {
             trainMovement = TrainMovement.Accelerating;
             currentAccelerationTime = currentAccelerationTime >= maxAccelerationTime ? maxAccelerationTime : currentAccelerationTime + Time.fixedDeltaTime;
         }
-        else if(currentAccelerationTime > 0)
+        else if (currentAccelerationTime > 0)
         {
             trainMovement = TrainMovement.Decelerating;
             currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - Time.fixedDeltaTime;
@@ -61,6 +65,7 @@ public class TrainController : MonoBehaviour
         }
 
         rb.velocity = Vector3.Lerp(Vector3.zero, maxVelocity * transform.forward, (currentAccelerationTime / maxAccelerationTime));
+        trainManager.SetWheelsRotationSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100);
     }
 }
 
