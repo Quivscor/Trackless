@@ -24,6 +24,7 @@ namespace TracklessGenerator
         {
             PrepareMap();
             BoxMethod();
+            FindBorders();
             SpawnTiles();
         }
 
@@ -62,7 +63,7 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] != (int)Tiles.none)
                     {
-                        GameObject tile = Instantiate(tiles[0], new Vector3(
+                        GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
                             tiles[0].transform.localScale.x * i,
                             0,
                             tiles[0].transform.localScale.z * j),
@@ -144,10 +145,33 @@ namespace TracklessGenerator
 
         }
 
+        private void FindBorders()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j] != (int)Tiles.none && (i - 1) >= 0 && (i + 1) < mapSize && (j - 1) >= 0 && (j + 1) < mapSize)
+                    {
+                        if(map[i-1,j] == (int)Tiles.none || map[i + 1, j] == (int)Tiles.none || map[i, j + 1] == (int)Tiles.none || map[i, j - 1] == (int)Tiles.none)
+                        {
+                            map[i, j] = (int)Tiles.border;
+                        }
+                    }
+                    else if(map[i, j] != (int)Tiles.none && (i == 0 || i == mapSize - 1 || j == 0 || j == mapSize - 1))
+                    {
+                        map[i, j] = (int)Tiles.border;
+                    }
+
+                }
+            }
+        }
+
         public enum Tiles
         {
             none,
-            normal
+            normal,
+            border
         }
     }
 
