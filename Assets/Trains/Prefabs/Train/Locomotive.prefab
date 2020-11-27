@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 4479306629919925688}
   - component: {fileID: 4479306629919925689}
   m_Layer: 0
-  m_Name: JointConnection
+  m_Name: JointConnectionEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -763,6 +763,8 @@ GameObject:
   - component: {fileID: 2047290881}
   - component: {fileID: 3938577500689197354}
   - component: {fileID: 5747906895545611313}
+  - component: {fileID: 7134679742440547283}
+  - component: {fileID: 7163240229895501161}
   m_Layer: 0
   m_Name: Locomotive
   m_TagString: Untagged
@@ -831,12 +833,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301bcde08cf9d244a1d094930701a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationForce: 20
+  maxVelocity: 5
   torqueForce: 45
   maxAngularVelocity: 3.5
-  maxVelocity: 5
-  forwardSmoothingTime: 0.25
   angularSmoothingTime: 0.5
+  minVelocityToRotate: 0
+  maxAccelerationTime: 3
 --- !u!114 &2047290880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +899,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7134679742440547283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479306630800238822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308653600b9ad904ea5660c2e0eaf8d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7163240229895501161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479306630800238822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737533a2e13304541951c5f127653a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointConnectorStart: {fileID: 0}
+  jointConnectorEnd: {fileID: 4479306629919925694}
+  maxAnimationSpeed: 3
+  wagonType: 0
 --- !u!1 &6498589298724915614
 GameObject:
   m_ObjectHideFlags: 0
@@ -5725,7 +5755,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9528302, g: 0.8980239, b: 0.57079923, a: 1}
   m_Intensity: 397887.34
   m_Range: 40
   m_SpotAngle: 90
