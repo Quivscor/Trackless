@@ -156,6 +156,8 @@ MonoBehaviour:
   - {fileID: 1083165608010931641, guid: 6c8f88f349652fa488ad78d7cfc08e56, type: 3}
   - {fileID: 1083165608010931641, guid: 6c8f88f349652fa488ad78d7cfc08e56, type: 3}
   - {fileID: 1083165608010931641, guid: 987947c6757a06b4683921d48dcc5a1a, type: 3}
+  playerPrefab: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
+    type: 3}
 --- !u!4 &1068022189
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +179,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246949571376715543, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1577589821597124969, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_Version

@@ -10,13 +10,19 @@ namespace TracklessGenerator
         public int mapSize;
         public int numberOfBoxes;
 
+        [Header("Prefabs")]
         [SerializeField]
         private GameObject[] tiles;
+        [SerializeField]
+        private GameObject playerPrefab;
 
         private int[,] map;
+        private GameObject player;
+        private float tileSize;
 
         private void Start()
         {
+            tileSize = tiles[0].transform.localScale.x;
             GenerateMap();
         }
 
@@ -26,6 +32,7 @@ namespace TracklessGenerator
             BoxMethod();
             FindBorders();
             SpawnTiles();
+            SpawnPlayer();
         }
 
         private void PrepareMap()
@@ -75,6 +82,10 @@ namespace TracklessGenerator
             }
         }
 
+        private void SpawnPlayer()
+        {
+            player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 1.5f, mapSize/2*tileSize), Quaternion.identity);
+        }
         private void DrawBox(int x, int y)
         {
             // drawing box 3x3 in room boundaries
