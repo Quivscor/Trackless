@@ -832,9 +832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxVelocity: 30
-  torqueForce: 45
+  torqueForce: 30
   maxAngularVelocity: 3.5
-  angularSmoothingTime: 0.15
+  angularSmoothingTime: 0.05
   minVelocityToRotate: 3
   maxAccelerationTime: 3
 --- !u!114 &2047290880
