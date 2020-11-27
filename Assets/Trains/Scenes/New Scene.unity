@@ -133,46 +133,6 @@ PrefabInstance:
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 1794222695}
-    - target: {fileID: 848192187245956818, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_Limits.bounciness
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956818, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_EnableCollision
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956818, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_MassScale
-      value: 0.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956818, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_ConnectedMassScale
-      value: 0.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956819, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956819, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956819, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 848192187245956819, guid: 42b7db537cbac0447b61ec635219a133,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 848192187245956823, guid: 42b7db537cbac0447b61ec635219a133,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -545,36 +505,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: torqueForce
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: rotateForce
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: accelerationForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: maxAngularVelocity
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}
       propertyPath: m_Name
