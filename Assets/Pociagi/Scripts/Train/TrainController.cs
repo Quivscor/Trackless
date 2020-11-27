@@ -19,7 +19,8 @@ public class TrainController : MonoBehaviour
         Vector3 velocity = InputManager.Data.moveY * transform.forward;
         Vector3 torque = InputManager.Data.moveX * transform.up;
 
-        rb.AddForce(velocity * accelerationForce);
+        if(velocity != Vector3.zero)
+            rb.AddForce(velocity * accelerationForce);
         rb.AddTorque(torque * torqueForce);
     }
 }
