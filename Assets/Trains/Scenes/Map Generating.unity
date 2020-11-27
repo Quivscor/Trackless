@@ -316,6 +316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultSceneRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 7643073095026524292, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
+        type: 3}
+      propertyPath: m_ColorTemperature
+      value: 11586
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
 --- !u!1 &1770724068 stripped
