@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 848192187245956823, guid: 42b7db537cbac0447b61ec635219a133,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.12
+      value: -9.37
       objectReference: {fileID: 0}
     - target: {fileID: 848192187245956823, guid: 42b7db537cbac0447b61ec635219a133,
         type: 3}
@@ -508,27 +508,17 @@ PrefabInstance:
     - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}
       propertyPath: forwardSmoothingTime
-      value: 0.25
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}
       propertyPath: angularSmoothingTime
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}
       propertyPath: accelerationForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}

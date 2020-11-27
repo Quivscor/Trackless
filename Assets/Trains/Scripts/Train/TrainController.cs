@@ -14,6 +14,7 @@ public class TrainController : MonoBehaviour
     private Vector3 angularSmoothing;
     public float forwardSmoothingTime;
     public float angularSmoothingTime;
+    public float brakingSmoothingTime;
 
     private bool isOnIce = false;
 
@@ -30,8 +31,11 @@ public class TrainController : MonoBehaviour
     {
         Vector3 velocity = InputManager.Data.moveY > 0 ? InputManager.Data.moveY * transform.forward : Vector3.zero;
 
-        //rb.velocity = Vector3.SmoothDamp(transform.position, velocity * accelerationForce, ref forwardSmoothing, forwardSmoothingTime, maxVelocity);
-        rb.velocity = Vector3.Lerp(rb.velocity, velocity * accelerationForce, forwardSmoothingTime);
+        if(InputManager.Data.isBrake)
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, brakingSmoothingTime);
+        else if(velocity != Vector3.zero)
+            rb.velocity = Vector3.Lerp(rb.velocity, velocity * accelerationForce, forwardSmoothingTime);
+
 
         if (velocity != Vector3.zero)
         {
