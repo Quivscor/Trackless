@@ -127,15 +127,15 @@ namespace TracklessGenerator
         {
             Vector3 angle = new Vector3(0,0,0);
           
-            if(map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.none)
+            if((int)spawnPoint.x - 1 >= 0 && map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x - 1, (int)spawnPoint.y] != (int)Tiles.none)
             {
                 angle = new Vector3(0, -90f, 0);
             }
-            if (map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.none)
+            if ((int)spawnPoint.x + 1 < mapSize && map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.border && map[(int)spawnPoint.x + 1, (int)spawnPoint.y] != (int)Tiles.none)
             {
                 angle = new Vector3(0, 90f, 0);
             }
-            if (map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.border && map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.none)
+            if ((int)spawnPoint.y - 1 >= 0 && map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.border && map[(int)spawnPoint.x, (int)spawnPoint.y - 1] != (int)Tiles.none)
             {
                 angle = new Vector3(0, 180f, 0);
             }
