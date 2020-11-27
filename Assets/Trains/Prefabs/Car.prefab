@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 848192187029735590}
   - component: {fileID: 848192187029735591}
   m_Layer: 0
-  m_Name: Exit
+  m_Name: JointConnection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0.55}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 1, z: -3.37}
+  m_ConnectedAnchor: {x: 0, y: 0.28, z: -0.09199995}
   m_UseSpring: 1
   m_Spring:
     spring: 10

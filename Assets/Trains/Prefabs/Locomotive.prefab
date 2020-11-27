@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 4479306629919925688}
   - component: {fileID: 4479306629919925689}
   m_Layer: 0
-  m_Name: WagonRoot
+  m_Name: JointConnection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
