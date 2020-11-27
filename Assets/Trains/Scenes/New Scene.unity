@@ -505,6 +505,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
+        type: 3}
+      propertyPath: forwardSmoothingTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
+        type: 3}
+      propertyPath: angularSmoothingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479306630800238817, guid: 1ac8eb359e1201e4b81d87864646ce01,
+        type: 3}
+      propertyPath: accelerationForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479306630800238819, guid: 1ac8eb359e1201e4b81d87864646ce01,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 1ac8eb359e1201e4b81d87864646ce01,
         type: 3}
       propertyPath: m_Name
