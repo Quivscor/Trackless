@@ -8,6 +8,7 @@ public class TrainController : MonoBehaviour
     private TrainMovement trainMovement = TrainMovement.Stopped;
     private TrainManager trainManager;
     private CameraRotator cameraRotator;
+    private SnowRide snowRide;
 
     public const float maxAngularVelocityForRotation = 0.6f;
 
@@ -49,6 +50,7 @@ public class TrainController : MonoBehaviour
         trainManager = GetComponent<TrainManager>();
 
         cameraRotator = GetComponentInChildren<CameraRotator>();
+        snowRide = GetComponentInChildren<SnowRide>();
     }
 
     private void FixedUpdate()
@@ -79,6 +81,8 @@ public class TrainController : MonoBehaviour
         }
         rb.velocity = Vector3.Lerp(minVelocity * transform.forward, maxVelocity * transform.forward, (currentAccelerationTime / maxAccelerationTime));
         trainManager.SetWheelsRotationSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100);
+        snowRide.SetPercentageEffectSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100);
+        snowRide.SetIsOnIce(isOnIce);
     }
 
     private void Turning()
