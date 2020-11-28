@@ -222,6 +222,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
+        type: 3}
+      propertyPath: iceTorqueTimeInitialValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
       propertyPath: m_Name

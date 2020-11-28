@@ -845,6 +845,7 @@ MonoBehaviour:
   iceDecelerationMultiplier: 3
   iceSlideForceMultiplier: 0.04
   maxIceTorqueTime: 2
+  iceTorqueTimeInitialValue: 1
 --- !u!114 &2047290880
 MonoBehaviour:
   m_ObjectHideFlags: 0

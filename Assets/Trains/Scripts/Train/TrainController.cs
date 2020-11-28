@@ -32,9 +32,11 @@ public class TrainController : MonoBehaviour
     private float iceTorqueTime;
     public float maxIceTorqueTime;
     private float iceTorqueDirection;
+    public float iceTorqueTimeInitialValue;
 
     private Rigidbody rb;
     private BoxCollider collider;
+    
 
     private void Awake()
     {
@@ -80,30 +82,40 @@ public class TrainController : MonoBehaviour
     {
         if (trainMovement != TrainMovement.Stopped && Vector3.Magnitude(rb.velocity) > minVelocityToRotate)
         {
-           Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
-           rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, 
+            Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
+            rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, 
                torqueDirection * (torqueForce * (currentAccelerationTime/maxAccelerationTime)) * Time.fixedDeltaTime, 
                angularSmoothingTime);
-            if (isOnIce)
-            {
-                if (iceTorqueTime == 0)
-                    iceTorqueDirection = Mathf.Sign(InputManager.Data.moveX);
 
-                if (iceTorqueDirection == Mathf.Sign(InputManager.Data.moveX) && InputManager.Data.moveX != 0)
-                    iceTorqueTime = iceTorqueTime >= maxIceTorqueTime ? maxIceTorqueTime : iceTorqueTime + Time.fixedDeltaTime;
-                else
-                    iceTorqueTime = iceTorqueTime <= 0 ? 0 : iceTorqueTime - Time.fixedDeltaTime;
-
-                rb.angularVelocity += transform.up * iceTorqueDirection * iceSlideForceMultiplier * (iceTorqueTime/maxIceTorqueTime);
-            }
-            else
-                iceTorqueTime = 0;
+            TurningOnIce();
 
         }
         else
             rb.angularVelocity = Vector3.zero;
 
         trainManager.SetWagonsRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
+    }
+
+    private void TurningOnIce()
+    {
+        //Ice part
+        if (isOnIce)
+        {
+            if (iceTorqueTime == 0)
+            {
+                iceTorqueDirection = Mathf.Sign(InputManager.Data.moveX);
+                iceTorqueTime += iceTorqueTimeInitialValue;
+            }
+
+            if (iceTorqueDirection == Mathf.Sign(InputManager.Data.moveX) && InputManager.Data.moveX != 0)
+                iceTorqueTime = iceTorqueTime >= maxIceTorqueTime ? maxIceTorqueTime : iceTorqueTime + Time.fixedDeltaTime;
+            else
+                iceTorqueTime = iceTorqueTime <= 0 ? 0 : iceTorqueTime - Time.fixedDeltaTime;
+
+            rb.angularVelocity += transform.up * iceTorqueDirection * iceSlideForceMultiplier * (iceTorqueTime / maxIceTorqueTime);
+        }
+        else
+            iceTorqueTime = 0;
     }
 
     private bool DetectIce()
