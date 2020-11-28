@@ -7,6 +7,7 @@ public class TrainController : MonoBehaviour
 {
     private TrainMovement trainMovement = TrainMovement.Stopped;
     private TrainManager trainManager;
+    private CameraRotator cameraRotator;
 
     public const float maxAngularVelocityForRotation = 0.6f;
 
@@ -36,7 +37,7 @@ public class TrainController : MonoBehaviour
 
     private Rigidbody rb;
     private BoxCollider collider;
-    
+
 
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class TrainController : MonoBehaviour
         rb.maxAngularVelocity = maxAngularVelocity;
 
         trainManager = GetComponent<TrainManager>();
+
+        cameraRotator = GetComponentInChildren<CameraRotator>();
     }
 
     private void FixedUpdate()
@@ -68,7 +71,7 @@ public class TrainController : MonoBehaviour
         else if (currentAccelerationTime > 0)
         {
             trainMovement = TrainMovement.Decelerating;
-            currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - (Time.fixedDeltaTime/ iceDecelerationMultiplier);
+            currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - (Time.fixedDeltaTime / iceDecelerationMultiplier);
         }
         else
         {
@@ -83,8 +86,8 @@ public class TrainController : MonoBehaviour
         if (trainMovement != TrainMovement.Stopped && Vector3.Magnitude(rb.velocity) > minVelocityToRotate)
         {
             Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
-            rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, 
-               torqueDirection * (torqueForce * (currentAccelerationTime/maxAccelerationTime)) * Time.fixedDeltaTime, 
+            rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
+               torqueDirection * (torqueForce * (currentAccelerationTime / maxAccelerationTime)) * Time.fixedDeltaTime,
                angularSmoothingTime);
 
             TurningOnIce();
@@ -94,6 +97,7 @@ public class TrainController : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
 
         trainManager.SetWagonsRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
+        cameraRotator.SetPercentageRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
     }
 
     private void TurningOnIce()
