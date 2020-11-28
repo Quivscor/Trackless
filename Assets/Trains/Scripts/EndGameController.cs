@@ -15,14 +15,19 @@ public class EndGameController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Inventory>().Passengers < uiDataManager.mapGenerator.numberOfPassengers)
-            uiDataManager.TurnOnEndGameText(true, "Find other passengers!");
-        else
-            uiDataManager.TurnOnEndGameText(true, "Congratulations!");
+        if(other.GetComponent<TrainController>())
+        {
+            if (other.GetComponent<Inventory>().Passengers < uiDataManager.mapGenerator.numberOfPassengers)
+                uiDataManager.TurnOnEndGameText(true, "Find other passengers!");
+            else
+                uiDataManager.TurnOnEndGameText(true, "Congratulations!");
+        }
+        
 
     }
     private void OnTriggerExit(Collider other)
     {
-        uiDataManager.TurnOnEndGameText(false, "None!");
+        if (other.GetComponent<TrainController>())
+            uiDataManager.TurnOnEndGameText(false, "None!");
     }
 }
