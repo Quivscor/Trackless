@@ -11,6 +11,7 @@ namespace TracklessGenerator
         [Header("Generator options")]
         public int mapSize;
         public int numberOfBoxes;
+        public int numberOfMountains;
         public int numberOfLakes;
         public int numberOfDeers;
         public int numberOfCoals;
@@ -48,6 +49,7 @@ namespace TracklessGenerator
             // defining map
             PrepareMaps();
             BoxMethod();
+            GenerateMountains();
             FindBorders();
             GeneratingTerrain();
             GenerateSpawndAndEnd();
@@ -109,8 +111,67 @@ namespace TracklessGenerator
 
                 }
             }
+            //GenerateMountains();
             GenerateDeers();
             GenerateIce();
+        }
+
+        private void GenerateMountains()
+        {
+            while (numberOfMountains > 0)
+            {
+                int x, y;
+                (x, y) = GetRandomPoint();
+                int walkerRounds = Random.Range(15, 25);
+                SetMountain(x, y, walkerRounds);
+                numberOfMountains--;
+            }
+        }
+
+        private void SetMountain(int x, int y, int walkerRounds)
+        {
+            // drunk walker generation
+            Vector2Int walker = new Vector2Int(x, y);
+            Direction randomDirection;
+
+            while (walkerRounds > 0)
+            {
+                randomDirection = (Direction)Random.Range(0, 4);
+                if(randomDirection == Direction.up)
+                {
+                    if (walker.y + 1 < mapSize)
+                        walker.y += 1;
+
+                }
+                if (randomDirection == Direction.down)
+                {
+                    if (walker.y - 1 >= 0)
+                        walker.y -= 1;
+                }
+                if (randomDirection == Direction.left)
+                {
+                    if (walker.x - 1 >= 0)
+                        walker.x -= 1;
+                }
+                if (randomDirection == Direction.right)
+                {
+                    if (walker.x + 1 >= 0)
+                        walker.x += 1;
+                }
+
+                SetTile(walker.x, walker.y, Tiles.none);
+                walkerRounds--;
+            }
+
+
+        }
+
+        private enum Direction
+        {
+            up,
+            right,
+            down,
+            left
         }
 
         private void GenerateDeers()
@@ -323,11 +384,31 @@ namespace TracklessGenerator
 
         private void DrawLakeBox(int x, int y, List<Vector2Int> lakeTiles)
         {
-            // drawing box 3x3 in room boundaries
+            for (int i = x - 1; i <= x + 1; i++)
+            {
+                for (int j = y - 1; j <= y + 1; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        if (map[i, j] != (int)Tiles.none)
+                        {
+                            SetTile(i, j, Tiles.ice);
+                            lakeTiles.Add(new Vector2Int(i, j));
+                        }
+                            
+                    }
 
-            SetTile(x - 1, y, Tiles.ice);
-            SetTile(x + 1, y, Tiles.ice);
-            SetTile(x, y - 1, Tiles.ice);
+                }
+            }
+
+            /*
+            // drawing box 3x3 in room boundaries
+            if (map[x-1,y] != (int)Tiles.none)
+                SetTile(x - 1, y, Tiles.ice);
+            if (map[x + 1, y] != (int)Tiles.none)
+                SetTile(x + 1, y, Tiles.ice);
+            if (map[x, y - 1] != (int)Tiles.none)
+                SetTile(x, y - 1, Tiles.ice);
             SetTile(x, y + 1, Tiles.ice);
             SetTile(x - 1, y - 1, Tiles.ice);
             SetTile(x + 1, y + 1, Tiles.ice);
@@ -343,7 +424,7 @@ namespace TracklessGenerator
             lakeTiles.Add(new Vector2Int(x + 1, y + 1));
             lakeTiles.Add(new Vector2Int(x - 1, y + 1));
             lakeTiles.Add(new Vector2Int(x + 1, y - 1));
-
+            */
         }
         private void DrawBox5(int x, int y)
         {
