@@ -7,11 +7,13 @@ public class ForestShuffler : MonoBehaviour
     [SerializeField]
     private List<GameObject> trees;
 
+    public float treshHold;
+
     void Start()
     {
         foreach (GameObject tree in trees)
         {
-            if(Random.Range(0, 100) > 80)
+            if(Random.Range(0, 100) > treshHold)
                 tree.SetActive(false);
         }
         /*
