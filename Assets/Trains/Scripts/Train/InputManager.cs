@@ -17,6 +17,9 @@ public class InputManager : MonoBehaviour
         Data.moveX = Input.GetAxisRaw("Horizontal");
         Data.moveY = Input.GetAxis("Vertical");
 
+        if (Data.moveY == 0)
+            Data.moveY = 1;
+
         //actions
         Data.cauldronBoost = Input.GetKeyDown(KeyCode.Space);
         Data.isBrake = Input.GetAxis("Vertical") < 0 ? true : false;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 467130642191441714}
   - component: {fileID: 467130642191441715}
   - component: {fileID: 1467764979286402601}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CarCoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.12, y: 2.9682226, z: 7.5040693}
-  m_Center: {x: 0, y: -0.14408451, z: -0.6628423}
+  m_Size: {x: 2.12, y: 2.484252, z: 7.5040693}
+  m_Center: {x: 0, y: 0.09790087, z: -0.6628423}
 --- !u!54 &467130642191441714
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!59 &467130642191441715
 HingeJoint:
   m_ObjectHideFlags: 0

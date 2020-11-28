@@ -260,7 +260,7 @@ namespace TracklessGenerator
             }
 
             //player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 3.5f, mapSize/2*tileSize), Quaternion.identity);
-            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize),
+            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 2.9f, spawnPoint.y * tileSize),
                 Quaternion.Euler(angle));
             //player.transform.LookAt(new Vector3(mapSize / 2 * tileSize, 0, mapSize / 2 * tileSize));
         }
