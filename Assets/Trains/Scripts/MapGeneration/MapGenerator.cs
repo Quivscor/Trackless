@@ -26,6 +26,8 @@ namespace TracklessGenerator
         private GameObject[] resources;
         [SerializeField]
         private GameObject playerPrefab;
+        [SerializeField]
+        private GameObject testMark;
 
         private int[,] map;
         private int[,] resourceMap;
@@ -292,7 +294,15 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] == (int)Tiles.basic || map[i,j] == (int)Tiles.ice)
                     {
-                        canResourceMap[i, j] = true;
+                        if(i-1 >= 0 && i+1 < mapSize && j - 1 >= 0 && j + 1 < mapSize)
+                        {
+                            if (map[i - 1, j] != (int)Tiles.border && map[i + 1, j] != (int)Tiles.border && map[i, j - 1] != (int)Tiles.border && map[i, j + 1] != (int)Tiles.border)
+                            {
+                                canResourceMap[i, j] = true;
+                                //Instantiate(testMark, new Vector3(i * tileSize, 1, j * tileSize), Quaternion.identity);
+                            }
+                        }
+                        
                     }
 
                 }

@@ -1085,6 +1085,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1083165608010931641, guid: bcbd319cb599fa84695dcb3cf900a2bf,
         type: 3}
+    - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
+        type: 3}
+      propertyPath: testMark
+      value: 
+      objectReference: {fileID: 8263524723312833490, guid: dbc8644aae5f2bb42b5212a4e77ef26e,
+        type: 3}
     - target: {fileID: 8586968044717216966, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: m_Name
