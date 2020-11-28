@@ -29,6 +29,8 @@ namespace TracklessGenerator
 
         private int[,] map;
         private int[,] resourceMap;
+        private bool[,] canResourceMap;
+
         private List<Vector2Int> borderPositions;
         private GameObject[,] mapTiles;
 
@@ -69,6 +71,7 @@ namespace TracklessGenerator
         {
             map = new int[mapSize, mapSize];
             resourceMap = new int[mapSize, mapSize];
+            canResourceMap = new bool[mapSize, mapSize];
 
             for (int i = 0; i < mapSize; i++)
             {
@@ -76,6 +79,7 @@ namespace TracklessGenerator
                 {
                     map[i, j] = (int)Tiles.none;
                     resourceMap[i, j] = (int)Resources.none;
+                    canResourceMap[i, j] = false;
                 }
             }
         }
@@ -282,7 +286,51 @@ namespace TracklessGenerator
 
         private void SpawnResources()
         {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j] == (int)Tiles.basic || map[i,j] == (int)Tiles.ice)
+                    {
+                        canResourceMap[i, j] = true;
+                    }
+
+                }
+            }
+
             while(numberOfCoals > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+
+                } while (!canResourceMap[x, y]);
+                resourceMap[x, y] = (int)Resources.coal;
+                canResourceMap[x, y] = false;
+                GameObject coal = Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
+                coal.transform.SetParent(mapTiles[x, y].transform);
+                numberOfCoals--;
+
+            }
+
+            while (numberOfSteel > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+
+                } while (!canResourceMap[x, y]);
+                resourceMap[x, y] = (int)Resources.steel;
+                canResourceMap[x, y] = false;
+                GameObject steel = Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                steel.transform.SetParent(mapTiles[x, y].transform);
+                numberOfSteel--;
+
+            }
+            /*
+            while (numberOfCoals > 0)
             {
                 int x, y;
                 do
@@ -310,6 +358,7 @@ namespace TracklessGenerator
                 Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
                 numberOfSteel--;
             }
+            */
         }
 
         private bool CheckResourceSpawnCondition(int x, int y)
@@ -322,6 +371,26 @@ namespace TracklessGenerator
            
             int passengers = Random.Range(numberOfPassengers-1, numberOfPassengers+2);
             numberOfPassengers = passengers;
+
+
+            while (passengers > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+                    Debug.Log("TILE: " + map[x, y]);
+
+                } while (!canResourceMap[x, y]);
+                resourceMap[x, y] = (int)Resources.passenger;
+                canResourceMap[x, y] = false;
+                GameObject passenger = Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                passenger.transform.SetParent(mapTiles[x, y].transform);
+                passengers--;
+
+            }
+            /*
+
             while (passengers > 0)
             {
                 int x, y;
@@ -336,6 +405,8 @@ namespace TracklessGenerator
                 passenger.transform.SetParent(mapTiles[x, y].transform);
                 passengers--;
             }
+            */
+
         }
 
         private void GenerateSpawndAndEnd()
