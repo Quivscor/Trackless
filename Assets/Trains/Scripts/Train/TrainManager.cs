@@ -11,7 +11,7 @@ public class TrainManager : MonoBehaviour
     {
         wagons.Add(GetComponent<Wagon>());
 
-        TrainBuilder.Instance.BuildBasicTrain(this);
+        //TrainBuilder.Instance.BuildBasicTrain(this);
     }
 
     public void SetWheelsRotationSpeed(float percentageSpeed)

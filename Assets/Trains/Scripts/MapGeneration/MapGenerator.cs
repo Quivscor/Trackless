@@ -111,11 +111,13 @@ namespace TracklessGenerator
                     {
                         //Debug.Log(map[i, j]);
 
+                        Vector3 angle = new Vector3(0, Random.Range(0, 5) * 90f, 0);
+
                         GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
                             tiles[(int)Tiles.basic].transform.localScale.x * i,
                             0,
                             tiles[(int)Tiles.basic].transform.localScale.z * j),
-                            Quaternion.identity);
+                            Quaternion.Euler(angle));
                         tile.transform.SetParent(this.transform);
                     }
 
