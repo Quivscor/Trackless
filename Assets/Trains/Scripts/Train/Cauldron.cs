@@ -43,6 +43,9 @@ public class Cauldron : MonoBehaviour
         if (InputManager.Data.cauldronBoost)
             AddCoalToCauldron();
 
+        if (InputManager.Data.decreaseHeat)
+            currentCauldronLevel -= burningSpeed * 25 * Time.deltaTime;
+
         currentCauldronLevel -= burningSpeed * Time.deltaTime;
 
         if (currentCauldronLevel < 0)
