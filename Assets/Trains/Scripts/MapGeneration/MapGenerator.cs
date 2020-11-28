@@ -310,11 +310,11 @@ namespace TracklessGenerator
                 }
             }
             endPointNeighbours = new List<GameObject>();
-            for (int i = endPoint.x - 1; i <= endPoint.x + 1; i++)
+            for (int i = endPoint.x - 10; i <= endPoint.x + 10; i++)
             {
-                for (int j = endPoint.y - 1; j <= endPoint.y + 1; j++)
+                for (int j = endPoint.y - 10; j <= endPoint.y + 10; j++)
                 {
-                    if (i - 1 >= 0 && i + 1 < mapSize && j - 1 >= 0 && j + 1 < mapSize)
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
                     {
                         if (map[i, j] == (int)Tiles.border)
                             endPointNeighbours.Add(mapTiles[i, j]);
@@ -327,7 +327,7 @@ namespace TracklessGenerator
         {
             foreach (GameObject item in endPointNeighbours)
             {
-                item.GetComponent<BoxCollider>().enabled = false;
+                item.GetComponentInChildren<BoxCollider>().isTrigger = true;
             }
         }
 

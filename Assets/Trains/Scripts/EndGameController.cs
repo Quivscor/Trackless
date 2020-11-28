@@ -24,11 +24,10 @@ public class EndGameController : MonoBehaviour
             //    uiDataManager.TurnOnEndGameText(true, "Congratulations!");
             //    Time.timeScale = 0;
             //}
+            FindObjectOfType<TracklessGenerator.MapGenerator>().TurnOffCollidersOfEndPointNeighbours();
             FindObjectOfType<IntroAndOutroManager>().PlayOutroSequence();
             StartCoroutine(FindObjectOfType<UIDataManager>().FadeToBlack(5.5f));
         }
-        
-
     }
     private void OnTriggerExit(Collider other)
     {
