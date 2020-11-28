@@ -187,6 +187,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &301648118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2897070095380701328, guid: 050bcde0785748b44910b9b442dd2a2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577640299301481034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1566599844 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1577640298011738350, guid: 050bcde0785748b44910b9b442dd2a2e,
@@ -197,6 +209,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1741091785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7064151594833900532, guid: 050bcde0785748b44910b9b442dd2a2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577640299301481034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1766767544
@@ -589,6 +613,16 @@ PrefabInstance:
       propertyPath: heatMeter
       value: 
       objectReference: {fileID: 1566599844}
+    - target: {fileID: 6694140630900127619, guid: ca1b6642596a79a4dbefef271b8060e3,
+        type: 3}
+      propertyPath: coalText
+      value: 
+      objectReference: {fileID: 1741091785}
+    - target: {fileID: 6694140630900127619, guid: ca1b6642596a79a4dbefef271b8060e3,
+        type: 3}
+      propertyPath: steelText
+      value: 
+      objectReference: {fileID: 301648118}
     - target: {fileID: 6694140630900127621, guid: ca1b6642596a79a4dbefef271b8060e3,
         type: 3}
       propertyPath: m_Name
