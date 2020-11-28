@@ -14,9 +14,14 @@ public class UIDataManager : MonoBehaviour
     private TextMeshProUGUI coalText;
     [SerializeField]
     private TextMeshProUGUI steelText;
+    [SerializeField]
+    private TextMeshProUGUI passengersText;
+    [SerializeField]
+    private TextMeshProUGUI maxPassengersText;
 
     private Cauldron cauldron;
     private Inventory inventory;
+    private TracklessGenerator.MapGenerator mapGenerator;
 
     void Awake()
     {
@@ -34,6 +39,9 @@ public class UIDataManager : MonoBehaviour
     {
         cauldron = FindObjectOfType<Cauldron>();
         inventory = FindObjectOfType<Inventory>();
+        mapGenerator = FindObjectOfType<TracklessGenerator.MapGenerator>();
+
+        maxPassengersText.text = " / " + mapGenerator.numberOfPassengers;
     }
 
     private void UpdateHeatMeter()
@@ -45,5 +53,6 @@ public class UIDataManager : MonoBehaviour
     {
         coalText.text = inventory.Coal.ToString();
         steelText.text = inventory.Steel.ToString();
+        passengersText.text = inventory.Passengers.ToString();
     }
 }

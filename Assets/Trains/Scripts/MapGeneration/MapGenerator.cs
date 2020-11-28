@@ -52,6 +52,7 @@ namespace TracklessGenerator
             // spawning objects
             SpawnTiles();
             SpawnResources();
+            SpawnPassengers();
             SpawnPlayer();
             action?.Invoke();
         }
@@ -150,7 +151,6 @@ namespace TracklessGenerator
 
         private void SpawnResources()
         {
-
             while(numberOfCoals > 0)
             {
                 int x, y;
@@ -177,6 +177,25 @@ namespace TracklessGenerator
                 resourceMap[x, y] = (int)Resources.steel;
                 Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
                 numberOfSteel--;
+            }
+        }
+
+        private void SpawnPassengers()
+        {
+            numberOfPassengers = Random.Range(3, 8);
+            int passengers = numberOfPassengers;
+            while (passengers > 0)
+            {
+                int x, y;
+                do
+                {
+                    (x, y) = GetRandomPoint();
+                }
+                while (resourceMap[x, y] != (int)Resources.none);
+
+                resourceMap[x, y] = (int)Resources.passenger;
+                Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
+                passengers--;
             }
         }
 
@@ -314,7 +333,8 @@ namespace TracklessGenerator
         {
             none,
             coal,
-            steel
+            steel,
+            passenger
         }
     }
 
