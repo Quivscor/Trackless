@@ -14421,7 +14421,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 1148846080
+        m_Name: Rate
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -14555,7 +14558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134784182304664534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 45.4, z: 0}
+  m_LocalPosition: {x: 0, y: 16.8, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4479306630800238847}
@@ -14588,7 +14591,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 10000, y: 15000}
+      - m_Value: {x: 500, y: 1000}
         m_Name: Range
         m_Overridden: 1
       - m_Value: {x: 2, y: 5}
@@ -14596,7 +14599,7 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 179.08842, y: 0, z: 187.82799}
+      - m_Value: {x: 60, y: 0, z: 60}
         m_Name: AABox_size
         m_Overridden: 1
       - m_Value: {x: 8.168938, y: 0, z: 0.73352814}
@@ -15062,13 +15065,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a301bcde08cf9d244a1d094930701a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocity: 2
+  reverseMaxVelocity: 10
+  minVelocity: 0
   maxVelocity: 30
   torqueForce: 30
   maxAngularVelocity: 3.5
   angularSmoothingTime: 0.05
   minVelocityToRotate: 3
   maxAccelerationTime: 3
+  maxReverseAccelerationTime: 3
+  wallHitVelocityThreshold: 0.5
   iceMask:
     serializedVersion: 2
     m_Bits: 512
