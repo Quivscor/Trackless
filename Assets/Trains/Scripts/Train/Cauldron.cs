@@ -34,7 +34,7 @@ public class Cauldron : MonoBehaviour
 
     private void Start()
     {
-        currentCauldronLevel = (HeatStatusPercentageOverheatedLimit / 100.0f) * cauldronMaxLevel;
+        currentCauldronLevel = 0;
         SetHeatStatus();
     }
 
