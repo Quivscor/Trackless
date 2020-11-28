@@ -65,7 +65,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.3076923, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -244,7 +244,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.3076923, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -328,7 +328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.3076923, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5175,7 +5175,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.3076923, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5652,7 +5652,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -25578,6 +25578,9 @@ MonoBehaviour:
   maxRotation: 10
   leftSideSparks: {fileID: 4029223334630149828}
   rightSideSparks: {fileID: 8863492333747813332}
+  locomotiveMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!95 &109939306
 Animator:
   serializedVersion: 3

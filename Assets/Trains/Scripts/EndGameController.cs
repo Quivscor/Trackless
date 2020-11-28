@@ -17,14 +17,14 @@ public class EndGameController : MonoBehaviour
     {
         if(other.GetComponent<TrainController>())
         {
-            if (other.GetComponent<Inventory>().Passengers < uiDataManager.mapGenerator.numberOfPassengers)
-                uiDataManager.TurnOnEndGameText(true, "Find other passengers!");
-            else
-            {
-                uiDataManager.TurnOnEndGameText(true, "Congratulations!");
-                Time.timeScale = 0;
-            }
-                
+            //if (other.GetComponent<Inventory>().Passengers < uiDataManager.mapGenerator.numberOfPassengers)
+            //    uiDataManager.TurnOnEndGameText(true, "Find other passengers!");
+            //else
+            //{
+            //    uiDataManager.TurnOnEndGameText(true, "Congratulations!");
+            //    Time.timeScale = 0;
+            //}
+            FindObjectOfType<IntroAndOutroManager>().PlayOutroSequence();
         }
         
 
