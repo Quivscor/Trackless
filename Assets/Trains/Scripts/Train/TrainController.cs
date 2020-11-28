@@ -23,6 +23,7 @@ public class TrainController : MonoBehaviour
     public float maxOverheatHeatVelocity;
 
     public float maxAngularVelocity = 1.5f;
+    public float brakingAngularMultiplier = 2f;
 
     public float angularSmoothingTime;
     private Vector3 angularSmoothing;
@@ -76,20 +77,6 @@ public class TrainController : MonoBehaviour
         float additionalMovement = isOnIce ? iceDecelerationMultiplier : 1f;
         SetMaxVelocity();
         SetTrainState();
-        //if (InputManager.Data.moveY > 0)
-        //{
-        //    trainMovement = TrainMovement.Accelerating;
-        //    currentAccelerationTime = currentAccelerationTime >= maxAccelerationTime ? maxAccelerationTime : currentAccelerationTime + (Time.fixedDeltaTime * iceDecelerationMultiplier);
-        //}
-        //else if (currentAccelerationTime > 0)
-        //{
-        //    trainMovement = TrainMovement.Decelerating;
-        //    currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - (Time.fixedDeltaTime / iceDecelerationMultiplier);
-        //}
-        //else if (InputManager.Data.moveY == 0)
-        //{
-        //    trainMovement = TrainMovement.Stopped;
-        //}
 
         if (trainMovement != TrainMovement.Reversing)
         {
@@ -108,27 +95,6 @@ public class TrainController : MonoBehaviour
     private void SetMaxVelocity()
     {
         maxVelocity = cauldron.CurrentCauldronLevel / cauldron.CauldronMaxLevel * maxOverheatHeatVelocity + maxMediumHeatVelocity;
-        //HeatStatus heatStats = cauldron.HeatStatus;
-
-        /*switch (heatStats)
-        {
-            case HeatStatus.Low:
-                maxVelocity = maxLowHeatVelocity;
-                break;
-            case HeatStatus.Medium:
-                maxVelocity = maxMediumHeatVelocity;
-                break;
-            case HeatStatus.High:
-                maxVelocity = maxHighHeatVelocity;
-                break;
-            case HeatStatus.Overheated:
-                maxVelocity = maxOverheatHeatVelocity;
-                break;
-            case HeatStatus.Faded:
-                maxVelocity = 0.0f;
-                break;
-        }*/
-
     }
 
     private void SetTrainState()
@@ -200,11 +166,20 @@ public class TrainController : MonoBehaviour
 
     private void Turning()
     {
-        if (trainMovement != TrainMovement.Stopped && Vector3.Magnitude(rb.velocity) > minVelocityToRotate)
+        float additionalAngularMultiplier = InputManager.Data.isBrake ? brakingAngularMultiplier : 1f;
+
+        if (trainMovement != TrainMovement.Stopped && Mathf.Abs(Vector3.Magnitude(rb.velocity)) > minVelocityToRotate)
         {
             Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
-            rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
-               torqueDirection * (torqueForce * (currentAccelerationTime / maxAccelerationTime)) * Time.fixedDeltaTime,
+            if(trainMovement == TrainMovement.Reversing)
+            {
+                rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
+               torqueDirection * (torqueForce * additionalAngularMultiplier * (reverseAccelerationTime / maxReverseAccelerationTime)) * Time.fixedDeltaTime,
+               angularSmoothingTime);
+            }
+            else
+                rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
+               torqueDirection * (torqueForce * additionalAngularMultiplier * (currentAccelerationTime / maxAccelerationTime)) * Time.fixedDeltaTime,
                angularSmoothingTime);
 
             TurningOnIce();

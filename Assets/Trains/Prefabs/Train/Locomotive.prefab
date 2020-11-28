@@ -15875,7 +15875,7 @@ MonoBehaviour:
   maxOverheatHeatVelocity: 50
   maxAngularVelocity: 3.5
   angularSmoothingTime: 0.05
-  minVelocityToRotate: 3
+  minVelocityToRotate: 0.5
   maxAccelerationTime: 3
   maxReverseAccelerationTime: 3
   wallHitVelocityThreshold: 0.5
