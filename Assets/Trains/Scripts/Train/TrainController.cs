@@ -174,7 +174,7 @@ public class TrainController : MonoBehaviour
             if(trainMovement == TrainMovement.Reversing)
             {
                 rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
-               torqueDirection * (torqueForce * additionalAngularMultiplier * (reverseAccelerationTime / maxReverseAccelerationTime)) * Time.fixedDeltaTime,
+               (torqueDirection * -1) * (torqueForce * additionalAngularMultiplier * (reverseAccelerationTime / maxReverseAccelerationTime)) * Time.fixedDeltaTime,
                angularSmoothingTime);
             }
             else
