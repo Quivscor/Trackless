@@ -65,7 +65,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -244,7 +244,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -328,7 +328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5166,7 +5166,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -10609,7 +10609,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 18.69962}
+  m_Size: {x: 14.41, y: 5, z: 18.69962}
   m_Center: {x: 0, y: 0, z: 3.474441}
 --- !u!1 &1997374441
 GameObject:

@@ -9,6 +9,7 @@ public class PackOfSteel : IInteractive
     public override void Interact(GameObject interactor)
     {
         interactor?.GetComponent<Inventory>()?.AddSteel(steelBonus);
+        TrainBuilder.Instance.BuildWagon(interactor.GetComponent<TrainManager>(), WagonType.Steel);
         this.gameObject.SetActive(false);
     }
 }

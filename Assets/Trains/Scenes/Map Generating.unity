@@ -329,18 +329,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4185056097982384905, guid: 34a3f8db67538f642b54ef1331a4fd68,
-        type: 3}
-      propertyPath: availableWagons.Array.data[0]
-      value: 
-      objectReference: {fileID: 467130642191441718, guid: a631b554ace182f4898e10ccdd68960a,
-        type: 3}
-    - target: {fileID: 4185056097982384905, guid: 34a3f8db67538f642b54ef1331a4fd68,
-        type: 3}
-      propertyPath: availableWagons.Array.data[1]
-      value: 
-      objectReference: {fileID: 7724484866540625689, guid: 58e39b9ad2dddd144adc159bd5638d68,
-        type: 3}
     - target: {fileID: 4185056097982384906, guid: 34a3f8db67538f642b54ef1331a4fd68,
         type: 3}
       propertyPath: m_LocalPosition.x
