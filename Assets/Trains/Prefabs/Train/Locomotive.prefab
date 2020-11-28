@@ -14558,7 +14558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134784182304664534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.8, z: 0.3}
+  m_LocalPosition: {x: 0, y: 21.05, z: 25.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4479306630800238847}
@@ -14599,16 +14599,16 @@ VisualEffect:
         m_Overridden: 1
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 60, y: 0, z: 60}
+      - m_Value: {x: 100, y: 0, z: 60}
         m_Name: AABox_size
         m_Overridden: 1
-      - m_Value: {x: 8.168938, y: 0, z: 0.73352814}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: AABox_center
         m_Overridden: 1
       - m_Value: {x: 0, y: 48.9, z: 0}
         m_Name: ArcCircle_circle_center
         m_Overridden: 0
-      - m_Value: {x: 300, y: 300, z: 300}
+      - m_Value: {x: 500, y: 500, z: 50}
         m_Name: Bounds_size
         m_Overridden: 1
     m_Vector4f:
