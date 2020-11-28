@@ -47,8 +47,9 @@ namespace TracklessGenerator
             PrepareMaps();
             BoxMethod();
             FindBorders();
-            GenerateSpawndAndEnd();
             GeneratingTerrain();
+            GenerateSpawndAndEnd();
+            
 
             // spawning objects
             SpawnTiles();
@@ -347,17 +348,48 @@ namespace TracklessGenerator
                         if(map[i-1,j] == (int)Tiles.none || map[i + 1, j] == (int)Tiles.none || map[i, j + 1] == (int)Tiles.none || map[i, j - 1] == (int)Tiles.none)
                         {
                             map[i, j] = (int)Tiles.border;
-                            borderPositions.Add(new Vector2(i, j));
                         }
                     }
                     else if(map[i, j] != (int)Tiles.none && (i == 0 || i == mapSize - 1 || j == 0 || j == mapSize - 1))
                     {
                         map[i, j] = (int)Tiles.border;
-                        borderPositions.Add(new Vector2(i, j));
+                       
                     }
 
                 }
             }
+
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j] == (int)Tiles.border)
+                    {
+                        if (!CheckIfCorner(i, j))
+                            borderPositions.Add(new Vector2(i, j));
+                    }
+
+                }
+            }
+
+
+        }
+
+        private bool CheckIfCorner(int i, int j)
+        {
+            if(i - 1 >= 0 && j + 1 < mapSize)
+                if (map[i - 1, j] == (int)Tiles.border && map[i, j + 1] == (int)Tiles.border) return true;
+
+            if (i + 1 < mapSize && j + 1 < mapSize)
+                if (map[i + 1, j] == (int)Tiles.border && map[i, j + 1] == (int)Tiles.border) return true;
+
+            if (i + 1 < mapSize && j - 1 >= 0)
+                if (map[i + 1, j] == (int)Tiles.border && map[i, j - 1] == (int)Tiles.border) return true;
+
+            if (i - 1 >= 0 && j - 1 >= 0)
+                if (map[i - 1, j] == (int)Tiles.border && map[i, j - 1] == (int)Tiles.border) return true;
+
+            return false;
         }
 
         public enum Tiles

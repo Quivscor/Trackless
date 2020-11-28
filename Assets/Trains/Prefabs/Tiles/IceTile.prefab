@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6930253847735351893}
   - component: {fileID: 4945813368867424994}
   m_Layer: 9
-  m_Name: GameObject
+  m_Name: Floor Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
