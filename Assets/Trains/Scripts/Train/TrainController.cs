@@ -9,13 +9,19 @@ public class TrainController : MonoBehaviour
     private TrainManager trainManager;
     private CameraRotator cameraRotator;
     private SnowRide snowRide;
+    private Cauldron cauldron;
 
     public const float maxAngularVelocityForRotation = 0.6f;
 
     public float reverseMaxVelocity;
     public float minVelocity;
-    public float maxVelocity;
+    private float maxVelocity;
     public float torqueForce;
+
+    public float maxLowHeatVelocity;
+    public float maxMediumHeatVelocity;
+    public float maxHighHeatVelocity;
+    public float maxOverheatHeatVelocity;
 
     public float maxAngularVelocity = 1.5f;
 
@@ -45,7 +51,6 @@ public class TrainController : MonoBehaviour
     private Rigidbody rb;
     private BoxCollider collider;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -57,6 +62,7 @@ public class TrainController : MonoBehaviour
 
         cameraRotator = GetComponentInChildren<CameraRotator>();
         snowRide = GetComponentInChildren<SnowRide>();
+        cauldron = GetComponent<Cauldron>();
     }
 
     private void FixedUpdate()
@@ -70,7 +76,7 @@ public class TrainController : MonoBehaviour
     private void ForwardMovement()
     {
         float additionalMovement = isOnIce ? iceDecelerationMultiplier : 1f;
-
+        SetMaxVelocity();
         SetTrainState();
         //if (InputManager.Data.moveY > 0)
         //{
@@ -87,7 +93,7 @@ public class TrainController : MonoBehaviour
         //    trainMovement = TrainMovement.Stopped;
         //}
 
-        if(trainMovement != TrainMovement.Reversing)
+        if (trainMovement != TrainMovement.Reversing)
         {
             rb.velocity = Vector3.Lerp(minVelocity * transform.forward, maxVelocity * transform.forward, (currentAccelerationTime / maxAccelerationTime));
         }
@@ -96,9 +102,34 @@ public class TrainController : MonoBehaviour
             rb.velocity = Vector3.Lerp(Vector3.zero, reverseMaxVelocity * transform.forward * -1, (reverseAccelerationTime / maxReverseAccelerationTime));
         }
 
-        trainManager.SetWheelsRotationSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100);
-        snowRide.SetPercentageEffectSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100);
+        trainManager.SetWheelsRotationSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100 * maxVelocity / maxOverheatHeatVelocity);
+        snowRide.SetPercentageEffectSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100 * maxVelocity / maxOverheatHeatVelocity);
         snowRide.SetIsOnIce(isOnIce);
+    }
+
+    private void SetMaxVelocity()
+    {
+        HeatStatus heatStats = cauldron.HeatStatus;
+
+        switch (heatStats)
+        {
+            case HeatStatus.Low:
+                maxVelocity = maxLowHeatVelocity;
+                break;
+            case HeatStatus.Medium:
+                maxVelocity = maxMediumHeatVelocity;
+                break;
+            case HeatStatus.High:
+                maxVelocity = maxHighHeatVelocity;
+                break;
+            case HeatStatus.Overheated:
+                maxVelocity = maxOverheatHeatVelocity;
+                break;
+            case HeatStatus.Faded:
+                maxVelocity = 0.0f;
+                break;
+        }
+
     }
 
     private void SetTrainState()

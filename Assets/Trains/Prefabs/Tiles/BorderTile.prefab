@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1083165608010931642}
   - component: {fileID: 1083165608010931643}
   - component: {fileID: 1083165608010931640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BorderTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 2032836261527379315}
   - component: {fileID: 1483929598993605071}
   - component: {fileID: 542473867755499613}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
