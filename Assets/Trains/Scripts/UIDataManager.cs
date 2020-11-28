@@ -74,25 +74,27 @@ public class UIDataManager : MonoBehaviour
         endGameText.GetComponent<TextMeshProUGUI>().text = text;
     }
 
-    public IEnumerator FadeToBlack(float time)
+    public IEnumerator FadeFromBlack(float time)
     {
+        float fullTime = time;
         while(time > 0)
         {
             yield return new WaitForEndOfFrame();
-            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, blackscreen.color.a + Time.deltaTime);
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, time/fullTime);
             time -= Time.deltaTime;
         }
-        blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 1f);
+        //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 1f);
     }
 
-    public IEnumerator FadeFromBlack(float time)
+    public IEnumerator FadeToBlack(float time)
     {
+        float fullTime = 0;
         while (time > 0)
         {
             yield return new WaitForEndOfFrame();
-            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, blackscreen.color.a - Time.deltaTime);
-            time -= Time.deltaTime;
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, fullTime / time);
+            fullTime += Time.deltaTime;
         }
-        blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
+        //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
     }
 }
