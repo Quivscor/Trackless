@@ -38,6 +38,7 @@ namespace TracklessGenerator
 
         private Vector2Int spawnPoint;
         private Vector2Int endPoint;
+        public List<GameObject> endPointNeighbours;
 
         public GameObject spawnObject;
         public GameObject endObject;
@@ -308,6 +309,26 @@ namespace TracklessGenerator
 
                 }
             }
+            endPointNeighbours = new List<GameObject>();
+            for (int i = endPoint.x - 1; i <= endPoint.x + 1; i++)
+            {
+                for (int j = endPoint.y - 1; j <= endPoint.y + 1; j++)
+                {
+                    if (i - 1 >= 0 && i + 1 < mapSize && j - 1 >= 0 && j + 1 < mapSize)
+                    {
+                        if (map[i, j] == (int)Tiles.border)
+                            endPointNeighbours.Add(mapTiles[i, j]);
+                    }
+                }
+            }
+        }
+
+        public void TurnOffCollidersOfEndPointNeighbours()
+        {
+            foreach (GameObject item in endPointNeighbours)
+            {
+                item.GetComponent<BoxCollider>().enabled = false;
+            }
         }
 
         private void SpawnPlayer()
@@ -497,6 +518,8 @@ namespace TracklessGenerator
 
             map[spawnPoint.x,spawnPoint.y] = (int)Tiles.spawn;
             map[endPoint.x, endPoint.y] = (int)Tiles.end;
+
+
             /*
             int iterations = 5;
             if(map[endPoint.x-1, endPoint.y] == (int)Tiles.none)
