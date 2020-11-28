@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class Wagon : MonoBehaviour
 {
     public GameObject jointConnectorStart;
@@ -16,11 +15,16 @@ public class Wagon : MonoBehaviour
 
     private Animator animator;
 
+    private WagonRotator wagonRotator;
+
     public WagonType WagonType { get => wagonType; }
+
+    public WagonRotator WagonRotator { get => wagonRotator; }
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        wagonRotator = GetComponentInChildren<WagonRotator>();
     }
 
     public void SetPercentageSpeed(float speedPercent)

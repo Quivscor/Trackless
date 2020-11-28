@@ -8,6 +8,8 @@ public class TrainController : MonoBehaviour
     private TrainMovement trainMovement = TrainMovement.Stopped;
     private TrainManager trainManager;
 
+    public const float maxAngularVelocityForRotation = 0.6f;
+
     public float minVelocity;
     public float maxVelocity;
     public float torqueForce;
@@ -92,6 +94,8 @@ public class TrainController : MonoBehaviour
         }
         else
             rb.angularVelocity = Vector3.zero;
+
+        trainManager.SetWagonsRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
     }
 
     private bool DetectIce()
