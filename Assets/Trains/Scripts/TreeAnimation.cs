@@ -14,16 +14,18 @@ public class TreeAnimation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<TrainController>() || other.GetComponent<Deer>())
+        if (other.GetComponent<TrainController>() || other.GetComponent<Deer>())
         {
             animator.enabled = true;
-            animator.Play("tree_shake");
+            animator.ResetTrigger("shakeTree");
+            animator.SetTrigger("shakeTree");
         }
-       
+
     }
 
     public void TurnOffAnimator()
     {
+        animator.ResetTrigger("shakeTree");
         animator.enabled = false;
     }
 }
