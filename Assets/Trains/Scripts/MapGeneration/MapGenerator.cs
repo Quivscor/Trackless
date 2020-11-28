@@ -248,9 +248,25 @@ namespace TracklessGenerator
                 {
                     if (map[i, j] != (int)Tiles.none)
                     {
+                        Vector3 angle = new Vector3(0,0,0);
                         //Debug.Log(map[i, j]);
+                        if(map[i,j] == (int)Tiles.end || map[i,j] == (int)Tiles.spawn)
+                        {
 
-                        Vector3 angle = new Vector3(0, Random.Range(0, 5) * 90f, 0);
+                            if ((int)i - 1 >= 0 && map[i- 1, j] != (int)Tiles.border && map[i - 1, j] != (int)Tiles.none)
+                            {
+                                angle = new Vector3(0, -90f, 0);
+                            }
+                            if (i + 1 < mapSize && map[i + 1, j] != (int)Tiles.border && map[i + 1, j] != (int)Tiles.none)
+                            {
+                                angle = new Vector3(0, 90f, 0);
+                            }
+                            if (i - 1 >= 0 && map[i, j - 1] != (int)Tiles.border && map[i, j - 1] != (int)Tiles.none)
+                            {
+                                angle = new Vector3(0, 180f, 0);
+                            }
+                        }
+                        else angle = new Vector3(0, Random.Range(0, 5) * 90f, 0);
 
                         GameObject tile = Instantiate(tiles[map[i,j]], new Vector3(
                             tiles[(int)Tiles.basic].transform.localScale.x * i,
