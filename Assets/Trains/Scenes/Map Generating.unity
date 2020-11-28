@@ -741,7 +741,7 @@ PrefabInstance:
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: tiles.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
@@ -1050,6 +1050,12 @@ PrefabInstance:
       propertyPath: numberOfPassengers
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
+        type: 3}
+      propertyPath: tiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 1083165608010931641, guid: 5404dbb5bad3df44fa2190ac85d5c874,
+        type: 3}
     - target: {fileID: 8586968044717216966, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: m_Name
