@@ -267,7 +267,7 @@ MonoBehaviour:
   - {fileID: 4672363881251914208}
   - {fileID: 7431032202084256718}
   - {fileID: 6814862196811651144}
-  treshHold: 5
+  treshHold: 2
 --- !u!1 &2658009975534857663
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,6 @@ namespace TracklessGenerator
         private void Start()
         {
             tileSize = tiles[(int)Tiles.deers].transform.localScale.x;
-            //tileSize = 100f;
             GenerateMap();
         }
 
