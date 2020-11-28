@@ -104,15 +104,11 @@ namespace TracklessGenerator
                     {
                         if (Random.Range(0, 100) > 90)
                             map[i, j] = (int)Tiles.forest;
-                        /*
-                        if (Random.Range(0, 100) > 95)
-                            map[i, j] = (int)Tiles.ice;
-                            */
                     }
 
                 }
             }
-            //GenerateMountains();
+
             GenerateDeers();
             GenerateIce();
             GenerateBlizzards();
@@ -195,7 +191,7 @@ namespace TracklessGenerator
 
         private void GenerateBlizzards()
         {
-            int blizzards = Random.Range(numberOfBlizzards - 2, numberOfBlizzards + 4);
+            int blizzards = Random.Range(numberOfBlizzards - 2, numberOfBlizzards + 2);
             while (blizzards > 0)
             {
                 int x, y;
