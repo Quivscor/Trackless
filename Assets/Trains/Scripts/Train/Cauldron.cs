@@ -20,6 +20,13 @@ public class Cauldron : MonoBehaviour
     public float CauldronMaxLevel { get => cauldronMaxLevel; }
     public float CurrentCauldronLevel { get => currentCauldronLevel; }
 
+    public const float HeatStatusPercentageLowLimit = 0.0f;
+    public const float HeatStatusPercentageMediumLimit = 15.0f;
+    public const float HeatStatusPercentageHighLimit = 50.0f;
+    public const float HeatStatusPercentageOverheatedLimit = 80.0f;
+
+    public HeatStatus HeatStatus { get; private set; }
+
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
@@ -27,7 +34,8 @@ public class Cauldron : MonoBehaviour
 
     private void Start()
     {
-        currentCauldronLevel = cauldronMaxLevel;
+        currentCauldronLevel = (HeatStatusPercentageOverheatedLimit / 100.0f) * cauldronMaxLevel;
+        SetHeatStatus();
     }
 
     private void Update()
@@ -35,10 +43,32 @@ public class Cauldron : MonoBehaviour
         if (InputManager.Data.cauldronBoost)
             AddCoalToCauldron();
 
+        if (InputManager.Data.decreaseHeat)
+            currentCauldronLevel -= burningSpeed * 25 * Time.deltaTime;
+
         currentCauldronLevel -= burningSpeed * Time.deltaTime;
 
         if (currentCauldronLevel < 0)
             currentCauldronLevel = 0;
+
+        SetHeatStatus();
+    }
+
+    public void SetHeatStatus()
+    {
+        float percentageCauldronLevel = currentCauldronLevel / cauldronMaxLevel * 100.0f;
+
+        if (percentageCauldronLevel >= HeatStatusPercentageOverheatedLimit)
+            HeatStatus = HeatStatus.Overheated;
+        else if (percentageCauldronLevel >= HeatStatusPercentageHighLimit)
+            HeatStatus = HeatStatus.High;
+        else if (percentageCauldronLevel >= HeatStatusPercentageMediumLimit)
+            HeatStatus = HeatStatus.Medium;
+        else if (percentageCauldronLevel > HeatStatusPercentageLowLimit)
+            HeatStatus = HeatStatus.Low;
+        else
+            HeatStatus = HeatStatus.Faded;
+
     }
 
     private void IncreaseCauldronLevel()
@@ -61,4 +91,21 @@ public class Cauldron : MonoBehaviour
             }
         }
     }
+
+    public void SubtractHeatLevel(float value)
+    {
+        currentCauldronLevel -= value;
+
+        if (currentCauldronLevel < 0)
+            currentCauldronLevel = 0;
+    }
+}
+
+public enum HeatStatus
+{
+    Faded,
+    Low,
+    Medium,
+    High,
+    Overheated
 }

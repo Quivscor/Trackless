@@ -17,9 +17,14 @@ public class InputManager : MonoBehaviour
         Data.moveX = Input.GetAxisRaw("Horizontal");
         Data.moveY = Input.GetAxis("Vertical");
 
+        if (Data.moveY == 0)
+            Data.moveY = 1;
+
         //actions
         Data.cauldronBoost = Input.GetKeyDown(KeyCode.Space);
         Data.isBrake = Input.GetAxis("Vertical") < 0 ? true : false;
+
+        Data.decreaseHeat = Input.GetKey(KeyCode.LeftAlt);
 
         if (Input.GetKeyDown(KeyCode.T))
             TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());
@@ -32,4 +37,5 @@ public class InputData
     public float moveY;
     public bool isBrake;
     public bool cauldronBoost;
+    public bool decreaseHeat;
 }

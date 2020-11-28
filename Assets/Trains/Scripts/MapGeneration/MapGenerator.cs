@@ -11,6 +11,7 @@ namespace TracklessGenerator
         [Header("Generator options")]
         public int mapSize;
         public int numberOfBoxes;
+        public int numberOfMountains;
         public int numberOfLakes;
         public int numberOfDeers;
         public int numberOfCoals;
@@ -27,10 +28,10 @@ namespace TracklessGenerator
 
         private int[,] map;
         private int[,] resourceMap;
-        private List<Vector2> borderPositions;
+        private List<Vector2Int> borderPositions;
         private GameObject[,] mapTiles;
 
-        private Vector2 spawnPoint;
+        private Vector2Int spawnPoint;
         private Vector2 endPoint;
         private GameObject player;
         private float tileSize;
@@ -48,6 +49,7 @@ namespace TracklessGenerator
             // defining map
             PrepareMaps();
             BoxMethod();
+            GenerateMountains();
             FindBorders();
             GeneratingTerrain();
             GenerateSpawndAndEnd();
@@ -109,8 +111,67 @@ namespace TracklessGenerator
 
                 }
             }
+            //GenerateMountains();
             GenerateDeers();
             GenerateIce();
+        }
+
+        private void GenerateMountains()
+        {
+            while (numberOfMountains > 0)
+            {
+                int x, y;
+                (x, y) = GetRandomPoint();
+                int walkerRounds = Random.Range(15, 25);
+                SetMountain(x, y, walkerRounds);
+                numberOfMountains--;
+            }
+        }
+
+        private void SetMountain(int x, int y, int walkerRounds)
+        {
+            // drunk walker generation
+            Vector2Int walker = new Vector2Int(x, y);
+            Direction randomDirection;
+
+            while (walkerRounds > 0)
+            {
+                randomDirection = (Direction)Random.Range(0, 4);
+                if(randomDirection == Direction.up)
+                {
+                    if (walker.y + 1 < mapSize)
+                        walker.y += 1;
+
+                }
+                if (randomDirection == Direction.down)
+                {
+                    if (walker.y - 1 >= 0)
+                        walker.y -= 1;
+                }
+                if (randomDirection == Direction.left)
+                {
+                    if (walker.x - 1 >= 0)
+                        walker.x -= 1;
+                }
+                if (randomDirection == Direction.right)
+                {
+                    if (walker.x + 1 >= 0)
+                        walker.x += 1;
+                }
+
+                SetTile(walker.x, walker.y, Tiles.none);
+                walkerRounds--;
+            }
+
+
+        }
+
+        private enum Direction
+        {
+            up,
+            right,
+            down,
+            left
         }
 
         private void GenerateDeers()
@@ -120,8 +181,13 @@ namespace TracklessGenerator
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
-                map[x, y] = (int)Tiles.deers;
-                deers--;
+                if(map[x, y] != (int)Tiles.border)
+                {
+                    map[x, y] = (int)Tiles.deers;
+                    deers--;
+                }
+                   
+               
             }
         }
 
@@ -194,7 +260,7 @@ namespace TracklessGenerator
             }
 
             //player = Instantiate(playerPrefab, new Vector3(mapSize / 2 * tileSize, 3.5f, mapSize/2*tileSize), Quaternion.identity);
-            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 3.5f, spawnPoint.y * tileSize),
+            player = Instantiate(playerPrefab, new Vector3(spawnPoint.x * tileSize, 2.9f, spawnPoint.y * tileSize),
                 Quaternion.Euler(angle));
             //player.transform.LookAt(new Vector3(mapSize / 2 * tileSize, 0, mapSize / 2 * tileSize));
         }
@@ -259,33 +325,90 @@ namespace TracklessGenerator
         private void GenerateSpawndAndEnd()
         {
             float distance = 1000;
+            int errorCounter = 0;
 
-            spawnPoint = borderPositions[Random.Range(0,borderPositions.Count)];
+            do
+            {
+                spawnPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+                errorCounter++;
+                if(errorCounter > 10000)
+                {
+                    Debug.Log("DIDNT FIND PROPER SPAWN POINT");
+                    break;
+                }
+            } while (CheckSpawnPointCondition(spawnPoint));
+            
+          
             endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
 
-            int errorCounter = 0;
+            
 
             while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance)
             {
                 errorCounter++;
-                if (errorCounter > 10000) break;
+                if (errorCounter > 10000)
+                {
+                    Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+                    break;
+                }
+
                 //borderPositions.Remove(endPoint);
                 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
-            }
-            if (errorCounter > 10000)
-                Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+            }             
 
             map[(int)spawnPoint.x, (int)spawnPoint.y] = (int)Tiles.spawn;
             map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
         }
 
+        private bool CheckSpawnPointCondition(Vector2Int spawnPoint)
+        {
+            int neighbours = 0;
+            for (int i = spawnPoint.x-1; i <= spawnPoint.x+1; i++)
+            {
+                for (int j = spawnPoint.y-1; j <= spawnPoint.y +1; j++)
+                {
+                    if(i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        if (map[i, j] == (int)Tiles.border)
+                            neighbours++;
+                    }
+                  
+                }
+            }
+
+            if (neighbours <= 3) return false;
+            else return true;
+
+
+        }
+
         private void DrawLakeBox(int x, int y, List<Vector2Int> lakeTiles)
         {
-            // drawing box 3x3 in room boundaries
+            for (int i = x - 1; i <= x + 1; i++)
+            {
+                for (int j = y - 1; j <= y + 1; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        if (map[i, j] != (int)Tiles.none)
+                        {
+                            SetTile(i, j, Tiles.ice);
+                            lakeTiles.Add(new Vector2Int(i, j));
+                        }
+                            
+                    }
 
-            SetTile(x - 1, y, Tiles.ice);
-            SetTile(x + 1, y, Tiles.ice);
-            SetTile(x, y - 1, Tiles.ice);
+                }
+            }
+
+            /*
+            // drawing box 3x3 in room boundaries
+            if (map[x-1,y] != (int)Tiles.none)
+                SetTile(x - 1, y, Tiles.ice);
+            if (map[x + 1, y] != (int)Tiles.none)
+                SetTile(x + 1, y, Tiles.ice);
+            if (map[x, y - 1] != (int)Tiles.none)
+                SetTile(x, y - 1, Tiles.ice);
             SetTile(x, y + 1, Tiles.ice);
             SetTile(x - 1, y - 1, Tiles.ice);
             SetTile(x + 1, y + 1, Tiles.ice);
@@ -301,7 +424,7 @@ namespace TracklessGenerator
             lakeTiles.Add(new Vector2Int(x + 1, y + 1));
             lakeTiles.Add(new Vector2Int(x - 1, y + 1));
             lakeTiles.Add(new Vector2Int(x + 1, y - 1));
-
+            */
         }
         private void DrawBox5(int x, int y)
         {
@@ -363,7 +486,7 @@ namespace TracklessGenerator
 
         private void FindBorders()
         {
-            borderPositions = new List<Vector2>();
+            borderPositions = new List<Vector2Int>();
 
             for (int i = 0; i < mapSize; i++)
             {
@@ -392,7 +515,7 @@ namespace TracklessGenerator
                     if (map[i, j] == (int)Tiles.border)
                     {
                         if (!CheckIfCorner(i, j))
-                            borderPositions.Add(new Vector2(i, j));
+                            borderPositions.Add(new Vector2Int(i, j));
                     }
 
                 }
