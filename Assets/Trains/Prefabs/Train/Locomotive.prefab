@@ -843,8 +843,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   iceDecelerationMultiplier: 3
-  maxIceTorqueTime: 0
-  iceTorqueDirection: 0
+  iceSlideForceMultiplier: 0.04
+  maxIceTorqueTime: 2
 --- !u!114 &2047290880
 MonoBehaviour:
   m_ObjectHideFlags: 0
