@@ -88,6 +88,14 @@ public class Cauldron : MonoBehaviour
             }
         }
     }
+
+    public void SubtractHeatLevel(float value)
+    {
+        currentCauldronLevel -= value;
+
+        if (currentCauldronLevel < 0)
+            currentCauldronLevel = 0;
+    }
 }
 
 public enum HeatStatus

@@ -109,9 +109,10 @@ public class TrainController : MonoBehaviour
 
     private void SetMaxVelocity()
     {
-        HeatStatus heatStats = cauldron.HeatStatus;
+        maxVelocity = cauldron.CurrentCauldronLevel / cauldron.CauldronMaxLevel * maxOverheatHeatVelocity + maxMediumHeatVelocity;
+        //HeatStatus heatStats = cauldron.HeatStatus;
 
-        switch (heatStats)
+        /*switch (heatStats)
         {
             case HeatStatus.Low:
                 maxVelocity = maxLowHeatVelocity;
@@ -128,7 +129,7 @@ public class TrainController : MonoBehaviour
             case HeatStatus.Faded:
                 maxVelocity = 0.0f;
                 break;
-        }
+        }*/
 
     }
 
