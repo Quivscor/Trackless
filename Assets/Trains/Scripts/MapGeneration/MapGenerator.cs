@@ -113,12 +113,13 @@ namespace TracklessGenerator
 
         private void GenerateDeers()
         {
-            while (numberOfDeers > 0)
+            int deers = Random.Range(numberOfDeers - 2, numberOfDeers + 4);
+            while (deers > 0)
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
                 map[x, y] = (int)Tiles.deers;
-                numberOfDeers--;
+                deers--;
             }
         }
 
