@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7724484866540625695}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1531463157473580711
 Rigidbody:
@@ -47,6 +47,71 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &5953859691485958504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4963417233219782155}
+  - component: {fileID: 8102431747438183856}
+  - component: {fileID: 2453224455372163173}
+  m_Layer: 0
+  m_Name: WagonRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4963417233219782155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953859691485958504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.29, z: -1.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7834112097302822199}
+  m_Father: {fileID: 7724484866540625695}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8102431747438183856
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953859691485958504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e4b7c676ce63c146820bc4d045da4b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2453224455372163173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953859691485958504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c3e97e6d180414f8cf7e86d3844439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotation: 10
 --- !u!1 &7724484866211284535
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7724484866540625695}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7724484866211284533
 Rigidbody:
@@ -106,7 +171,6 @@ GameObject:
   - component: {fileID: 7724484866540625694}
   - component: {fileID: 7724484866540625693}
   - component: {fileID: 7724484866540625692}
-  - component: {fileID: 3474577950410541938}
   - component: {fileID: 4953856097115299746}
   m_Layer: 0
   m_Name: CarPassengers
@@ -126,9 +190,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.61, z: -23.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7834112097302822199}
   - {fileID: 7724484866211284532}
   - {fileID: 1329506253442378849}
+  - {fileID: 4963417233219782155}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -196,25 +260,6 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 0.00001
   m_ConnectedMassScale: 0.00001
---- !u!95 &3474577950410541938
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7724484866540625689}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2e4b7c676ce63c146820bc4d045da4b7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &4953856097115299746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +281,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7724484866540625695}
+    m_TransformParent: {fileID: 4963417233219782155}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1e85ecbefda5b1e409c20f092ce68691,
         type: 3}
@@ -246,12 +291,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1e85ecbefda5b1e409c20f092ce68691,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2299999
+      value: 2.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e85ecbefda5b1e409c20f092ce68691,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.07
+      value: 23.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e85ecbefda5b1e409c20f092ce68691,
         type: 3}

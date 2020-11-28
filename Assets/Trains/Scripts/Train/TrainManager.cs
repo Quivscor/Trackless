@@ -20,6 +20,12 @@ public class TrainManager : MonoBehaviour
             wagon?.SetPercentageSpeed(percentageSpeed);
     }
 
+    public void SetWagonsRotation(float percentageRotation)
+    {
+        foreach (Wagon wagon in wagons)
+            wagon?.WagonRotator.SetPercentageRotation(percentageRotation);
+    }
+
     public void CreateWagon(GameObject wagon)
     {
         Wagon lastWagon = wagons[wagons.Count - 1];
