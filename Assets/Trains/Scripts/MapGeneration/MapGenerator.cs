@@ -160,7 +160,7 @@ namespace TracklessGenerator
                 {
                     (x, y) = GetRandomPoint();
                 }
-                while (resourceMap[x, y] != (int)Resources.none);
+                while (resourceMap[x, y] != (int)Resources.none && map[x, y] != (int)Tiles.forest);
 
                 resourceMap[x, y] = (int)Resources.coal;
                 Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
@@ -174,7 +174,7 @@ namespace TracklessGenerator
                 {
                     (x, y) = GetRandomPoint();
                 }
-                while (resourceMap[x, y] != (int)Resources.none);
+                while (resourceMap[x, y] != (int)Resources.none && map[x, y] != (int)Tiles.forest);
 
                 resourceMap[x, y] = (int)Resources.steel;
                 Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
@@ -193,7 +193,7 @@ namespace TracklessGenerator
                 {
                     (x, y) = GetRandomPoint();
                 }
-                while (resourceMap[x, y] != (int)Resources.none);
+                while (resourceMap[x, y] != (int)Resources.none &&  map[x, y] != (int)Tiles.forest);
 
                 resourceMap[x, y] = (int)Resources.passenger;
                 Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
