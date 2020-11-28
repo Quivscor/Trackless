@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164349178}
   m_LocalRotation: {x: -0, y: -0.659786, z: 0, w: 0.75145364}
-  m_LocalPosition: {x: 0.842709, y: 6.530371, z: -19.342236}
+  m_LocalPosition: {x: 0.84270895, y: 6.5303707, z: -19.342236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437765877}
@@ -65,7 +65,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.1973876, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -200,7 +200,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437765875}
-  m_LocalRotation: {x: 0.12398967, y: 0.63478035, z: -0.104173236, w: 0.7555319}
+  m_LocalRotation: {x: 0.123989664, y: 0.63478035, z: -0.10417324, w: 0.7555319}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -244,7 +244,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.1973876, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -284,7 +284,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645156168}
-  m_LocalRotation: {x: 0.096463166, y: 0.63814557, z: -0.08104612, w: 0.7595372}
+  m_LocalRotation: {x: 0.09646315, y: 0.63814557, z: -0.08104611, w: 0.7595372}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -328,7 +328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.1973876, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5122,7 +5122,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200586287}
-  m_LocalRotation: {x: 0.1102264, y: 0.6365703, z: -0.092609674, w: 0.75766224}
+  m_LocalRotation: {x: 0.110226415, y: 0.6365703, z: -0.09260968, w: 0.75766224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5166,7 +5166,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 2.2073364, y: 1}
+    m_SensorSize: {x: 1.1973876, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5461,8 +5461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412176877}
-  m_LocalRotation: {x: 0.14575581, y: -0.021536095, z: 0.0031736642, w: 0.9890811}
-  m_LocalPosition: {x: 0.842709, y: 6.530371, z: -19.342236}
+  m_LocalRotation: {x: 0.14575589, y: -0.021536108, z: 0.0031736663, w: 0.9890811}
+  m_LocalPosition: {x: 0.84270895, y: 6.5303707, z: -19.342236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4479306630800238847}
@@ -15527,6 +15527,7 @@ GameObject:
   - component: {fileID: 1134784182304664533}
   - component: {fileID: 1134784182304664531}
   - component: {fileID: 1134784182304664532}
+  - component: {fileID: 1897416203}
   m_Layer: 13
   m_Name: Snowstorm
   m_TagString: Untagged
@@ -15653,6 +15654,18 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1897416203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134784182304664534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea688c4d857dae244835c9c0ec5eef14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2827452439279507731
 GameObject:
   m_ObjectHideFlags: 0
