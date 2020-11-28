@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/HDRPDefaultProject/Scenes/samplescene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
+  - enabled: 1
+    path: Assets/Trains/Scenes/Map Generating.unity
+    guid: 4a2c2a2d1aac03e4bbd15178d63e7537
   m_configObjects: {}
