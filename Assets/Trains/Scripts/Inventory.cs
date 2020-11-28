@@ -12,6 +12,11 @@ public class Inventory : MonoBehaviour
     public int Passengers { get => passengers; }
     public int Coal { get => coal; }
 
+    private void Start()
+    {
+        AddCoal(5);
+    }
+
     public void AddSteel(int value)
     {
         steel += value;
