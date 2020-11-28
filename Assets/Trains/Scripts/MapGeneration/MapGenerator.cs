@@ -12,6 +12,7 @@ namespace TracklessGenerator
         public int mapSize;
         public int numberOfBoxes;
         public int numberOfLakes;
+        public int numberOfDeers;
         public int numberOfCoals;
         public int numberOfSteel;
         public int numberOfPassengers;
@@ -98,8 +99,6 @@ namespace TracklessGenerator
                     {
                         if (Random.Range(0, 100) > 90)
                             map[i, j] = (int)Tiles.forest;
-                        if (Random.Range(0, 100) > 98)
-                            map[i, j] = (int)Tiles.deers;
                         /*
                         if (Random.Range(0, 100) > 95)
                             map[i, j] = (int)Tiles.ice;
@@ -108,8 +107,19 @@ namespace TracklessGenerator
 
                 }
             }
-
+            GenerateDeers();
             GenerateIce();
+        }
+
+        private void GenerateDeers()
+        {
+            while (numberOfDeers > 0)
+            {
+                int x, y;
+                (x, y) = GetRandomPoint();
+                map[x, y] = (int)Tiles.deers;
+                numberOfDeers--;
+            }
         }
 
         private void GenerateIce()
@@ -216,7 +226,7 @@ namespace TracklessGenerator
 
         private void SpawnPassengers()
         {
-            numberOfPassengers = Random.Range(3, 8);
+            numberOfPassengers = Random.Range(3, 6);
             int passengers = numberOfPassengers;
             while (passengers > 0)
             {
