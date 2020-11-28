@@ -454,6 +454,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1203588978073074704, guid: 9d88ece988570b24689241b35722ce93,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 397887.34
+      objectReference: {fileID: 0}
     - target: {fileID: 4479306628885010850, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
       propertyPath: m_IsActive
@@ -759,7 +764,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.1415927
+  m_Intensity: 10000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -842,7 +847,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 3.1415927
+  m_Intensity: 10000
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
