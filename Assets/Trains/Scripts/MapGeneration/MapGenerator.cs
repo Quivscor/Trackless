@@ -14,6 +14,7 @@ namespace TracklessGenerator
         public int numberOfMountains;
         public int numberOfLakes;
         public int numberOfDeers;
+        public int numberOfBlizzards;
         public int numberOfCoals;
         public int numberOfSteel;
         public int numberOfPassengers;
@@ -114,6 +115,7 @@ namespace TracklessGenerator
             //GenerateMountains();
             GenerateDeers();
             GenerateIce();
+            GenerateBlizzards();
         }
 
         private void GenerateMountains()
@@ -188,6 +190,23 @@ namespace TracklessGenerator
                 }
                    
                
+            }
+        }
+
+        private void GenerateBlizzards()
+        {
+            int blizzards = Random.Range(numberOfBlizzards - 2, numberOfBlizzards + 4);
+            while (blizzards > 0)
+            {
+                int x, y;
+                (x, y) = GetRandomPoint();
+                if (map[x, y] != (int)Tiles.border)
+                {
+                    map[x, y] = (int)Tiles.blizzard;
+                    blizzards--;
+                }
+
+
             }
         }
 
@@ -304,8 +323,9 @@ namespace TracklessGenerator
 
         private void SpawnPassengers()
         {
-            numberOfPassengers = Random.Range(3, 6);
-            int passengers = numberOfPassengers;
+           
+            int passengers = Random.Range(numberOfPassengers-1, numberOfPassengers+2);
+            numberOfPassengers = passengers;
             while (passengers > 0)
             {
                 int x, y;
@@ -550,7 +570,8 @@ namespace TracklessGenerator
             spawn,
             end,
             ice,
-            deers
+            deers,
+            blizzard
             
         }
 

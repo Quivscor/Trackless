@@ -28,6 +28,8 @@ public class UIDataManager : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         FindObjectOfType<TracklessGenerator.MapGenerator>().action += FindReferences;
     }
 
@@ -57,6 +59,7 @@ public class UIDataManager : MonoBehaviour
         coalText.text = inventory.Coal.ToString();
         steelText.text = inventory.Steel.ToString();
         passengersText.text = inventory.Passengers.ToString();
+        //maxPassengersText.text = " / " + mapGenerator.numberOfPassengers;
     }
 
     public void TurnOnEndGameText(bool isOn, string text)
