@@ -28,6 +28,9 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
             TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());
+
+        Data.clear = Input.GetKey(KeyCode.F5);
+
     }
 }
 
@@ -37,4 +40,5 @@ public class InputData
     public float moveY;
     public bool isBrake;
     public bool cauldronBoost;
+    public bool clear;
 }

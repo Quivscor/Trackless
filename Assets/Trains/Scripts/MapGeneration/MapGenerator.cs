@@ -38,6 +38,10 @@ namespace TracklessGenerator
 
         private Vector2Int spawnPoint;
         private Vector2Int endPoint;
+
+        public GameObject spawnObject;
+        public GameObject endObject;
+
         private GameObject player;
         private float tileSize;
 
@@ -48,7 +52,15 @@ namespace TracklessGenerator
             tileSize = tiles[(int)Tiles.deers].transform.localScale.x;
             GenerateMap();
         }
-
+        private void Update()
+        {
+            if(InputManager.Data.clear)
+            {
+                ClearMap();
+                GenerateMap();
+            }
+                
+        }
         public void GenerateMap()
         {
             // defining map
@@ -69,6 +81,16 @@ namespace TracklessGenerator
             SpawnPassengers();
             SpawnPlayer();
             action?.Invoke();
+        }
+
+        public void ClearMap()
+        {
+            foreach (Transform tile in transform)
+            {
+                Destroy(tile.gameObject);
+            }
+
+            Destroy(player);
         }
 
         
@@ -94,12 +116,13 @@ namespace TracklessGenerator
             SetTile(mapSize / 2, mapSize / 2, Tiles.basic);
 
             DrawAnyBox(mapSize / 2, mapSize / 2, 9);
-            while (numberOfBoxes > 0)
+            int boxes = numberOfBoxes;
+            while (boxes > 0)
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
                 DrawBox5(x, y);
-                numberOfBoxes--;
+                boxes--;
             }
 
         }
@@ -125,13 +148,14 @@ namespace TracklessGenerator
 
         private void GenerateMountains()
         {
-            while (numberOfMountains > 0)
+            int mountains = numberOfMountains;
+            while (mountains > 0)
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
                 int walkerRounds = Random.Range(15, 25);
                 SetMountain(x, y, walkerRounds);
-                numberOfMountains--;
+                mountains--;
             }
         }
 
@@ -217,13 +241,14 @@ namespace TracklessGenerator
 
         private void GenerateIce()
         {
-            while(numberOfLakes > 0)
+            int lakes = numberOfLakes;
+            while(lakes > 0)
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
                 int randomBoxes = Random.Range(3, 15);
                 GenerateLake(x, y, randomBoxes);
-                numberOfLakes--;
+                lakes--;
             }
         }
 
@@ -276,6 +301,9 @@ namespace TracklessGenerator
                         tile.transform.SetParent(this.transform);
                         tile.name = (((Tiles)map[i, j]).ToString());
                         mapTiles[i, j] = tile;
+
+                        if (map[i, j] == (int)Tiles.spawn) spawnObject = tile;
+                        if (map[i, j] == (int)Tiles.end) endObject = tile;
                     }
 
                 }
@@ -327,7 +355,8 @@ namespace TracklessGenerator
                 }
             }
 
-            while(numberOfCoals > 0)
+            int coals = numberOfCoals;
+            while(coals > 0)
             {
                 int x, y;
                 do
@@ -339,11 +368,11 @@ namespace TracklessGenerator
                 canResourceMap[x, y] = false;
                 GameObject coal = Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
                 coal.transform.SetParent(mapTiles[x, y].transform);
-                numberOfCoals--;
+                coals--;
 
             }
-
-            while (numberOfSteel > 0)
+            int steel = numberOfSteel;
+            while (steel > 0)
             {
                 int x, y;
                 do
@@ -353,9 +382,9 @@ namespace TracklessGenerator
                 } while (!canResourceMap[x, y]);
                 resourceMap[x, y] = (int)Resources.steel;
                 canResourceMap[x, y] = false;
-                GameObject steel = Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
-                steel.transform.SetParent(mapTiles[x, y].transform);
-                numberOfSteel--;
+                GameObject steelObject = Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                steelObject.transform.SetParent(mapTiles[x, y].transform);
+                steel--;
 
             }
             /*
