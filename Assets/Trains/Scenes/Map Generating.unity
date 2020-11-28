@@ -254,56 +254,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 246949571376715543, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1357569919786384354, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577589821597124969, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_Version
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.13103911
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.85552514
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.42633212
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.26295716
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 215.02803
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 181.75867
-      objectReference: {fileID: 0}
-    - target: {fileID: 1593205710513468862, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 237.0173
-      objectReference: {fileID: 0}
     - target: {fileID: 3321477440709210067, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,11 +313,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DefaultSceneRoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643073095026524292, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_ColorTemperature
-      value: 11586
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
