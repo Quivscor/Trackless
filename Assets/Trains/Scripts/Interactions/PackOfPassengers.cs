@@ -9,6 +9,7 @@ public class PackOfPassengers : IInteractive
     public override void Interact(GameObject interactor)
     {
         interactor?.GetComponent<Inventory>()?.AddPassengers(passengers);
+        TrainBuilder.Instance.BuildWagon(interactor.GetComponent<TrainManager>(), WagonType.LostPassenger);
         this.gameObject.SetActive(false);
     }
 }

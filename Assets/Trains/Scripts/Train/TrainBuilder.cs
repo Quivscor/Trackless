@@ -33,7 +33,9 @@ public class TrainBuilder : MonoBehaviour
 
     public void BuildWagon(TrainManager trainManager, WagonType type)
     {
-
+        GameObject wagonToCreate = GetWagonOfType(type);
+        if (wagonToCreate)
+            trainManager.CreateWagon(wagonToCreate);
     }
 
     private GameObject GetWagonOfType(WagonType type)

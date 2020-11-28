@@ -46,3 +46,4 @@ MonoBehaviour:
   availableWagons:
   - {fileID: 467130642191441718, guid: a631b554ace182f4898e10ccdd68960a, type: 3}
   - {fileID: 7724484866540625689, guid: 58e39b9ad2dddd144adc159bd5638d68, type: 3}
+  - {fileID: 7873475651638407953, guid: 06306096a920d5448a08f309a638c90d, type: 3}

@@ -6,5 +6,6 @@ public enum WagonType
 {
     Locomotive,
     Coal,
-    Passengers
+    Passengers,
+    LostPassenger
 }
