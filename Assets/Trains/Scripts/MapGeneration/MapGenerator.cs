@@ -384,7 +384,7 @@ namespace TracklessGenerator
                 } while (!canResourceMap[x, y]);
                 resourceMap[x, y] = (int)Resources.passenger;
                 canResourceMap[x, y] = false;
-                GameObject passenger = Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
+                GameObject passenger = Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
                 passenger.transform.SetParent(mapTiles[x, y].transform);
                 passengers--;
 
