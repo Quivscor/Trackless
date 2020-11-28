@@ -19,6 +19,8 @@ public class UIDataManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI maxPassengersText;
 
+    public Image blackscreen;
+
     [SerializeField]
     private GameObject endGameText;
 
@@ -31,6 +33,8 @@ public class UIDataManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         FindObjectOfType<TracklessGenerator.MapGenerator>().action += FindReferences;
+        StartCoroutine(FadeFromBlack(2f));
+        
     }
 
     // Update is called once per frame
@@ -68,5 +72,27 @@ public class UIDataManager : MonoBehaviour
     {
         endGameText.SetActive(isOn);
         endGameText.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    public IEnumerator FadeToBlack(float time)
+    {
+        while(time > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, blackscreen.color.a + Time.deltaTime);
+            time -= Time.deltaTime;
+        }
+        blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 1f);
+    }
+
+    public IEnumerator FadeFromBlack(float time)
+    {
+        while (time > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, blackscreen.color.a - Time.deltaTime);
+            time -= Time.deltaTime;
+        }
+        blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
     }
 }

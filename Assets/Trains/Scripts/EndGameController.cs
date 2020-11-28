@@ -25,6 +25,7 @@ public class EndGameController : MonoBehaviour
             //    Time.timeScale = 0;
             //}
             FindObjectOfType<IntroAndOutroManager>().PlayOutroSequence();
+            StartCoroutine(FindObjectOfType<UIDataManager>().FadeToBlack(2f));
         }
         
 
