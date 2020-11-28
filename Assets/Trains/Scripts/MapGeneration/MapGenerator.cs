@@ -11,6 +11,7 @@ namespace TracklessGenerator
         [Header("Generator options")]
         public int mapSize;
         public int numberOfBoxes;
+        public int numberOfLakes;
         public int numberOfCoals;
         public int numberOfSteel;
         public int numberOfPassengers;
@@ -96,11 +97,39 @@ namespace TracklessGenerator
                     {
                         if (Random.Range(0, 100) > 90)
                             map[i, j] = (int)Tiles.forest;
+                        /*
                         if (Random.Range(0, 100) > 95)
                             map[i, j] = (int)Tiles.ice;
+                            */
                     }
 
                 }
+            }
+
+            GenerateIce();
+        }
+
+        private void GenerateIce()
+        {
+            while(numberOfLakes > 0)
+            {
+                int x, y;
+                (x, y) = GetRandomPoint();
+                int randomBoxes = Random.Range(3, 15);
+                GenerateLake(x, y, randomBoxes);
+                numberOfLakes--;
+            }
+        }
+
+        private void GenerateLake(int x, int y, int randomBoxes)
+        {
+            List<Vector2> lakeTiles = new List<Vector2>();
+            while(randomBoxes > 0)
+            {
+                DrawLakeBox(x, y, lakeTiles);
+                x = (int)lakeTiles[Random.Range(0, lakeTiles.Count)].x;
+                y = (int)lakeTiles[Random.Range(0, lakeTiles.Count)].y;
+                randomBoxes--;
             }
         }
 
@@ -224,18 +253,28 @@ namespace TracklessGenerator
             map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
         }
 
-        private void DrawBox(int x, int y)
+        private void DrawLakeBox(int x, int y, List<Vector2> lakeTiles)
         {
             // drawing box 3x3 in room boundaries
 
-            SetTile(x - 1, y, Tiles.basic);
-            SetTile(x + 1, y, Tiles.basic);
-            SetTile(x, y - 1, Tiles.basic);
-            SetTile(x, y + 1, Tiles.basic);
-            SetTile(x - 1, y - 1, Tiles.basic);
-            SetTile(x + 1, y + 1, Tiles.basic);
-            SetTile(x + 1, y - 1, Tiles.basic);
-            SetTile(x - 1, y + 1, Tiles.basic);
+            SetTile(x - 1, y, Tiles.ice);
+            SetTile(x + 1, y, Tiles.ice);
+            SetTile(x, y - 1, Tiles.ice);
+            SetTile(x, y + 1, Tiles.ice);
+            SetTile(x - 1, y - 1, Tiles.ice);
+            SetTile(x + 1, y + 1, Tiles.ice);
+            SetTile(x + 1, y - 1, Tiles.ice);
+            SetTile(x - 1, y + 1, Tiles.ice);
+
+
+            lakeTiles.Add(new Vector2(x - 1, y));
+            lakeTiles.Add(new Vector2(x + 1, y));
+            lakeTiles.Add(new Vector2(x, y - 1));
+            lakeTiles.Add(new Vector2(x, y + 1));
+            lakeTiles.Add(new Vector2(x - 1, y - 1));
+            lakeTiles.Add(new Vector2(x + 1, y + 1));
+            lakeTiles.Add(new Vector2(x - 1, y + 1));
+            lakeTiles.Add(new Vector2(x + 1, y - 1));
 
         }
         private void DrawBox5(int x, int y)
@@ -276,7 +315,8 @@ namespace TracklessGenerator
         {
             if (x < mapSize && x >= 0 && y < mapSize && y >= 0)
             {
-                map[x, y] = (int)tile;
+                if(map[x,y] != (int)Tiles.border)
+                    map[x, y] = (int)tile;
             }
         }
 
