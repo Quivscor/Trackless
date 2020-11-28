@@ -19,9 +19,12 @@ public class UIDataManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI maxPassengersText;
 
+    [SerializeField]
+    private GameObject endGameText;
+
     private Cauldron cauldron;
-    private Inventory inventory;
-    private TracklessGenerator.MapGenerator mapGenerator;
+    public Inventory inventory;
+    public TracklessGenerator.MapGenerator mapGenerator;
 
     void Awake()
     {
@@ -54,5 +57,11 @@ public class UIDataManager : MonoBehaviour
         coalText.text = inventory.Coal.ToString();
         steelText.text = inventory.Steel.ToString();
         passengersText.text = inventory.Passengers.ToString();
+    }
+
+    public void TurnOnEndGameText(bool isOn, string text)
+    {
+        endGameText.SetActive(isOn);
+        endGameText.GetComponent<TextMeshProUGUI>().text = text;
     }
 }

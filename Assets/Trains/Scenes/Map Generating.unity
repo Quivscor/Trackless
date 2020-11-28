@@ -520,8 +520,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5046013089006002702, guid: 050bcde0785748b44910b9b442dd2a2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050bcde0785748b44910b9b442dd2a2e, type: 3}
+--- !u!1 &1577640299301481035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5046013089006002702, guid: 050bcde0785748b44910b9b442dd2a2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1577640299301481034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6694140631643663886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -614,10 +625,20 @@ PrefabInstance:
       propertyPath: passengersText
       value: 
       objectReference: {fileID: 1677222490}
+    - target: {fileID: 6694140630900127619, guid: ca1b6642596a79a4dbefef271b8060e3,
+        type: 3}
+      propertyPath: endGameText
+      value: 
+      objectReference: {fileID: 1577640299301481035}
     - target: {fileID: 6694140630900127621, guid: ca1b6642596a79a4dbefef271b8060e3,
         type: 3}
       propertyPath: m_Name
       value: UIDataManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694140630900127621, guid: ca1b6642596a79a4dbefef271b8060e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1b6642596a79a4dbefef271b8060e3, type: 3}
