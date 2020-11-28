@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 5046013089006002702, guid: 050bcde0785748b44910b9b442dd2a2e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050bcde0785748b44910b9b442dd2a2e, type: 3}
@@ -635,11 +635,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIDataManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6694140630900127621, guid: ca1b6642596a79a4dbefef271b8060e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1b6642596a79a4dbefef271b8060e3, type: 3}
 --- !u!1001 &8586968044610825581
@@ -707,7 +702,7 @@ PrefabInstance:
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: tiles.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
@@ -1027,6 +1022,12 @@ PrefabInstance:
       propertyPath: numberOfLakes
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8586968044717216961, guid: e47f2c3895345b043907a495087a5272,
+        type: 3}
+      propertyPath: tiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 1083165608010931641, guid: 5dcfaccb97c655c46be2fe10947553e1,
+        type: 3}
     - target: {fileID: 8586968044717216966, guid: e47f2c3895345b043907a495087a5272,
         type: 3}
       propertyPath: m_Name

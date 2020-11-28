@@ -98,6 +98,8 @@ namespace TracklessGenerator
                     {
                         if (Random.Range(0, 100) > 90)
                             map[i, j] = (int)Tiles.forest;
+                        if (Random.Range(0, 100) > 98)
+                            map[i, j] = (int)Tiles.deers;
                         /*
                         if (Random.Range(0, 100) > 95)
                             map[i, j] = (int)Tiles.ice;
@@ -400,7 +402,8 @@ namespace TracklessGenerator
             forest,
             spawn,
             end,
-            ice
+            ice,
+            deers
             
         }
 
