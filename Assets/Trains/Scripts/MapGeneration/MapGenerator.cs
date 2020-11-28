@@ -27,10 +27,10 @@ namespace TracklessGenerator
 
         private int[,] map;
         private int[,] resourceMap;
-        private List<Vector2> borderPositions;
+        private List<Vector2Int> borderPositions;
         private GameObject[,] mapTiles;
 
-        private Vector2 spawnPoint;
+        private Vector2Int spawnPoint;
         private Vector2 endPoint;
         private GameObject player;
         private float tileSize;
@@ -120,8 +120,13 @@ namespace TracklessGenerator
             {
                 int x, y;
                 (x, y) = GetRandomPoint();
-                map[x, y] = (int)Tiles.deers;
-                deers--;
+                if(map[x, y] != (int)Tiles.border)
+                {
+                    map[x, y] = (int)Tiles.deers;
+                    deers--;
+                }
+                   
+               
             }
         }
 
@@ -259,24 +264,61 @@ namespace TracklessGenerator
         private void GenerateSpawndAndEnd()
         {
             float distance = 1000;
+            int errorCounter = 0;
 
-            spawnPoint = borderPositions[Random.Range(0,borderPositions.Count)];
+            do
+            {
+                spawnPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+                errorCounter++;
+                if(errorCounter > 10000)
+                {
+                    Debug.Log("DIDNT FIND PROPER SPAWN POINT");
+                    break;
+                }
+            } while (CheckSpawnPointCondition(spawnPoint));
+            
+          
             endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
 
-            int errorCounter = 0;
+            
 
             while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance)
             {
                 errorCounter++;
-                if (errorCounter > 10000) break;
+                if (errorCounter > 10000)
+                {
+                    Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+                    break;
+                }
+
                 //borderPositions.Remove(endPoint);
                 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
-            }
-            if (errorCounter > 10000)
-                Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
+            }             
 
             map[(int)spawnPoint.x, (int)spawnPoint.y] = (int)Tiles.spawn;
             map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
+        }
+
+        private bool CheckSpawnPointCondition(Vector2Int spawnPoint)
+        {
+            int neighbours = 0;
+            for (int i = spawnPoint.x-1; i <= spawnPoint.x+1; i++)
+            {
+                for (int j = spawnPoint.y-1; j <= spawnPoint.y +1; j++)
+                {
+                    if(i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        if (map[i, j] == (int)Tiles.border)
+                            neighbours++;
+                    }
+                  
+                }
+            }
+
+            if (neighbours <= 3) return false;
+            else return true;
+
+
         }
 
         private void DrawLakeBox(int x, int y, List<Vector2Int> lakeTiles)
@@ -363,7 +405,7 @@ namespace TracklessGenerator
 
         private void FindBorders()
         {
-            borderPositions = new List<Vector2>();
+            borderPositions = new List<Vector2Int>();
 
             for (int i = 0; i < mapSize; i++)
             {
@@ -392,7 +434,7 @@ namespace TracklessGenerator
                     if (map[i, j] == (int)Tiles.border)
                     {
                         if (!CheckIfCorner(i, j))
-                            borderPositions.Add(new Vector2(i, j));
+                            borderPositions.Add(new Vector2Int(i, j));
                     }
 
                 }
