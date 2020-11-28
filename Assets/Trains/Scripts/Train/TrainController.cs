@@ -7,7 +7,6 @@ public class TrainController : MonoBehaviour
 {
     private TrainMovement trainMovement = TrainMovement.Stopped;
     private TrainManager trainManager;
-    private CameraRotator cameraRotator;
     private SnowRide snowRide;
     private Cauldron cauldron;
 
@@ -60,7 +59,6 @@ public class TrainController : MonoBehaviour
 
         trainManager = GetComponent<TrainManager>();
 
-        cameraRotator = GetComponentInChildren<CameraRotator>();
         snowRide = GetComponentInChildren<SnowRide>();
         cauldron = GetComponent<Cauldron>();
     }
@@ -216,7 +214,6 @@ public class TrainController : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
 
         trainManager.SetWagonsRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
-        cameraRotator.SetPercentageRotation(rb.angularVelocity.y / maxAngularVelocityForRotation * 100.0f);
     }
 
     private void TurningOnIce()

@@ -222,6 +222,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 437765877, guid: 9d88ece988570b24689241b35722ce93, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6527926
+      objectReference: {fileID: 0}
+    - target: {fileID: 437765877, guid: 9d88ece988570b24689241b35722ce93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000015377316
+      objectReference: {fileID: 0}
+    - target: {fileID: 437765877, guid: 9d88ece988570b24689241b35722ce93, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000008263032
+      objectReference: {fileID: 0}
     - target: {fileID: 1134784182304664532, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -709,7 +721,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199445889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -821,7 +833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1253759361
 SphereCollider:
   m_ObjectHideFlags: 0
