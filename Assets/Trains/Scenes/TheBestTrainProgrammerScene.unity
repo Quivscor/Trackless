@@ -224,28 +224,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
-      propertyPath: iceMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
-        type: 3}
-      propertyPath: minVelocity
+      propertyPath: maxIceTorqueTime
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
-      propertyPath: iceDecelerationMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
-        type: 3}
-      propertyPath: iceSlideForce
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479306630800238817, guid: 9d88ece988570b24689241b35722ce93,
-        type: 3}
       propertyPath: iceSlideForceMultiplier
-      value: 0.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4479306630800238822, guid: 9d88ece988570b24689241b35722ce93,
         type: 3}
