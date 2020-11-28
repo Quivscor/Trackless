@@ -15,6 +15,7 @@ public class TrainController : MonoBehaviour
     public float maxAngularVelocity = 1.5f;
 
     public float angularSmoothingTime;
+    private Vector3 angularSmoothing;
     public float minVelocityToRotate;
 
     public float maxAccelerationTime = 3f;
@@ -23,6 +24,12 @@ public class TrainController : MonoBehaviour
     [Header("Ice")]
     public LayerMask iceMask;
     private bool isOnIce = false;
+    private Vector3 lastFrameAngularVelocity;
+    public float iceDecelerationMultiplier;
+    //public float iceSlideForceMultiplier;
+    private float iceTorqueTime;
+    public float maxIceTorqueTime;
+    public float iceTorqueDirection;
 
     private Rigidbody rb;
     private BoxCollider collider;
@@ -47,15 +54,17 @@ public class TrainController : MonoBehaviour
 
     private void ForwardMovement()
     {
+        float additionalMovement = isOnIce ? iceDecelerationMultiplier : 1f;
+
         if (InputManager.Data.moveY > 0)
         {
             trainMovement = TrainMovement.Accelerating;
-            currentAccelerationTime = currentAccelerationTime >= maxAccelerationTime ? maxAccelerationTime : currentAccelerationTime + Time.fixedDeltaTime;
+            currentAccelerationTime = currentAccelerationTime >= maxAccelerationTime ? maxAccelerationTime : currentAccelerationTime + (Time.fixedDeltaTime * iceDecelerationMultiplier);
         }
         else if (currentAccelerationTime > 0)
         {
             trainMovement = TrainMovement.Decelerating;
-            currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - Time.fixedDeltaTime;
+            currentAccelerationTime = currentAccelerationTime <= 0 ? 0 : currentAccelerationTime - (Time.fixedDeltaTime/ iceDecelerationMultiplier);
         }
         else
         {
@@ -69,9 +78,17 @@ public class TrainController : MonoBehaviour
     {
         if (trainMovement != TrainMovement.Stopped && Vector3.Magnitude(rb.velocity) > minVelocityToRotate)
         {
-            Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
-            rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, torqueDirection * (torqueForce * (currentAccelerationTime/maxAccelerationTime)) * Time.fixedDeltaTime, angularSmoothingTime);
-            //rb.angularVelocity = Vector3.SmoothDamp(transform.rotation.eulerAngles, torqueDirection * torqueForce, ref angularSmoothing, angularSmoothingTime);
+           Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
+           rb.angularVelocity = Vector3.Lerp(rb.angularVelocity, 
+               torqueDirection * (torqueForce * (currentAccelerationTime/maxAccelerationTime)) * Time.fixedDeltaTime, 
+               angularSmoothingTime);
+            if (isOnIce)
+            {
+
+            }
+                //rb.angularVelocity += lastFrameAngularVelocity * iceSlideForceMultiplier;
+
+            lastFrameAngularVelocity = rb.angularVelocity;
         }
         else
             rb.angularVelocity = Vector3.zero;
