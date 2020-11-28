@@ -28,10 +28,10 @@ public class TrainController : MonoBehaviour
     private bool isOnIce = false;
     private Vector3 lastFrameAngularVelocity;
     public float iceDecelerationMultiplier;
-    //public float iceSlideForceMultiplier;
+    public float iceSlideForceMultiplier;
     private float iceTorqueTime;
     public float maxIceTorqueTime;
-    public float iceTorqueDirection;
+    private float iceTorqueDirection;
 
     private Rigidbody rb;
     private BoxCollider collider;
@@ -86,11 +86,19 @@ public class TrainController : MonoBehaviour
                angularSmoothingTime);
             if (isOnIce)
             {
+                if (iceTorqueTime == 0)
+                    iceTorqueDirection = Mathf.Sign(InputManager.Data.moveX);
 
+                if (iceTorqueDirection == Mathf.Sign(InputManager.Data.moveX) && InputManager.Data.moveX != 0)
+                    iceTorqueTime = iceTorqueTime >= maxIceTorqueTime ? maxIceTorqueTime : iceTorqueTime + Time.fixedDeltaTime;
+                else
+                    iceTorqueTime = iceTorqueTime <= 0 ? 0 : iceTorqueTime - Time.fixedDeltaTime;
+
+                rb.angularVelocity += transform.up * iceTorqueDirection * iceSlideForceMultiplier * (iceTorqueTime/maxIceTorqueTime);
             }
-                //rb.angularVelocity += lastFrameAngularVelocity * iceSlideForceMultiplier;
+            else
+                iceTorqueTime = 0;
 
-            lastFrameAngularVelocity = rb.angularVelocity;
         }
         else
             rb.angularVelocity = Vector3.zero;
