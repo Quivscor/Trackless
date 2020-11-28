@@ -37,7 +37,7 @@ namespace TracklessGenerator
         private GameObject[,] mapTiles;
 
         private Vector2Int spawnPoint;
-        private Vector2 endPoint;
+        private Vector2Int endPoint;
         private GameObject player;
         private float tileSize;
 
@@ -54,8 +54,11 @@ namespace TracklessGenerator
             // defining map
             PrepareMaps();
             BoxMethod();
+            FindBorders(false);
+
             GenerateMountains();
-            FindBorders();
+            FindBorders(true);
+
             GeneratingTerrain();
             GenerateSpawndAndEnd();
             
@@ -90,7 +93,7 @@ namespace TracklessGenerator
         {
             SetTile(mapSize / 2, mapSize / 2, Tiles.basic);
 
-            DrawBox5(mapSize / 2, mapSize / 2);
+            DrawAnyBox(mapSize / 2, mapSize / 2, 9);
             while (numberOfBoxes > 0)
             {
                 int x, y;
@@ -438,8 +441,6 @@ namespace TracklessGenerator
           
             endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
 
-            
-
             while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance)
             {
                 errorCounter++;
@@ -453,8 +454,41 @@ namespace TracklessGenerator
                 endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
             }             
 
-            map[(int)spawnPoint.x, (int)spawnPoint.y] = (int)Tiles.spawn;
-            map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
+            map[spawnPoint.x,spawnPoint.y] = (int)Tiles.spawn;
+            map[endPoint.x, endPoint.y] = (int)Tiles.end;
+            int iterations = 5;
+            if(map[endPoint.x-1, endPoint.y] == (int)Tiles.none)
+            {
+                while(iterations > 0)
+                {
+                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize -tileSize*iterations, 0, endPoint.y * tileSize), Quaternion.identity);
+                    iterations--;
+                }
+            }
+            if (map[endPoint.x + 1, endPoint.y] == (int)Tiles.none)
+            {
+                while (iterations > 0)
+                {
+                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize + tileSize * iterations, 0, endPoint.y * tileSize), Quaternion.identity);
+                    iterations--;
+                }
+            }
+            if (map[(int)endPoint.x, (int)endPoint.y - 1] == (int)Tiles.none)
+            {
+                while (iterations > 0)
+                {
+                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize, 0, endPoint.y * tileSize - tileSize * iterations), Quaternion.identity);
+                    iterations--;
+                }
+            }
+            if (map[(int)endPoint.x, (int)endPoint.y + 1] == (int)Tiles.none)
+
+            {
+                while (iterations > 0)                {
+                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize, 0, endPoint.y * tileSize + tileSize * iterations), Quaternion.identity);
+                    iterations--;
+                }
+            }
         }
 
         private bool CheckSpawnPointCondition(Vector2Int spawnPoint)
@@ -526,7 +560,17 @@ namespace TracklessGenerator
         private void DrawBox5(int x, int y)
         {
             // drawing box 3x3 in room boundaries
-
+            for (int i = x-2; i <= x+2; i++)
+            {
+                for (int j = y-2; j <= y+2; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        SetTile(i, j, Tiles.basic);
+                    }
+                }
+            }
+            /*
             SetTile(x - 1, y, Tiles.basic);
             SetTile(x + 1, y, Tiles.basic);
             SetTile(x, y - 1, Tiles.basic);
@@ -554,7 +598,22 @@ namespace TracklessGenerator
             SetTile(x + 1, y - 2, Tiles.basic);
             SetTile(x - 1, y + 2, Tiles.basic);
             SetTile(x + 1, y + 2, Tiles.basic);
+            */
+        }
 
+        private void DrawAnyBox(int x, int y, int boxSize)
+        {
+            int size = boxSize / 2;
+            for (int i = x - size; i <= x + size; i++)
+            {
+                for (int j = y - size; j <= y + size; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        SetTile(i, j, Tiles.basic);
+                    }
+                }
+            }
         }
 
         private void SetTile(int x, int y, Tiles tile)
@@ -581,9 +640,10 @@ namespace TracklessGenerator
 
         }
 
-        private void FindBorders()
+        private void FindBorders(bool areMountains)
         {
-            borderPositions = new List<Vector2Int>();
+            if(!areMountains)
+                borderPositions = new List<Vector2Int>();
 
             for (int i = 0; i < mapSize; i++)
             {
@@ -604,17 +664,19 @@ namespace TracklessGenerator
 
                 }
             }
-
-            for (int i = 0; i < mapSize; i++)
+            if (!areMountains)
             {
-                for (int j = 0; j < mapSize; j++)
+                for (int i = 0; i < mapSize; i++)
                 {
-                    if (map[i, j] == (int)Tiles.border)
+                    for (int j = 0; j < mapSize; j++)
                     {
-                        if (!CheckIfCorner(i, j))
-                            borderPositions.Add(new Vector2Int(i, j));
-                    }
+                        if (map[i, j] == (int)Tiles.border)
+                        {
+                            if (!CheckIfCorner(i, j))
+                                borderPositions.Add(new Vector2Int(i, j));
+                        }
 
+                    }
                 }
             }
 
