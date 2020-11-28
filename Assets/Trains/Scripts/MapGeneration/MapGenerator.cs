@@ -28,6 +28,7 @@ namespace TracklessGenerator
         private int[,] map;
         private int[,] resourceMap;
         private List<Vector2> borderPositions;
+        private GameObject[,] mapTiles;
 
         private Vector2 spawnPoint;
         private Vector2 endPoint;
@@ -79,6 +80,7 @@ namespace TracklessGenerator
         private void BoxMethod()
         {
             SetTile(mapSize / 2, mapSize / 2, Tiles.basic);
+
             DrawBox5(mapSize / 2, mapSize / 2);
             while (numberOfBoxes > 0)
             {
@@ -137,18 +139,19 @@ namespace TracklessGenerator
 
         private void GenerateLake(int x, int y, int randomBoxes)
         {
-            List<Vector2> lakeTiles = new List<Vector2>();
+            List<Vector2Int> lakeTiles = new List<Vector2Int>();
             while(randomBoxes > 0)
             {
                 DrawLakeBox(x, y, lakeTiles);
-                x = (int)lakeTiles[Random.Range(0, lakeTiles.Count)].x;
-                y = (int)lakeTiles[Random.Range(0, lakeTiles.Count)].y;
+                x = lakeTiles[Random.Range(0, lakeTiles.Count)].x;
+                y = lakeTiles[Random.Range(0, lakeTiles.Count)].y;
                 randomBoxes--;
             }
         }
 
         private void SpawnTiles()
         {
+            mapTiles = new GameObject[mapSize, mapSize];
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
@@ -165,6 +168,8 @@ namespace TracklessGenerator
                             tiles[(int)Tiles.basic].transform.localScale.z * j),
                             Quaternion.Euler(angle));
                         tile.transform.SetParent(this.transform);
+                        tile.name = (((Tiles)map[i, j]).ToString());
+                        mapTiles[i, j] = tile;
                     }
 
                 }
@@ -202,12 +207,14 @@ namespace TracklessGenerator
                 do
                 {
                     (x, y) = GetRandomPoint();
-                }
-                while (resourceMap[x, y] != (int)Resources.none && map[x, y] != (int)Tiles.forest);
 
+                }
+                while (CheckResourceSpawnCondition(x, y));
                 resourceMap[x, y] = (int)Resources.coal;
-                Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
+                GameObject coal = Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
+                coal.transform.SetParent(mapTiles[x, y].transform);
                 numberOfCoals--;
+
             }
 
             while (numberOfSteel > 0)
@@ -217,12 +224,16 @@ namespace TracklessGenerator
                 {
                     (x, y) = GetRandomPoint();
                 }
-                while (resourceMap[x, y] != (int)Resources.none && map[x, y] != (int)Tiles.forest);
-
+                while (CheckResourceSpawnCondition(x, y));
                 resourceMap[x, y] = (int)Resources.steel;
                 Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
                 numberOfSteel--;
             }
+        }
+
+        private bool CheckResourceSpawnCondition(int x, int y)
+        {
+            return ((map[x, y] != (int)Tiles.border && map[x, y] != (int)Tiles.forest && map[x, y] != (int)Tiles.end && map[x, y] != (int)Tiles.spawn) && resourceMap[x, y] != (int)Resources.none);
         }
 
         private void SpawnPassengers()
@@ -235,11 +246,12 @@ namespace TracklessGenerator
                 do
                 {
                     (x, y) = GetRandomPoint();
+                    Debug.Log("TILE: " + map[x, y]);
                 }
-                while (resourceMap[x, y] != (int)Resources.none &&  map[x, y] != (int)Tiles.forest);
-
+                while (CheckResourceSpawnCondition(x, y));
                 resourceMap[x, y] = (int)Resources.passenger;
-                Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
+                GameObject passenger = Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
+                passenger.transform.SetParent(mapTiles[x, y].transform);
                 passengers--;
             }
         }
@@ -267,7 +279,7 @@ namespace TracklessGenerator
             map[(int)endPoint.x, (int)endPoint.y] = (int)Tiles.end;
         }
 
-        private void DrawLakeBox(int x, int y, List<Vector2> lakeTiles)
+        private void DrawLakeBox(int x, int y, List<Vector2Int> lakeTiles)
         {
             // drawing box 3x3 in room boundaries
 
@@ -281,14 +293,14 @@ namespace TracklessGenerator
             SetTile(x - 1, y + 1, Tiles.ice);
 
 
-            lakeTiles.Add(new Vector2(x - 1, y));
-            lakeTiles.Add(new Vector2(x + 1, y));
-            lakeTiles.Add(new Vector2(x, y - 1));
-            lakeTiles.Add(new Vector2(x, y + 1));
-            lakeTiles.Add(new Vector2(x - 1, y - 1));
-            lakeTiles.Add(new Vector2(x + 1, y + 1));
-            lakeTiles.Add(new Vector2(x - 1, y + 1));
-            lakeTiles.Add(new Vector2(x + 1, y - 1));
+            lakeTiles.Add(new Vector2Int(x - 1, y));
+            lakeTiles.Add(new Vector2Int(x + 1, y));
+            lakeTiles.Add(new Vector2Int(x, y - 1));
+            lakeTiles.Add(new Vector2Int(x, y + 1));
+            lakeTiles.Add(new Vector2Int(x - 1, y - 1));
+            lakeTiles.Add(new Vector2Int(x + 1, y + 1));
+            lakeTiles.Add(new Vector2Int(x - 1, y + 1));
+            lakeTiles.Add(new Vector2Int(x + 1, y - 1));
 
         }
         private void DrawBox5(int x, int y)
@@ -344,6 +356,7 @@ namespace TracklessGenerator
                 y = Random.Range(0, mapSize);
             } while (map[x, y] == (int)Tiles.none);
 
+            //Debug.Log("RANDOM POINT: " + map[x, y]);
             return (x, y);
 
         }
