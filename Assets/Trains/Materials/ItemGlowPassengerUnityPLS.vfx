@@ -32,7 +32,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: ItemGlow
+  m_Name: ItemGlowPassengerUnityPLS
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 0}
   m_Children:
@@ -122,7 +122,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ItemGlow
+  m_Name: ItemGlowPassengerUnityPLS
   m_Graph: {fileID: 114350483966674976}
   m_ShaderSources:
   - compute: 1
@@ -289,9 +289,9 @@ VisualEffectResource:
       = index;\r\n#endif\r\n#endif\r\n\t}\r\n}\r\n"
   - compute: 0
     name: '[System 1]Output Particle Quad'
-    source: "Shader \"Hidden/VFX/ItemGlow/System 1/Output Particle Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull
-      Off\r\n\t\t\r\n\t\tTags { \"Queue\"=\"Transparent+0\" \"IgnoreProjector\"=\"True\"
-      \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
+    source: "Shader \"Hidden/VFX/ItemGlowPassengerUnityPLS/System 1/Output Particle
+      Quad\"\n{\r\n\tSubShader\r\n\t{\t\r\n\t\tCull Off\r\n\t\t\r\n\t\tTags { \"Queue\"=\"Transparent+0\"
+      \"IgnoreProjector\"=\"True\" \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       SrcAlpha One \n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t\n\t\t#define
       NB_THREADS_PER_GROUP 64\n\t\t#define HAS_ATTRIBUTES 1\n\t\t#define VFX_PASSDEPTH_ACTUAL
       (0)\n\t\t#define VFX_PASSDEPTH_MOTION_VECTOR (1)\n\t\t#define VFX_PASSDEPTH_SELECTION
@@ -915,7 +915,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 7
           m_Value: 0
         - m_ExpressionIndex: 11
-          m_Value: 32
+          m_Value: 64
         - m_ExpressionIndex: 15
           m_Value: 1
         - m_ExpressionIndex: 21
@@ -972,17 +972,17 @@ VisualEffectResource:
         - m_ExpressionIndex: 10
           m_Value:
             serializedVersion: 2
-            key0: {r: 0.46570867, g: 1.4281733, b: 1.9766746, a: 1}
-            key1: {r: 0.0054734685, g: 0.010566808, b: 0.38679248, a: 0}
-            key2: {r: 0, g: 0, b: 0, a: 0}
+            key0: {r: 42.226078, g: 4.755189, b: 0.7608303, a: 1}
+            key1: {r: 59.635677, g: 12.977713, b: 0, a: 0}
+            key2: {r: 1, g: 1, b: 1, a: 0}
             key3: {r: 0, g: 0, b: 0, a: 0}
             key4: {r: 0, g: 0, b: 0, a: 0}
             key5: {r: 0, g: 0, b: 0, a: 0}
             key6: {r: 0, g: 0, b: 0, a: 0}
             key7: {r: 0, g: 0, b: 0, a: 0}
             ctime0: 0
-            ctime1: 65535
-            ctime2: 0
+            ctime1: 38550
+            ctime2: 65535
             ctime3: 0
             ctime4: 0
             ctime5: 0
@@ -997,7 +997,7 @@ VisualEffectResource:
             atime6: 0
             atime7: 0
             m_Mode: 0
-            m_NumColorKeys: 2
+            m_NumColorKeys: 3
             m_NumAlphaKeys: 2
       m_NamedObject:
         m_Array:
@@ -1289,7 +1289,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 32
+      m_SerializableObject: 64
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -2478,7 +2478,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.4657086730003357,"g":1.428173303604126,"b":1.9766745567321778,"a":1.0},"time":0.0},{"color":{"r":0.005473468452692032,"g":0.01056680828332901,"b":0.38679248094558718,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":42.226078033447269,"g":4.755188941955566,"b":0.760830283164978,"a":1.0},"time":0.0},{"color":{"r":59.635677337646487,"g":12.977712631225586,"b":0.0,"a":1.0},"time":0.5882353186607361},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614625}
   m_ExposedName: MinMaxParticleVelocity
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
