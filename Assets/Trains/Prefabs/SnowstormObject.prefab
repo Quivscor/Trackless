@@ -57,6 +57,9 @@ VisualEffect:
       - m_Value: 87.2
         m_Name: ArcCircle_circle_radius
         m_Overridden: 1
+      - m_Value: 100
+        m_Name: Sphere_radius
+        m_Overridden: 1
     m_Vector2f:
       m_Array:
       - m_Value: {x: 10000, y: 15000}
@@ -78,6 +81,9 @@ VisualEffect:
         m_Overridden: 0
       - m_Value: {x: 300, y: 300, z: 300}
         m_Name: Bounds_size
+        m_Overridden: 1
+      - m_Value: {x: 0, y: -40, z: 0}
+        m_Name: Sphere_center
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -194,6 +200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGlobal: 0
   priority: 0
-  blendDistance: 0
+  blendDistance: 10
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 6003acdb234d4954f871fdc260d48901, type: 2}

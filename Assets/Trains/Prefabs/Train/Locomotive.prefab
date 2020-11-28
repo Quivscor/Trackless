@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164349178}
   m_LocalRotation: {x: -0, y: -0.659786, z: 0, w: 0.75145364}
-  m_LocalPosition: {x: -14.699968, y: 9.995047, z: -3.2515197}
+  m_LocalPosition: {x: 0, y: 6, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437765877}
@@ -65,7 +65,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -81,13 +81,13 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0.9977616
+    Value: 0.5
     m_SpeedMode: 0
     m_MaxSpeed: 1
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0.05
+    m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: 0
     m_MaxValue: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 77.527435
+    Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 100
     m_AccelTime: 0.05
@@ -132,15 +132,15 @@ MonoBehaviour:
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
-  m_BindingMode: 3
+  m_BindingMode: 0
   m_SplineCurvature: 0.2
   m_Orbits:
   - m_Height: 10
-    m_Radius: 15
+    m_Radius: 10
   - m_Height: 6
-    m_Radius: 30
+    m_Radius: 20
   - m_Height: 2
-    m_Radius: 25
+    m_Radius: 18
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 437765876}
@@ -200,7 +200,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437765875}
-  m_LocalRotation: {x: 0.04992578, y: 0.94296277, z: -0.28451568, w: 0.16546777}
+  m_LocalRotation: {x: 0.101020224, y: 0.6537969, z: -0.08869706, w: 0.7446325}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -244,7 +244,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -284,7 +284,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645156168}
-  m_LocalRotation: {x: 0.043882217, y: 0.9526754, z: -0.25007483, w: 0.16717206}
+  m_LocalRotation: {x: 0.07390482, y: 0.6565873, z: -0.06488939, w: 0.74781054}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -328,7 +328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5122,7 +5122,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200586287}
-  m_LocalRotation: {x: 0.046907768, y: 0.94798195, z: -0.26731658, w: 0.16634852}
+  m_LocalRotation: {x: 0.08745903, y: 0.6553021, z: -0.076790154, w: 0.7463468}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5166,7 +5166,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2191582, y: 1}
+    m_SensorSize: {x: 2.2073364, y: 1}
     Iso: 200
     ShutterSpeed: 0.005
     Aperture: 16
@@ -5239,8 +5239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 9.995047, z: -15.055279}
+  m_BindingMode: 0
+  m_FollowOffset: {x: 0, y: 6, z: -20}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -5260,7 +5260,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 77.527435
+    Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -5365,8 +5365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 9.995047, z: -15.055279}
+  m_BindingMode: 0
+  m_FollowOffset: {x: 0, y: 6, z: -20}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -5386,7 +5386,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 77.527435
+    Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -5461,8 +5461,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412176877}
-  m_LocalRotation: {x: 0.22517557, y: 0.5994341, z: -0.18081118, w: 0.74651325}
-  m_LocalPosition: {x: -14.699968, y: 9.995047, z: -3.2515197}
+  m_LocalRotation: {x: 0.11638649, y: -0.000000033003076, z: 0.0000000038673953, w: 0.993204}
+  m_LocalPosition: {x: 0, y: 1.1687112, z: -4.22808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4479306630800238847}
@@ -10468,8 +10468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 9.995047, z: -15.055279}
+  m_BindingMode: 0
+  m_FollowOffset: {x: 0, y: 6, z: -20}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -10489,7 +10489,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 77.527435
+    Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -15542,7 +15542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134784182304664534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.05, z: 25.05}
+  m_LocalPosition: {x: 0, y: 18.6, z: 15.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4479306630800238847}
@@ -15572,6 +15572,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 87.2
         m_Name: ArcCircle_circle_radius
+        m_Overridden: 1
+      - m_Value: 50
+        m_Name: Sphere_radius
         m_Overridden: 1
     m_Vector2f:
       m_Array:
@@ -15788,7 +15791,6 @@ GameObject:
   - component: {fileID: 3938577500689197354}
   - component: {fileID: 7134679742440547283}
   - component: {fileID: 7163240229895501161}
-  - component: {fileID: 7751569988361289289}
   m_Layer: 13
   m_Name: Locomotive
   m_TagString: Untagged
@@ -15952,21 +15954,6 @@ MonoBehaviour:
   jointConnectorEnd: {fileID: 4479306629919925694}
   maxAnimationSpeed: 5
   wagonType: 0
---- !u!114 &7751569988361289289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4479306630800238822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32fd57f404a14a6458884824befec46e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxVelocity: 40
-  minFOV: 40
-  maxFOV: 60
 --- !u!1 &6498589298724915614
 GameObject:
   m_ObjectHideFlags: 0
@@ -21323,6 +21310,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2bc3a2c71466fa4a838bc24aee1a622, type: 2}
+    - target: {fileID: 2380718651202138832, guid: 532ff78f277bd364eb0ef40583ab46e9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9b1bbbca4e0dd940a0d0312fb822901, type: 2}
     - target: {fileID: 2800250516343163423, guid: 532ff78f277bd364eb0ef40583ab46e9,
         type: 3}
       propertyPath: m_Layer
