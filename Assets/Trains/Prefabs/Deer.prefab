@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46149c1af8e10a2489b872839d554029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 30
+  runSpeed: 40
   idleMinTime: 2
   idleMaxTime: 4
   runningMinTime: 0.2
