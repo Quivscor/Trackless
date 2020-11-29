@@ -972,8 +972,8 @@ VisualEffectResource:
         - m_ExpressionIndex: 10
           m_Value:
             serializedVersion: 2
-            key0: {r: 3.988806, g: 20.87067, b: 56.375134, a: 1}
-            key1: {r: 17.651226, g: 56.14694, b: 79.6183, a: 0}
+            key0: {r: 0, g: 0.687696, b: 2.1185474, a: 1}
+            key1: {r: 0.31466997, g: 0.98791736, b: 1.39772, a: 0}
             key2: {r: 1, g: 1, b: 1, a: 0}
             key3: {r: 0, g: 0, b: 0, a: 0}
             key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2478,7 +2478,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":3.9888060092926027,"g":20.870670318603517,"b":56.3751335144043,"a":1.0},"time":0.0},{"color":{"r":17.651226043701173,"g":56.14693832397461,"b":79.61830139160156,"a":1.0},"time":0.5882353186607361},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.6876959800720215,"b":2.1185474395751955,"a":1.0},"time":0.0},{"color":{"r":0.31466996669769289,"g":0.9879173636436462,"b":1.3977199792861939,"a":1.0},"time":0.5882353186607361},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
