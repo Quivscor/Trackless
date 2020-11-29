@@ -2513,6 +2513,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 462873621091117795, guid: 050bcde0785748b44910b9b442dd2a2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1577640298891161762, guid: 050bcde0785748b44910b9b442dd2a2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2622,6 +2627,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612792905824667865, guid: 050bcde0785748b44910b9b442dd2a2e,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050bcde0785748b44910b9b442dd2a2e, type: 3}

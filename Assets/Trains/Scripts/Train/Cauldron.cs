@@ -44,7 +44,7 @@ public class Cauldron : MonoBehaviour
 
     private void Start()
     {
-        currentCauldronLevel = 0;
+        currentCauldronLevel = 20f;
         SetHeatStatus();
     }
 
