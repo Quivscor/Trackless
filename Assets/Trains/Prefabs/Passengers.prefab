@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1805b62b34727449c1ff3ccf5c6231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: c47cdbf02526bfa408d7dd2b1972572f, type: 3}
+  clip: {fileID: 8300000, guid: 98cced01dde90704f96ad88b20cf16ac, type: 3}
   passengers: 1
 --- !u!1001 &466577141
 PrefabInstance:
