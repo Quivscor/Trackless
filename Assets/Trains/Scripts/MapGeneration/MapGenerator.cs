@@ -432,36 +432,6 @@ namespace TracklessGenerator
                 steel--;
 
             }
-            /*
-            while (numberOfCoals > 0)
-            {
-                int x, y;
-                do
-                {
-                    (x, y) = GetRandomPoint();
-
-                }
-                while (CheckResourceSpawnCondition(x, y));
-                resourceMap[x, y] = (int)Resources.coal;
-                GameObject coal = Instantiate(resources[(int)Resources.coal], new Vector3(x * tileSize, resources[(int)Resources.coal].transform.position.y, y * tileSize), Quaternion.identity);
-                coal.transform.SetParent(mapTiles[x, y].transform);
-                numberOfCoals--;
-
-            }
-
-            while (numberOfSteel > 0)
-            {
-                int x, y;
-                do
-                {
-                    (x, y) = GetRandomPoint();
-                }
-                while (CheckResourceSpawnCondition(x, y));
-                resourceMap[x, y] = (int)Resources.steel;
-                Instantiate(resources[(int)Resources.steel], new Vector3(x * tileSize, 1.5f, y * tileSize), Quaternion.identity);
-                numberOfSteel--;
-            }
-            */
         }
 
         private bool CheckResourceSpawnCondition(int x, int y)
@@ -479,7 +449,7 @@ namespace TracklessGenerator
                 do
                 {
                     (x, y) = GetRandomPoint();
-                    //Debug.Log("TILE: " + map[x, y]);
+
 
                 } while (!canResourceMap[x, y]);
                 resourceMap[x, y] = (int)Resources.passenger;
@@ -488,23 +458,6 @@ namespace TracklessGenerator
                 passenger.transform.SetParent(mapTiles[x, y].transform);
                 passengers--;
             }
-            /*
-
-            while (passengers > 0)
-            {
-                int x, y;
-                do
-                {
-                    (x, y) = GetRandomPoint();
-                    Debug.Log("TILE: " + map[x, y]);
-                }
-                while (CheckResourceSpawnCondition(x, y));
-                resourceMap[x, y] = (int)Resources.passenger;
-                GameObject passenger = Instantiate(resources[(int)Resources.passenger], new Vector3(x * tileSize, resources[(int)Resources.passenger].transform.position.y, y * tileSize), Quaternion.identity);
-                passenger.transform.SetParent(mapTiles[x, y].transform);
-                passengers--;
-            }
-            */
         }
 
         private void GenerateSpawndAndEnd()
@@ -532,8 +485,6 @@ namespace TracklessGenerator
                     Debug.Log("DIDNT FIND END POINT FAR ENOUGH FROM SPAWN");
                     break;
                 }
-
-                //borderPositions.Remove(endPoint);
                 int error = 0;
 
                 while (CheckSpawnAndEndPointCondition(endPoint))
@@ -549,9 +500,28 @@ namespace TracklessGenerator
             } while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance);
 
             map[spawnPoint.x,spawnPoint.y] = (int)Tiles.spawn;
+            SetTilesBasic(spawnPoint, 4);
 
             map[endPoint.x, endPoint.y] = (int)Tiles.end;
+            SetTilesBasic(endPoint, 4);
 
+
+        }
+
+        private void SetTilesBasic(Vector2Int position, int radius)
+        {
+            for (int i = position.x - radius; i <= position.x + radius; i++)
+            {
+                for (int j = position.y - radius; j <= position.y + radius; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        if (map[i, j] == (int)Tiles.ice || map[i, j] == (int)Tiles.blizzard || map[i, j] == (int)Tiles.deers)
+                            map[i, j] = (int)Tiles.basic;
+                    }
+
+                }
+            }
         }
 
         private void SetTilesNonCollectable(Vector2Int position)
@@ -598,12 +568,8 @@ namespace TracklessGenerator
             }
             else
             {
-                //Debug.Log("Neighbours X: " + neighboursX + " NeighboursY: " + neighboursY);
                 return true;
             }
-
-
-
 
         }
 
