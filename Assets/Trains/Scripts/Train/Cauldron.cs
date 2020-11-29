@@ -11,6 +11,8 @@ public class Cauldron : MonoBehaviour
 
     [SerializeField]
     private float burningBoostPerCoal = 20.0f;
+    [SerializeField] private float burningBoostTime = 1f;
+    private float boostRemainingToAdd;
 
     [SerializeField]
     private float cauldronMaxLevel = 150.0f;
@@ -46,7 +48,20 @@ public class Cauldron : MonoBehaviour
         if (InputManager.Data.isBrake)
             currentCauldronLevel -= burningSpeed * 25 * Time.deltaTime;
 
-        currentCauldronLevel -= burningSpeed * Time.deltaTime;
+        if(boostRemainingToAdd > 0)
+        {
+            float boost = burningBoostPerCoal * Time.deltaTime;
+            if (boost > boostRemainingToAdd)
+                boost = boostRemainingToAdd;
+            currentCauldronLevel += boost;
+            if (currentCauldronLevel > CauldronMaxLevel)
+            {
+                currentCauldronLevel = CauldronMaxLevel;
+            }
+            boostRemainingToAdd -= boost;
+        }
+        else
+            currentCauldronLevel -= burningSpeed * Time.deltaTime;
 
         if (currentCauldronLevel < 0)
             currentCauldronLevel = 0;
@@ -73,17 +88,18 @@ public class Cauldron : MonoBehaviour
 
     private void IncreaseCauldronLevel()
     {
-        currentCauldronLevel += burningBoostPerCoal;
+        //currentCauldronLevel += burningBoostPerCoal;
 
-        if (currentCauldronLevel > cauldronMaxLevel)
-            currentCauldronLevel = cauldronMaxLevel;
+        //if (currentCauldronLevel > cauldronMaxLevel)
+        //    currentCauldronLevel = cauldronMaxLevel;
+        boostRemainingToAdd += burningBoostPerCoal;
     }
 
     private void AddCoalToCauldron()
     {
         if (inventory)
         {
-            if (inventory.Coal > 0)
+            if (inventory.Coal > 0 && (currentCauldronLevel + boostRemainingToAdd < CauldronMaxLevel))
             {
                 inventory.SpendCoal(1);
 
