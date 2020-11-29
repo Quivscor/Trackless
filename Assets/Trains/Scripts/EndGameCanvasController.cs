@@ -86,7 +86,7 @@ public class EndGameCanvasController : MonoBehaviour
 
     public void LoadNewLevel()
     {
-        mapGenerator?.ClearMap();
+        SceneManager.LoadScene("Map Generator");
     }
 
     public void BackToMainMenu()
