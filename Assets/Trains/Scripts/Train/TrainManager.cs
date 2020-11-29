@@ -5,15 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(Wagon))]
 public class TrainManager : MonoBehaviour
 {
+    public static GameObject locomotive = null;
+
     [SerializeField]
     private AudioSource audio;
     private List<Wagon> wagons = new List<Wagon>();
+    private List<WagonType> staticWagons = new List<WagonType>();
+
+    private void Awake()
+    {
+        if (TrainManager.locomotive == null)
+            TrainManager.locomotive = this.gameObject;
+        else
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {
         wagons.Add(GetComponent<Wagon>());
 
-        //TrainBuilder.Instance.BuildBasicTrain(this);
+        TrainBuilder.Instance.BuildBasicTrain(this);
+
+        DontDestroyOnLoad(this);
     }
 
     public void SetWheelsRotationSpeed(float percentageSpeed)
@@ -39,5 +52,11 @@ public class TrainManager : MonoBehaviour
 
         wagons.Add(newWagon.GetComponent<Wagon>());
         audio.Play();
+    }
+
+    public void DestroyWagons()
+    {
+        for (int i = 0; i < wagons.Count; i++)
+            Destroy(wagons[i]);
     }
 }

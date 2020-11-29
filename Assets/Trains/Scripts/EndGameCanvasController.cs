@@ -40,12 +40,30 @@ public class EndGameCanvasController : MonoBehaviour
     {
         if (pointsReached)
             pointsReached.text = value + "";
+
+        SetPointsInTotal(value);
     }
 
-    public void SetPointsInTotal()
+    private void SetPointsInTotal(int currentPoints)
     {
+        int points = 0;
+
         if (pointsTotal)
-            pointsTotal.text = 0 + "";
+        {
+            if (PlayerPrefs.HasKey("totalPoints"))
+            {
+                points = currentPoints + PlayerPrefs.GetInt("totalPoints");
+            }
+            else
+            {
+                points = currentPoints;
+            }
+
+            pointsTotal.text = points + "";
+        }
+
+        PlayerPrefs.SetInt("totalPoints", points);
+        PlayerPrefs.Save();
     }
 
     public void SetTime()
@@ -68,7 +86,7 @@ public class EndGameCanvasController : MonoBehaviour
 
     public void LoadNewLevel()
     {
-        mapGenerator?.ClearMap();
+        SceneManager.LoadScene("Map Generator");
     }
 
     public void BackToMainMenu()
