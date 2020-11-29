@@ -34,4 +34,9 @@ public class EndGameController : MonoBehaviour
         if (other.GetComponent<TrainController>())
             uiDataManager.TurnOnEndGameText(false, "None!");
     }
+
+    public void GameOverLostHeat()
+    {
+        Debug.Log("Lost to heat!");
+    }
 }
