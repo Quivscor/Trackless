@@ -396,6 +396,9 @@ namespace TracklessGenerator
 
                 }
             }
+            SetTilesNonCollectable(spawnPoint);
+            SetTilesNonCollectable(endPoint);
+
 
             int coals = numberOfCoals;
             while(coals > 0)
@@ -468,8 +471,7 @@ namespace TracklessGenerator
 
         private void SpawnPassengers()
         {
-            int passengers = Random.Range(numberOfPassengers-1, numberOfPassengers+2);
-            numberOfPassengers = passengers;
+            int passengers = numberOfPassengers;
 
             while (passengers > 0)
             {
@@ -547,7 +549,24 @@ namespace TracklessGenerator
             } while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance);
 
             map[spawnPoint.x,spawnPoint.y] = (int)Tiles.spawn;
+
             map[endPoint.x, endPoint.y] = (int)Tiles.end;
+
+        }
+
+        private void SetTilesNonCollectable(Vector2Int position)
+        {
+            for (int i = position.x - 4; i <= position.x + 4; i++)
+            {
+                for (int j = position.y - 4; j <= position.y + 4; j++)
+                {
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        canResourceMap[i, j] = false;
+                    }
+
+                }
+            }
         }
 
         private bool CheckSpawnAndEndPointCondition(Vector2Int spawnPoint)
