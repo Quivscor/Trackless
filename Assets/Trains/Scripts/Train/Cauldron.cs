@@ -90,6 +90,7 @@ public class Cauldron : MonoBehaviour
         freezeWarning.text = "Train will freeze in " + ((int)timeToFreeze - (int)currentTimeToFreeze).ToString() + " seconds!";
         if (currentTimeToFreeze >= timeToFreeze && !frozeToDeath)
         {
+            freezeWarning.gameObject.SetActive(false);
             FindObjectOfType<EndGameController>().GameOverLostHeat();
             frozeToDeath = true;
         }
