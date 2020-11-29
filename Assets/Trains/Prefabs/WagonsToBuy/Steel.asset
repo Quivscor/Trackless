@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438e9dcd55e488046af513b8facb5868, type: 3}
   m_Name: Steel
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: f96ca6019dfcb58498c432729fcc6480, type: 3}
+  image: {fileID: 21300000, guid: 47826ab301226284480a9d511914403e, type: 3}
   wagonType: 5
   description: Increases steel gain from steel cart by 2
-  steelPrice: 50
+  steelPrice: 20

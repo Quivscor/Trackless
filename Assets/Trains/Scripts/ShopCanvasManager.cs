@@ -27,6 +27,7 @@ public class ShopCanvasManager : MonoBehaviour
 
     public void PrepareOffer()
     {
+        this.GetComponent<Canvas>().enabled = true;
         GetSteel();
 
         foreach (Button button in buyButtons)
@@ -40,6 +41,8 @@ public class ShopCanvasManager : MonoBehaviour
             if (steel < wagonToOffer.steelPrice)
                 button.interactable = false;
         }
+
+        UpdateImagesAndDescriptions();
     }
 
     private void GetSteel()
@@ -69,10 +72,12 @@ public class ShopCanvasManager : MonoBehaviour
     {
         foreach (ButtonToWagon btw in offer)
         {
+            if (btw.button.gameObject != button.gameObject)
+                continue;
+
             if (steel >= btw.wagonShop.steelPrice)
             {
-                if (btw.button.GetComponent<ShopButton>() == button)
-                    btw.button.GetComponent<Button>().interactable = false;
+                btw.button.GetComponent<Button>().interactable = false;
 
                 steel -= btw.wagonShop.steelPrice;
 
