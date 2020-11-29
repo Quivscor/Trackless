@@ -18,14 +18,9 @@ public class TrainBuilder : MonoBehaviour
 
     public void BuildBasicTrain(TrainManager trainManager)
     {
-        GameObject wagonToCreate = GetWagonOfType(WagonType.Coal);
-        if (wagonToCreate)
-            trainManager.CreateWagon(wagonToCreate);
-
-        wagonToCreate = GetWagonOfType(WagonType.Passengers);
-
-        for (int i = 0; i < 2; i++)
+        foreach (WagonType wagonType in TrainDataContainer.Instance.wagonsInTrain)
         {
+            GameObject wagonToCreate = GetWagonOfType(wagonType);
             if (wagonToCreate)
                 trainManager.CreateWagon(wagonToCreate);
         }

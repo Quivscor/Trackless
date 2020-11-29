@@ -8,12 +8,13 @@ public class TrainManager : MonoBehaviour
     [SerializeField]
     private AudioSource audio;
     private List<Wagon> wagons = new List<Wagon>();
+    private List<WagonType> staticWagons = new List<WagonType>();
 
     private void Start()
     {
         wagons.Add(GetComponent<Wagon>());
 
-        //TrainBuilder.Instance.BuildBasicTrain(this);
+        TrainBuilder.Instance.BuildBasicTrain(this);
     }
 
     public void SetWheelsRotationSpeed(float percentageSpeed)
