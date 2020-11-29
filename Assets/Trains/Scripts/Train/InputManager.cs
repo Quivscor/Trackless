@@ -26,10 +26,10 @@ public class InputManager : MonoBehaviour
 
         Data.isBrake = Input.GetKey(KeyCode.LeftAlt);
 
-        if (Input.GetKeyDown(KeyCode.T))
-            TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());
+        //if (Input.GetKeyDown(KeyCode.T))
+        //    TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());
 
-        Data.clear = Input.GetKey(KeyCode.F5);
+        //Data.clear = Input.GetKey(KeyCode.F5);
 
     }
 }
