@@ -2662,11 +2662,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1577589821597124969, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 3321477440709210067, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2722,20 +2717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5710712751814275007, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5823510469358171751, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_Name
       value: DefaultSceneRoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643073095026524292, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
