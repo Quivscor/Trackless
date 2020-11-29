@@ -9,6 +9,7 @@ public class TrainController : MonoBehaviour
     private TrainManager trainManager;
     private SnowRide snowRide;
     private Cauldron cauldron;
+    private TrainSoundController trainSoundController;
 
     public const float maxAngularVelocityForRotation = 0.6f;
 
@@ -62,6 +63,7 @@ public class TrainController : MonoBehaviour
 
         snowRide = GetComponentInChildren<SnowRide>();
         cauldron = GetComponent<Cauldron>();
+        trainSoundController = GetComponentInChildren<TrainSoundController>();
     }
 
     private void FixedUpdate()
@@ -89,6 +91,7 @@ public class TrainController : MonoBehaviour
 
         trainManager.SetWheelsRotationSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100 * maxVelocity / maxOverheatHeatVelocity);
         snowRide.SetPercentageEffectSpeed((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100 * maxVelocity / maxOverheatHeatVelocity);
+        trainSoundController?.ChangeSoundPitchBasedOnVelocity((currentAccelerationTime < 0 ? 0 : currentAccelerationTime) / maxAccelerationTime * 100 * maxVelocity / maxOverheatHeatVelocity);
         snowRide.SetIsOnIce(isOnIce);
     }
 
@@ -171,7 +174,7 @@ public class TrainController : MonoBehaviour
         if (trainMovement != TrainMovement.Stopped && Mathf.Abs(Vector3.Magnitude(rb.velocity)) > minVelocityToRotate)
         {
             Vector3 torqueDirection = new Vector3(0, InputManager.Data.moveX != 0 ? Mathf.Sign(InputManager.Data.moveX) : 0, 0);
-            if(trainMovement == TrainMovement.Reversing)
+            if (trainMovement == TrainMovement.Reversing)
             {
                 rb.angularVelocity = Vector3.Lerp(rb.angularVelocity,
                (torqueDirection * -1) * (torqueForce * additionalAngularMultiplier * (reverseAccelerationTime / maxReverseAccelerationTime)) * Time.fixedDeltaTime,

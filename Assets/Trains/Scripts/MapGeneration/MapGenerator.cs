@@ -278,7 +278,6 @@ namespace TracklessGenerator
                         //Debug.Log(map[i, j]);
                         if(map[i,j] == (int)Tiles.end || map[i,j] == (int)Tiles.spawn)
                         {
-
                             if ((int)i - 1 >= 0 && map[i- 1, j] != (int)Tiles.border && map[i - 1, j] != (int)Tiles.none)
                             {
                                 angle = new Vector3(0, -90f, 0);
@@ -287,7 +286,7 @@ namespace TracklessGenerator
                             {
                                 angle = new Vector3(0, 90f, 0);
                             }
-                            if (i - 1 >= 0 && map[i, j - 1] != (int)Tiles.border && map[i, j - 1] != (int)Tiles.none)
+                            if (j - 1 >= 0 && map[i, j - 1] != (int)Tiles.border && map[i, j - 1] != (int)Tiles.none)
                             {
                                 angle = new Vector3(0, 180f, 0);
                             }
