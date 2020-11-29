@@ -86,7 +86,7 @@ public class EndGameCanvasController : MonoBehaviour
 
     public void LoadNewLevel()
     {
-        SceneManager.LoadScene("Map Generator");
+        SceneManager.LoadScene("Map Generating");
     }
 
     public void BackToMainMenu()

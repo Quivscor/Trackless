@@ -26,7 +26,7 @@ public class TrainManager : MonoBehaviour
 
         TrainBuilder.Instance.BuildBasicTrain(this);
 
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public void SetWheelsRotationSpeed(float percentageSpeed)
