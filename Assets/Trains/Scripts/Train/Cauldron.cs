@@ -34,12 +34,15 @@ public class Cauldron : MonoBehaviour
     public const float HeatStatusPercentageHighLimit = 50.0f;
     public const float HeatStatusPercentageOverheatedLimit = 80.0f;
 
+    private AudioSource audioSource = null;
+
     public HeatStatus HeatStatus { get; private set; }
 
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
         freezeWarning = FindObjectOfType<WarningTextDummy>()?.GetComponentInChildren<TextMeshProUGUI>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -56,7 +59,7 @@ public class Cauldron : MonoBehaviour
         if (InputManager.Data.isBrake)
             currentCauldronLevel -= burningSpeed * 25 * Time.deltaTime;
 
-        if(boostRemainingToAdd > 0)
+        if (boostRemainingToAdd > 0)
         {
             float boost = burningBoostPerCoal * Time.deltaTime;
             if (boost > boostRemainingToAdd)
@@ -85,7 +88,7 @@ public class Cauldron : MonoBehaviour
     private void UpdateFreezing()
     {
         currentTimeToFreeze += Time.deltaTime;
-        if(!frozeToDeath)
+        if (!frozeToDeath)
             freezeWarning.gameObject.SetActive(true);
         freezeWarning.text = "Train will freeze in " + ((int)timeToFreeze - (int)currentTimeToFreeze).ToString() + " seconds!";
         if (currentTimeToFreeze >= timeToFreeze && !frozeToDeath)
@@ -137,6 +140,8 @@ public class Cauldron : MonoBehaviour
                 inventory.SpendCoal(1);
 
                 IncreaseCauldronLevel();
+
+                audioSource.Play();
             }
         }
     }

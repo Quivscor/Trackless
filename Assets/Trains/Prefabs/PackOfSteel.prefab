@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2665bf219234f04d9fe105b43edefa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: fd1de884adc077e41bad41638c0fee26, type: 3}
   steelBonus: 5
 --- !u!114 &7460751405606885917
 MonoBehaviour:

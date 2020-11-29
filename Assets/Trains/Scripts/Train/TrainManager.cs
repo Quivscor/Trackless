@@ -7,8 +7,6 @@ public class TrainManager : MonoBehaviour
 {
     public static GameObject locomotive = null;
 
-    [SerializeField]
-    private AudioSource audio;
     private List<Wagon> wagons = new List<Wagon>();
     private List<WagonType> staticWagons = new List<WagonType>();
 
@@ -51,7 +49,6 @@ public class TrainManager : MonoBehaviour
         newWagon.GetComponent<HingeJoint>().connectedBody = lastWagon.jointConnectorEnd.GetComponent<Rigidbody>();
 
         wagons.Add(newWagon.GetComponent<Wagon>());
-        audio.Play();
     }
 
     public void DestroyWagons()
