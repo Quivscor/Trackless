@@ -5,7 +5,6 @@ using TMPro;
 
 public class EndGameController : MonoBehaviour
 {
-
     private UIDataManager uiDataManager;
 
     private void Start()
@@ -15,7 +14,7 @@ public class EndGameController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<TrainController>())
+        if (other.GetComponent<TrainController>())
         {
             //if (other.GetComponent<Inventory>().Passengers < uiDataManager.mapGenerator.numberOfPassengers)
             //    uiDataManager.TurnOnEndGameText(true, "Find other passengers!");
@@ -27,11 +26,26 @@ public class EndGameController : MonoBehaviour
             FindObjectOfType<TracklessGenerator.MapGenerator>().TurnOffCollidersOfEndPointNeighbours();
             FindObjectOfType<IntroAndOutroManager>().PlayOutroSequence();
             StartCoroutine(FindObjectOfType<UIDataManager>().FadeToBlack(5.5f));
+
+            EndGameCanvasController.Instance.DisplayCanvas(true);
+
+            SetCanvasValues();
         }
     }
+
+    private void SetCanvasValues()
+    {
+
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponent<TrainController>())
             uiDataManager.TurnOnEndGameText(false, "None!");
+    }
+
+    public void GameOverLostHeat()
+    {
+        Debug.Log("Lost to heat!");
     }
 }

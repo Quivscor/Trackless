@@ -14,6 +14,10 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private float burningBoostTime = 1f;
     private float boostRemainingToAdd;
 
+    public float timeToFreeze = 10f;
+    private float currentTimeToFreeze;
+    public static bool frozeToDeath = false;
+
     [SerializeField]
     private float cauldronMaxLevel = 150.0f;
 
@@ -63,10 +67,30 @@ public class Cauldron : MonoBehaviour
         else
             currentCauldronLevel -= burningSpeed * Time.deltaTime;
 
-        if (currentCauldronLevel < 0)
+        if (currentCauldronLevel <= 0)
+        {
             currentCauldronLevel = 0;
+            UpdateFreezing();
+        }
+        else
+            ResetFreezing();
 
         SetHeatStatus();
+    }
+
+    private void UpdateFreezing()
+    {
+        currentTimeToFreeze += Time.deltaTime;
+        if (currentTimeToFreeze >= timeToFreeze && !frozeToDeath)
+        {
+            FindObjectOfType<EndGameController>().GameOverLostHeat();
+            frozeToDeath = true;
+        }
+    }
+
+    private void ResetFreezing()
+    {
+        currentTimeToFreeze = 0;
     }
 
     public void SetHeatStatus()

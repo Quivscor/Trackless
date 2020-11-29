@@ -89,7 +89,7 @@ public class UIDataManager : MonoBehaviour
     public IEnumerator FadeToBlack(float time)
     {
         float fullTime = 0;
-        while (time > 0)
+        while (fullTime < time)
         {
             yield return new WaitForEndOfFrame();
             blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, fullTime / time);
