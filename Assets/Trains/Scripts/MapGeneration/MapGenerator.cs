@@ -152,15 +152,37 @@ namespace TracklessGenerator
             int mountains = numberOfMountains;
             while (mountains > 0)
             {
-                int x, y;
-                (x, y) = GetRandomPoint();
+                int x = 0, y = 0;
+                int error = 0;
+                do
+                {
+                    error++;
+                    if (error > 10000)
+                    {
+                        Debug.Log("COULDNT FIND PLACE TO GENERATE MOUNTAIN");
+                        break;
+                    }
+                    (x, y) = GetRandomPoint();
+
+                } while (!IsInTheBox(x, y));
+               
+                
                 int walkerRounds = Random.Range(15, 25);
                 SetMountain(x, y, walkerRounds);
                 mountains--;
             }
         }
 
-        private void SetMountain(int x, int y, int walkerRounds)
+        private bool IsInTheBox(int x, int y)
+        {
+            if ((x < mapSize / 2 + mapSize / 4) && (x > mapSize / 2 - mapSize / 4) && (y < mapSize / 2 + mapSize / 4) && (y > mapSize / 2 - mapSize / 4))
+                return true;
+            else
+                return false;
+
+        }
+
+    private void SetMountain(int x, int y, int walkerRounds)
         {
             // drunk walker generation
             Vector2Int walker = new Vector2Int(x, y);
@@ -374,6 +396,9 @@ namespace TracklessGenerator
 
                 }
             }
+            SetTilesNonCollectable(spawnPoint);
+            SetTilesNonCollectable(endPoint);
+
 
             int coals = numberOfCoals;
             while(coals > 0)
@@ -446,8 +471,7 @@ namespace TracklessGenerator
 
         private void SpawnPassengers()
         {
-            int passengers = Random.Range(numberOfPassengers-1, numberOfPassengers+2);
-            numberOfPassengers = passengers;
+            int passengers = numberOfPassengers;
 
             while (passengers > 0)
             {
@@ -494,16 +518,14 @@ namespace TracklessGenerator
                 errorCounter++;
                 if(errorCounter > 10000)
                 {
-                    Debug.Log("DIDNT FIND PROPER SPAWN POINT");
+                    Debug.Log("DIDNT FIND SPAWN POINT ON STRAIGHT WALL");
                     break;
                 }
-            } while (CheckSpawnPointCondition(spawnPoint));
-            
-          
-            endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+            } while (CheckSpawnAndEndPointCondition(spawnPoint));
 
-            while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance)
+            do
             {
+                endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
                 errorCounter++;
                 if (errorCounter > 10000)
                 {
@@ -512,47 +534,77 @@ namespace TracklessGenerator
                 }
 
                 //borderPositions.Remove(endPoint);
-                endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
-            }             
+                int error = 0;
+
+                while (CheckSpawnAndEndPointCondition(endPoint))
+                {
+                    error++;
+                    if (error > 10000)
+                    {
+                        Debug.Log("DIDNT FIND END POINT ON STRAIGHT WALL");
+                        break;
+                    }
+                    endPoint = borderPositions[Random.Range(0, borderPositions.Count)];
+                }
+            } while (Vector2.Distance(spawnPoint, endPoint) * tileSize <= distance);
 
             map[spawnPoint.x,spawnPoint.y] = (int)Tiles.spawn;
+
             map[endPoint.x, endPoint.y] = (int)Tiles.end;
 
+        }
 
-            /*
-            int iterations = 5;
-            if(map[endPoint.x-1, endPoint.y] == (int)Tiles.none)
+        private void SetTilesNonCollectable(Vector2Int position)
+        {
+            for (int i = position.x - 4; i <= position.x + 4; i++)
             {
-                while(iterations > 0)
+                for (int j = position.y - 4; j <= position.y + 4; j++)
                 {
-                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize -tileSize*iterations, 0, endPoint.y * tileSize), Quaternion.identity);
-                    iterations--;
-                }
-            }
-            if (map[endPoint.x + 1, endPoint.y] == (int)Tiles.none)
-            {
-                while (iterations > 0)
-                {
-                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize + tileSize * iterations, 0, endPoint.y * tileSize), Quaternion.identity);
-                    iterations--;
-                }
-            }
-            if (map[(int)endPoint.x, (int)endPoint.y - 1] == (int)Tiles.none)
-            {
-                while (iterations > 0)
-                {
-                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize, 0, endPoint.y * tileSize - tileSize * iterations), Quaternion.identity);
-                    iterations--;
-                }
-            }
-            if (map[(int)endPoint.x, (int)endPoint.y + 1] == (int)Tiles.none)
+                    if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
+                    {
+                        canResourceMap[i, j] = false;
+                    }
 
-            {
-                while (iterations > 0)                {
-                    Instantiate(tiles[(int)Tiles.end], new Vector3(endPoint.x * tileSize, 0, endPoint.y * tileSize + tileSize * iterations), Quaternion.identity);
-                    iterations--;
                 }
-            }*/
+            }
+        }
+
+        private bool CheckSpawnAndEndPointCondition(Vector2Int spawnPoint)
+        {
+            int neighboursX = 0;
+            int neighboursY = 0;
+            for(int i = spawnPoint.x - 2; i <= spawnPoint.x + 2; i++)
+            {
+                if(i >= 0 && i < mapSize)
+                    if(map[i,spawnPoint.y] == (int)Tiles.border)
+                    {
+                        neighboursX++;
+                    }
+            }
+
+            for (int i = spawnPoint.y - 2; i <= spawnPoint.y + 2; i++)
+            {
+                if (i >= 0 && i < mapSize)
+                    if (map[spawnPoint.x, i] == (int)Tiles.border)
+                    {
+                        neighboursY++;
+                    }
+            }
+
+            if ((neighboursX == 5 && neighboursY == 1) || (neighboursX == 1 && neighboursY == 5))
+            {
+                Debug.Log("Neighbours X: " + neighboursX + " NeighboursY: " + neighboursY);
+                return false;
+            }
+            else
+            {
+                //Debug.Log("Neighbours X: " + neighboursX + " NeighboursY: " + neighboursY);
+                return true;
+            }
+
+
+
+
         }
 
         private bool CheckSpawnPointCondition(Vector2Int spawnPoint)
