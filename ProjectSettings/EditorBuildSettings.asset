@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/HDRPDefaultProject/Scenes/samplescene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Trains/Scenes/Map Generating.unity
     guid: 4a2c2a2d1aac03e4bbd15178d63e7537
   - enabled: 1
