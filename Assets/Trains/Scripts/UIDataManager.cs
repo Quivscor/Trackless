@@ -64,7 +64,10 @@ public class UIDataManager : MonoBehaviour
         steelText.text = inventory.Steel.ToString();
         passengersText.text = inventory.Passengers.ToString();
         if (inventory.Passengers == mapGenerator.numberOfPassengers)
+        {
             TurnOnEndGameText(true, "Great! Find a way out of this place");
+            FindObjectOfType<EndArrowConditionShowUp>().ActivateArrow();
+        }
         //maxPassengersText.text = " / " + mapGenerator.numberOfPassengers;
     }
 
