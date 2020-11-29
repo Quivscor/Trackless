@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Cauldron : MonoBehaviour
 {
@@ -17,11 +19,12 @@ public class Cauldron : MonoBehaviour
     public float timeToFreeze = 10f;
     private float currentTimeToFreeze;
     public static bool frozeToDeath = false;
+    public TextMeshProUGUI freezeWarning;
 
     [SerializeField]
     private float cauldronMaxLevel = 150.0f;
 
-    private float currentCauldronLevel = 0.0f;
+    private float currentCauldronLevel = 20.0f;
 
     public float CauldronMaxLevel { get => cauldronMaxLevel; }
     public float CurrentCauldronLevel { get => currentCauldronLevel; }
@@ -36,6 +39,7 @@ public class Cauldron : MonoBehaviour
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
+        freezeWarning = FindObjectOfType<WarningTextDummy>().GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -81,6 +85,9 @@ public class Cauldron : MonoBehaviour
     private void UpdateFreezing()
     {
         currentTimeToFreeze += Time.deltaTime;
+        if(!frozeToDeath)
+            freezeWarning.gameObject.SetActive(true);
+        freezeWarning.text = "Train will freeze in " + ((int)timeToFreeze - (int)currentTimeToFreeze).ToString() + " seconds!";
         if (currentTimeToFreeze >= timeToFreeze && !frozeToDeath)
         {
             FindObjectOfType<EndGameController>().GameOverLostHeat();
@@ -91,6 +98,7 @@ public class Cauldron : MonoBehaviour
     private void ResetFreezing()
     {
         currentTimeToFreeze = 0;
+        freezeWarning.gameObject.SetActive(false);
     }
 
     public void SetHeatStatus()
