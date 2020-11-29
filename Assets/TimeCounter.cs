@@ -6,12 +6,14 @@ using TMPro;
 
 public class TimeCounter : MonoBehaviour
 {
-    private float time = 0;
-    private TextMeshProUGUI text;
+    private static float time = 0;
+    private static TextMeshProUGUI text;
+
+    public static float CTime() { return time; }
 
     private void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>(); 
+        text = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -37,4 +39,6 @@ public class TimeCounter : MonoBehaviour
         _text += seconds.ToString();
         text.text = _text;
     }
+
+    public static string GetTime() { return text.text; }
 }

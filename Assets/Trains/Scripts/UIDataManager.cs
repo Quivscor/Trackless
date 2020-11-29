@@ -34,7 +34,7 @@ public class UIDataManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         FindObjectOfType<TracklessGenerator.MapGenerator>().action += FindReferences;
         StartCoroutine(FadeFromBlack(2f));
-        
+
     }
 
     // Update is called once per frame
@@ -77,10 +77,10 @@ public class UIDataManager : MonoBehaviour
     public IEnumerator FadeFromBlack(float time)
     {
         float fullTime = time;
-        while(time > 0)
+        while (time > 0)
         {
             yield return new WaitForEndOfFrame();
-            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, time/fullTime);
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, time / fullTime);
             time -= Time.deltaTime;
         }
         //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 1f);
@@ -95,6 +95,8 @@ public class UIDataManager : MonoBehaviour
             blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, fullTime / time);
             fullTime += Time.deltaTime;
         }
+
+        EndGameCanvasController.Instance.DisplayCanvas(true);
         //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
     }
 }

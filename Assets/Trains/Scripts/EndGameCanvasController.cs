@@ -13,6 +13,8 @@ public class EndGameCanvasController : MonoBehaviour
             EndGameCanvasController.Instance = this;
         else
             Destroy(this);
+
+        DisplayCanvas(false);
     }
 
     public void DisplayCanvas(bool value)
@@ -28,6 +30,7 @@ public class EndGameCanvasController : MonoBehaviour
 
     public TMPro.TextMeshProUGUI pointsReached;
     public TMPro.TextMeshProUGUI pointsTotal;
+    public TMPro.TextMeshProUGUI time;
     public TMPro.TextMeshProUGUI steelGained;
     public TMPro.TextMeshProUGUI hitTrees;
 
@@ -45,16 +48,22 @@ public class EndGameCanvasController : MonoBehaviour
             pointsTotal.text = 0 + "";
     }
 
+    public void SetTime()
+    {
+        if (time)
+            time.text = TimeCounter.GetTime();
+    }
+
     public void SetSteelGained(int value)
     {
         if (steelGained)
             steelGained.text = value + "";
     }
 
-    public void SetHitTrees(int value)
+    public void SetHitTrees()
     {
         if (hitTrees)
-            hitTrees.text = value + "";
+            hitTrees.text = Inventory.GetHitTrees() + "";
     }
 
     public void LoadNewLevel()

@@ -10,5 +10,7 @@ public class Tree : IInteractive
     public override void Interact(GameObject interactor)
     {
         interactor?.GetComponent<Cauldron>()?.SubtractHeatLevel(heatLostOnHit);
+
+        Inventory.TreeHit();
     }
 }
