@@ -8,5 +8,8 @@ public enum WagonType
     Coal,
     Passengers,
     LostPassenger,
-    Steel
+    Steel,
+    SteelPicker,
+    CoalPicker,
+    Accelerator
 }

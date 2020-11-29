@@ -97,7 +97,15 @@ public class TrainController : MonoBehaviour
 
     private void SetMaxVelocity()
     {
-        maxVelocity = cauldron.CurrentCauldronLevel / cauldron.CauldronMaxLevel * maxOverheatHeatVelocity + maxMediumHeatVelocity;
+        float extraVelocity = 0;
+        foreach(WagonType type in TrainDataContainer.Instance.wagonsInTrain)
+        {
+            if(type == WagonType.Accelerator)
+            {
+                extraVelocity += 2.5f;
+            }
+        }
+        maxVelocity = cauldron.CurrentCauldronLevel / cauldron.CauldronMaxLevel * maxOverheatHeatVelocity + maxMediumHeatVelocity + extraVelocity;
     }
 
     private void SetTrainState()
