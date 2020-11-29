@@ -27,15 +27,18 @@ public class EndGameController : MonoBehaviour
             FindObjectOfType<IntroAndOutroManager>().PlayOutroSequence();
             StartCoroutine(FindObjectOfType<UIDataManager>().FadeToBlack(5.5f));
 
-            EndGameCanvasController.Instance.DisplayCanvas(true);
-
             SetCanvasValues();
         }
     }
 
     private void SetCanvasValues()
     {
+        Inventory inventory = FindObjectOfType<Inventory>();
 
+        EndGameCanvasController.Instance.SetPointsReached(inventory.GetPoints());
+        EndGameCanvasController.Instance.SetSteelGained(inventory.Steel);
+        EndGameCanvasController.Instance.SetHitTrees();
+        EndGameCanvasController.Instance.SetTime();
     }
 
     private void OnTriggerExit(Collider other)
