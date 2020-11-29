@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1083165608010931621}
   - component: {fileID: 1083165608010931642}
   - component: {fileID: 1083165608010931643}
-  - component: {fileID: 1083165608010931640}
   m_Layer: 12
   m_Name: BorderTile
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1083165608010931640
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083165608010931641}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5590703129424697522
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +92,7 @@ GameObject:
   - component: {fileID: 1059907186203554324}
   - component: {fileID: 2032836261527379315}
   - component: {fileID: 1483929598993605071}
-  - component: {fileID: 542473867755499613}
+  - component: {fileID: 1984184809780256124}
   m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
@@ -175,7 +161,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &542473867755499613
+--- !u!65 &1984184809780256124
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
