@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Wagon))]
 public class TrainManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource audio;
     private List<Wagon> wagons = new List<Wagon>();
 
     private void Start()
@@ -36,5 +38,6 @@ public class TrainManager : MonoBehaviour
         newWagon.GetComponent<HingeJoint>().connectedBody = lastWagon.jointConnectorEnd.GetComponent<Rigidbody>();
 
         wagons.Add(newWagon.GetComponent<Wagon>());
+        audio.Play();
     }
 }
