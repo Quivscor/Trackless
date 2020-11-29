@@ -39,7 +39,7 @@ public class Cauldron : MonoBehaviour
     private void Awake()
     {
         inventory = GetComponent<Inventory>();
-        freezeWarning = FindObjectOfType<WarningTextDummy>().GetComponentInChildren<TextMeshProUGUI>();
+        freezeWarning = FindObjectOfType<WarningTextDummy>()?.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Start()
