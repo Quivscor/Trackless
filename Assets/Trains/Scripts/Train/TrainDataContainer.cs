@@ -20,4 +20,9 @@ public class TrainDataContainer : MonoBehaviour
     }
 
     public List<WagonType> wagonsInTrain = new List<WagonType>();
+
+    public void AddWagon(WagonType type)
+    {
+        wagonsInTrain.Add(type);
+    }
 }

@@ -47,6 +47,7 @@ public class EndGameCanvasController : MonoBehaviour
     private void SetPointsInTotal(int currentPoints)
     {
         int points = 0;
+        int steel = 0;
 
         if (pointsTotal)
         {
@@ -62,6 +63,16 @@ public class EndGameCanvasController : MonoBehaviour
             pointsTotal.text = points + "";
         }
 
+        if (PlayerPrefs.HasKey("steel"))
+        {
+            steel = FindObjectOfType<Inventory>().Steel + PlayerPrefs.GetInt("steel");
+        }
+        else
+        {
+            steel = FindObjectOfType<Inventory>().Steel;
+        }
+
+        PlayerPrefs.SetInt("steel", steel);
         PlayerPrefs.SetInt("totalPoints", points);
         PlayerPrefs.Save();
     }
