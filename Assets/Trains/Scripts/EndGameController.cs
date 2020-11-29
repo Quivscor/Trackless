@@ -50,5 +50,6 @@ public class EndGameController : MonoBehaviour
     public void GameOverLostHeat()
     {
         Debug.Log("Lost to heat!");
+        StartCoroutine(FindObjectOfType<UIDataManager>().FadeToBlackDefeat(3.5f));
     }
 }

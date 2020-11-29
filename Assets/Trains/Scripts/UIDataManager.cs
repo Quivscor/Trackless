@@ -99,4 +99,18 @@ public class UIDataManager : MonoBehaviour
         EndGameCanvasController.Instance.DisplayCanvas(true);
         //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
     }
+
+    public IEnumerator FadeToBlackDefeat(float time)
+    {
+        float fullTime = 0;
+        while (fullTime < time)
+        {
+            yield return new WaitForEndOfFrame();
+            blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, fullTime / time);
+            fullTime += Time.deltaTime;
+        }
+
+        FindObjectOfType<GameOverCanvasController>().DisplayCanvas(true);
+        //blackscreen.color = new Color(blackscreen.color.r, blackscreen.color.g, blackscreen.color.b, 0f);
+    }
 }
