@@ -823,6 +823,16 @@ PrefabInstance:
       propertyPath: launchOffsetMinMax.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7302725805640511287, guid: 23014765034eb6e40af04c9a291ea483,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1787d6b64415a77449d50066ca4c4ec0, type: 3}
+    - target: {fileID: 7302725805640511287, guid: 23014765034eb6e40af04c9a291ea483,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7302725805640511290, guid: 23014765034eb6e40af04c9a291ea483,
         type: 3}
       propertyPath: m_Name
