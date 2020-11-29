@@ -523,7 +523,7 @@ namespace TracklessGenerator
                 {
                     if (i >= 0 && i < mapSize && j >= 0 && j < mapSize)
                     {
-                        if (map[i, j] == (int)Tiles.ice || map[i, j] == (int)Tiles.blizzard || map[i, j] == (int)Tiles.deers)
+                        if (map[i, j] != (int)Tiles.border && map[i, j] != (int)Tiles.none && map[i, j] != (int)Tiles.end && map[i, j] != (int)Tiles.spawn)
                             map[i, j] = (int)Tiles.basic;
                     }
 
