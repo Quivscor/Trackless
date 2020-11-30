@@ -575,7 +575,7 @@ namespace TracklessGenerator
 
             if ((neighboursX == 5 && neighboursY == 1) || (neighboursX == 1 && neighboursY == 5))
             {
-                Debug.Log("Neighbours X: " + neighboursX + " NeighboursY: " + neighboursY);
+                //Debug.Log("Neighbours X: " + neighboursX + " NeighboursY: " + neighboursY);
                 return false;
             }
             else
