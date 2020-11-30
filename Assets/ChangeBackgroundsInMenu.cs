@@ -16,7 +16,10 @@ public class ChangeBackgroundsInMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if(PlayerPrefs.HasKey("Controls"))
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (PlayerPrefs.HasKey("Controls"))
         {
             if (PlayerPrefs.GetInt("Controls") == 1)
                 oldControlsObject.isOn = true;

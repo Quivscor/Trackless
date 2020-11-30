@@ -46,7 +46,22 @@ public class InputManager : MonoBehaviour
 
             Data.isBrake = Input.GetKey(KeyCode.LeftAlt);
         }
-       
+       if(!Application.isEditor)
+        {
+            if(Input.GetKey(KeyCode.Escape))
+            {
+                FindObjectOfType<EndGameCanvasController>().BackToMainMenu();
+
+            }
+            
+        }
+       else
+        {
+            if (Input.GetKey(KeyCode.F1))
+            {
+                FindObjectOfType<EndGameCanvasController>().BackToMainMenu();
+            }
+        }
 
         //if (Input.GetKeyDown(KeyCode.T))
         //    TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());
