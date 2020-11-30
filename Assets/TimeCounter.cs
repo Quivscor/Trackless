@@ -41,4 +41,5 @@ public class TimeCounter : MonoBehaviour
     }
 
     public static string GetTime() { return text.text; }
+    public static void ResetTime() { time = 0; }
 }

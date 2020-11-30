@@ -10,6 +10,7 @@ public class ShopCanvasManager : MonoBehaviour
     {
         public WagonShop wagonShop;
         public Button button;
+       
 
         public ButtonToWagon(WagonShop wagonShop, Button button)
         {
@@ -24,6 +25,7 @@ public class ShopCanvasManager : MonoBehaviour
 
     private List<ButtonToWagon> offer = new List<ButtonToWagon>();
     private int steel = 0;
+    private TracklessGenerator.MapGenerator mapGenerator;
 
     public void PrepareOffer()
     {
@@ -91,8 +93,15 @@ public class ShopCanvasManager : MonoBehaviour
     public void LoadNewLevel()
     {
         PlayerPrefs.SetInt("steel", steel);
+        
+        if(PlayerPrefs.HasKey("passengers"))
+        {
+            PlayerPrefs.SetInt("passengers", PlayerPrefs.GetInt("passengers") + 1);
+        }
+        else
+            PlayerPrefs.SetInt("passengers", FindObjectOfType<TracklessGenerator.MapGenerator>().numberOfPassengers + 1);
+        TimeCounter.ResetTime();
         PlayerPrefs.Save();
-
         SceneManager.LoadScene("Map Generating");
     }
 

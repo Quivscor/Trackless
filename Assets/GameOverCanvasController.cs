@@ -23,11 +23,13 @@ public class GameOverCanvasController : MonoBehaviour
 
     public void LoadMapAgain()
     {
+        TimeCounter.ResetTime();
         SceneManager.LoadScene("Map Generating");
     }
 
     public void BackToMainMenu()
     {
+        TimeCounter.ResetTime();
         SceneManager.LoadScene("MainMenu");
     }
 }

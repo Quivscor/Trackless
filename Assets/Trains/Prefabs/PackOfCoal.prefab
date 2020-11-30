@@ -75,7 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cade3daa323de794b9c9fe13772ddc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coalBonus: 5
+  coalBonus: 4
+  coalPickerBonus: 1
   clip: {fileID: 8300000, guid: 147f03b7c25476e4eae36277d48fd02d, type: 3}
 --- !u!54 &4334270867701604180
 Rigidbody:

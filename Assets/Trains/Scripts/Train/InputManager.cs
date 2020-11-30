@@ -21,10 +21,10 @@ public class InputManager : MonoBehaviour
             Data.moveY = 1;
 
         //actions
-        Data.cauldronBoost = Input.GetKeyDown(KeyCode.Space);
+        Data.cauldronBoost = Input.GetKeyDown(KeyCode.LeftShift);
         //Data.isBrake = Input.GetAxis("Vertical") < 0 ? true : false;
 
-        Data.isBrake = Input.GetKey(KeyCode.LeftAlt);
+        Data.isBrake = Input.GetKey(KeyCode.Space);
 
         //if (Input.GetKeyDown(KeyCode.T))
         //    TrainBuilder.Instance.BuildBasicTrain(this.GetComponent<TrainManager>());

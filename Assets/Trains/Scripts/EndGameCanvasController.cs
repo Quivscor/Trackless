@@ -72,6 +72,16 @@ public class EndGameCanvasController : MonoBehaviour
             steel = FindObjectOfType<Inventory>().Steel;
         }
 
+        if (PlayerPrefs.HasKey("mapSize"))
+        {
+            PlayerPrefs.SetInt("mapSize", PlayerPrefs.GetInt("mapSize") + 10);
+            
+        }
+        else
+        {
+            PlayerPrefs.SetInt("mapSize", FindObjectOfType<TracklessGenerator.MapGenerator>().mapSize + 10);
+        }
+
         PlayerPrefs.SetInt("steel", steel);
         PlayerPrefs.SetInt("totalPoints", points);
         PlayerPrefs.Save();

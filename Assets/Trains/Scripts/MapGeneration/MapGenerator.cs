@@ -51,6 +51,11 @@ namespace TracklessGenerator
         private void Start()
         {
             tileSize = tiles[(int)Tiles.deers].transform.localScale.x;
+            if (PlayerPrefs.HasKey("passengers"))
+                numberOfPassengers = PlayerPrefs.GetInt("passengers");
+            if (PlayerPrefs.HasKey("mapSize"))
+                mapSize = PlayerPrefs.GetInt("mapSize");
+
             GenerateMap();
         }
         private void Update()

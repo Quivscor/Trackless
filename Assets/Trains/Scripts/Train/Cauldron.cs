@@ -9,10 +9,10 @@ public class Cauldron : MonoBehaviour
     public Inventory inventory = null;
 
     [SerializeField]
-    private float burningSpeed = 1.0f;
+    private float burningSpeed = 2.0f;
 
     [SerializeField]
-    private float burningBoostPerCoal = 20.0f;
+    private float burningBoostPerCoal = 13.0f;
     [SerializeField] private float burningBoostTime = 1f;
     private float boostRemainingToAdd;
 
@@ -57,7 +57,7 @@ public class Cauldron : MonoBehaviour
             AddCoalToCauldron();
 
         if (InputManager.Data.isBrake)
-            currentCauldronLevel -= burningSpeed * 25 * Time.deltaTime;
+            currentCauldronLevel -= burningSpeed * 3 * Time.deltaTime;
 
         if (boostRemainingToAdd > 0)
         {
