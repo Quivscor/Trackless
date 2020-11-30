@@ -6,6 +6,9 @@ public class PlayerPrefsManager : MonoBehaviour
 {
     public void ResetPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("steel");
+        PlayerPrefs.DeleteKey("passengers");
+        PlayerPrefs.DeleteKey("mapSize");
+        PlayerPrefs.DeleteKey("totalPoints");
     }
 }

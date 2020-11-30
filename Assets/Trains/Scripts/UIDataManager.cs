@@ -18,6 +18,8 @@ public class UIDataManager : MonoBehaviour
     private TextMeshProUGUI passengersText;
     [SerializeField]
     private TextMeshProUGUI maxPassengersText;
+    [SerializeField]
+    private AudioSource music;
 
     public Image blackscreen;
 
@@ -30,6 +32,16 @@ public class UIDataManager : MonoBehaviour
 
     void Awake()
     {
+        if (PlayerPrefs.HasKey("Music"))
+        {
+            if (PlayerPrefs.GetInt("Music") == 1)
+                music.Play();
+        }
+        else
+        {
+            music.Play();
+        }
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         FindObjectOfType<TracklessGenerator.MapGenerator>().action += FindReferences;
